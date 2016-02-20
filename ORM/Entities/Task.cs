@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ORM
 {
@@ -6,6 +7,7 @@ namespace ORM
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public DateTime? DueDate { get; set; }
 
         public int ToDoListId { get; set; }
         public virtual ToDoList ToDoList { get; set; }
