@@ -4,15 +4,14 @@ using System.Linq.Expressions;
 
 namespace DAL.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<TEntity>
+        where TEntity : IDalEntity
     {
-        void Create(T entity);
-        void Delete(T entity);
-        void Update(T entity);
-
-        IEnumerable<T> GetAll();
-        T GetById(int id);
-        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
-        T GetFirst(Expression<Func<T, bool>> predicate);
+        void Create(TEntity entity);
+        void Delete(TEntity entity);
+        void Update(TEntity entity);
+        IEnumerable<TEntity> GetAll();
+        TEntity GetById(int id);
+        TEntity GetByPredicate(Expression<Func<TEntity, bool>> predicate);
     }
 }
