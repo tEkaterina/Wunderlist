@@ -40,9 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\TaskDal.cs" />
+    <Compile Include="Entities\TaskStatusDal.cs" />
+    <Compile Include="Entities\ToDoListDal.cs" />
+    <Compile Include="Entities\UserDal.cs" />
     <Compile Include="IDalEntity.cs" />
     <Compile Include="IMapper.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
