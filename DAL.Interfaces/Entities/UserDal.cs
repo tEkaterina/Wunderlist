@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace ORM.Entities
+﻿namespace DAL.Interfaces.Entities
 {
-    public class User
+    public class UserDal : IDalEntity
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -10,12 +8,5 @@ namespace ORM.Entities
         public string Password { get; set; }
         public string Salt { get; set; }
         public byte[] Avatar { get; set; }
-
-        public virtual ICollection<ToDoList> ToDoLists { get; set; }
-
-        public User()
-        {
-            ToDoLists = new List<ToDoList>();
-        }
     }
 }
