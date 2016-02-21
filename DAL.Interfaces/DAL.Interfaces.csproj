@@ -40,11 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\TaskDal.cs" />
+    <Compile Include="Entities\TaskStatusDal.cs" />
+    <Compile Include="Entities\ToDoListDal.cs" />
+    <Compile Include="Entities\UserDal.cs" />
     <Compile Include="IDalEntity.cs" />
     <Compile Include="IMapper.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\UserDal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
