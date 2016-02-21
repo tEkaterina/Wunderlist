@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ORM
+namespace ORM.Entities
 {
     public class User
     {

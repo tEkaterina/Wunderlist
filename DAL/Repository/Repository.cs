@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using DAL.Expression;
+using DAL.Expressions;
 using DAL.Interfaces;
 
 namespace DAL.Repository
@@ -12,17 +12,15 @@ namespace DAL.Repository
         where TEntity : class
         where TDal : IDalEntity
     {
-        private readonly DbContext _context;
         private readonly IMapper<TEntity, TDal> _mapper;
         private readonly DbSet<TEntity> _dbSet;
 
         public Repository(DbContext context, IMapper<TEntity, TDal> mapper)
         {
-            if (context == null) throw new ArgumentNullException("context");
-            if (mapper == null) throw new ArgumentNullException("mapper");
-            _context = context;
+            if (context == null) throw new ArgumentNullException(nameof(context));
+            if (mapper == null) throw new ArgumentNullException(nameof(mapper));
             _mapper = mapper;
-            _dbSet = _context.Set<TEntity>();
+            _dbSet = context.Set<TEntity>();
         }
         public void Create(TDal item)
         {
