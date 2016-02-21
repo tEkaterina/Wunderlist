@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using static EntityMapper.Mapper;
 
-namespace BLL
+namespace BLL.Mapper
 {
     public static class BllServiceMapper
     {
