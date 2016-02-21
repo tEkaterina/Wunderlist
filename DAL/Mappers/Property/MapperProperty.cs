@@ -9,9 +9,6 @@ namespace DAL.Mappers.Property
 
         public static User ToModel(this UserDal item)
         {
-            if (item == null)
-                return null;
-
             User userEntity = new User
             {
                 Id = item.Id,
@@ -30,9 +27,6 @@ namespace DAL.Mappers.Property
 
         public static UserDal ToDal(this User item)
         {
-            if (item == null)
-                return null;
-
             UserDal userDalEntity = new UserDal
             {
                 Id = item.Id,
