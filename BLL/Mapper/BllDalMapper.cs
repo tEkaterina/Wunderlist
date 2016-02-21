@@ -1,5 +1,5 @@
 ﻿using BLL.Interface;
-using DAL.Interfaces;
+using DAL.Interfaces.Entities;
 using static EntityMapper.Mapper;
 
 namespace BLL.Mapper

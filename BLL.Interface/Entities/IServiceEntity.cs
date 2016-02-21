@@ -2,6 +2,6 @@
 {
     public interface IServiceEntity
     {
-        public int Id { get; set; }
+        int Id { get; set; }
     }
 }
