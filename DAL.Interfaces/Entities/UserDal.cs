@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Interfaces
+namespace DAL.Interfaces.Entities
 {
-    public class UserDalEntity : IDalEntity
+    public class UserDal : IDalEntity
     {
         public int Id { get; set; }
         public string Email { get; set; }

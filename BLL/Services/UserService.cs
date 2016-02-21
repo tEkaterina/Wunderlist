@@ -9,9 +9,9 @@ namespace BLL.Services
     public class UserService: IUserService
     {
         private readonly IUnitOfWork _uow;
-        private readonly IRepository<UserDalEntity> _repository;
+        private readonly IRepository<UserDal> _repository;
 
-        public UserService(IUnitOfWork uow, IRepository<UserDalEntity> repository)
+        public UserService(IUnitOfWork uow, IRepository<UserDal> repository)
         {
             if (repository == null)
                 throw new ArgumentNullException(nameof(repository));
@@ -66,7 +66,7 @@ namespace BLL.Services
             }
         }
 
-        private void DeleteUser(UserDalEntity user)
+        private void DeleteUser(UserDal user)
         {
             if (user != null)
             {
@@ -75,14 +75,14 @@ namespace BLL.Services
             }
         }
 
-        private UserDalEntity GetUserById(int id)
+        private UserDal GetUserById(int id)
         {
             if (id <= 0)
                 throw new ArgumentException("Invalid user id. The id must be greater than 0", nameof(id));
             return _repository.GetById(id);
         }
 
-        private UserDalEntity GetUserByEmail(string email)
+        private UserDal GetUserByEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
                 throw new ArgumentException("Invalid email: email is null or empty.", nameof(email));
