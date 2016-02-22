@@ -6,7 +6,7 @@ namespace DAL.Expressions
 {
     public class ExpressionMapper<TFrom, TO, TResult>
     {
-        private class Visitor<TFrom, TTo> : ExpressionVisitor
+        private class Visitor<TTFrom, TTo> : ExpressionVisitor
         {
             public ParameterExpression ParameterExpression { get; private set; }
 
@@ -21,7 +21,7 @@ namespace DAL.Expressions
             }
             protected override Expression VisitMember(MemberExpression node)
             {
-                if (node.Member.DeclaringType == typeof(TFrom))
+                if (node.Member.DeclaringType == typeof(TTFrom))
                 {
                     return Expression.MakeMemberAccess(Visit(node.Expression), typeof(TTo).GetMember(node.Member.Name).FirstOrDefault());
                 }
