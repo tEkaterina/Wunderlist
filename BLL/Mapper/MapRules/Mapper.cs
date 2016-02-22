@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace BLL.Mapper.MapRules
 {
     public static class Mapper
     {
-        private static List<MapRule> rules = new List<MapRule>();
+        private static readonly List<MapRule> rules = new List<MapRule>();
 
         public static void AddRule<TFirst, TSecond>()
             where TFirst : class
@@ -50,7 +51,7 @@ namespace BLL.Mapper.MapRules
         public static void Map<TSource, TTarget>(TSource source, TTarget target)
             where TTarget : class
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
 
             var rule = FindRule<TSource, TTarget>();
             if (rule != null)
@@ -64,8 +65,8 @@ namespace BLL.Mapper.MapRules
 
         private static void FillSameProperties<TSource, TTarget>(TSource source, TTarget target)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (target == null) throw new ArgumentNullException("target");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (target == null) throw new ArgumentNullException(nameof(source));
 
             Type sourceType = typeof(TSource);
             Type targetType = typeof(TTarget);
@@ -86,15 +87,9 @@ namespace BLL.Mapper.MapRules
 
         private static MapRule<TFirst, TSecond> FindRule<TFirst, TSecond>()
         {
-            for (int i = 0; i < rules.Count; i++)
-            {
-                var rule = rules[i] as MapRule<TFirst, TSecond>;
-                if (rule != null)
-                {
-                    return rule;
-                }
-            }
-            return null;
+            return rules
+                .OfType<MapRule<TFirst, TSecond>>()
+                .FirstOrDefault();
         }
     }
 }
