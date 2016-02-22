@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Mapper\BllServiceMapper.cs" />
     <Compile Include="Mapper\BllDalMapper.cs" />
+    <Compile Include="Mapper\MapRules\Mapper.cs" />
+    <Compile Include="Mapper\MapRules\MapRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
