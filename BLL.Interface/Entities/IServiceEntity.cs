@@ -1,4 +1,4 @@
-﻿namespace BLL.Interface
+﻿namespace BLL.Interface.Entities
 {
     public interface IServiceEntity
     {
