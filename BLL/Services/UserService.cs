@@ -1,9 +1,10 @@
-﻿using BLL.Interface;
-using DAL.Interfaces;
+﻿using DAL.Interfaces;
 using DAL.Interfaces.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BLL.Interface.Entities;
+using BLL.Interface.Services;
 using BLL.Mapper;
 
 namespace BLL.Services

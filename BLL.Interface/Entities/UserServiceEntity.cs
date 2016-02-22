@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BLL.Interface
+﻿namespace BLL.Interface.Entities
 {
     public class UserServiceEntity : IServiceEntity
     {
