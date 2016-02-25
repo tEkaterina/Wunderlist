@@ -6,7 +6,7 @@ namespace BLL.Mapper.MapRules
 {
     public static class Mapper
     {
-        private static List<MapRule> rules = new List<MapRule>();
+        private static readonly List<MapRule> Rules = new List<MapRule>();
 
         public static void AddRule<TFirst, TSecond>()
             where TFirst : class
@@ -30,8 +30,8 @@ namespace BLL.Mapper.MapRules
             MapRule<TFirst, TSecond> rule = FindRule<TFirst, TSecond>();
             if (rule == null)
             {
-                rules.Add(new MapRule<TFirst, TSecond>(firstToSecond));
-                rules.Add(new MapRule<TSecond, TFirst>(secondToFirst));
+                Rules.Add(new MapRule<TFirst, TSecond>(firstToSecond));
+                Rules.Add(new MapRule<TSecond, TFirst>(secondToFirst));
             }
             else
             {
@@ -64,8 +64,8 @@ namespace BLL.Mapper.MapRules
 
         private static void FillSameProperties<TSource, TTarget>(TSource source, TTarget target)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (target == null) throw new ArgumentNullException("target");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (target == null) throw new ArgumentNullException(nameof(target));
 
             Type sourceType = typeof(TSource);
             Type targetType = typeof(TTarget);
@@ -86,9 +86,9 @@ namespace BLL.Mapper.MapRules
 
         private static MapRule<TFirst, TSecond> FindRule<TFirst, TSecond>()
         {
-            for (int i = 0; i < rules.Count; i++)
+            for (int i = 0; i < Rules.Count; i++)
             {
-                var rule = rules[i] as MapRule<TFirst, TSecond>;
+                var rule = Rules[i] as MapRule<TFirst, TSecond>;
                 if (rule != null)
                 {
                     return rule;

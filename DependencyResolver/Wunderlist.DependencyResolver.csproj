@@ -65,9 +65,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL.Interface\Wunderlist.Services.Interface.csproj">
+    <ProjectReference Include="..\BLL.Interface\Wunderlist.Services.Interfaces.csproj">
       <Project>{820E68F3-825F-4D65-B9B1-37E554D50ED6}</Project>
-      <Name>Wunderlist.Services.Interface</Name>
+      <Name>Wunderlist.Services.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\BLL\Wunderlist.Services.csproj">
       <Project>{5BAC3D88-BEF8-4709-87FC-DB61703C0205}</Project>

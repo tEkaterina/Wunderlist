@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.DataAccess.MSSQL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.DataAccess.Interfaces", "DAL.Interfaces\Wunderlist.DataAccess.Interfaces.csproj", "{ACD605B0-1766-4D17-AB39-DBAA038071FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.Services.Interface", "BLL.Interface\Wunderlist.Services.Interface.csproj", "{820E68F3-825F-4D65-B9B1-37E554D50ED6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.Services.Interfaces", "BLL.Interface\Wunderlist.Services.Interfaces.csproj", "{820E68F3-825F-4D65-B9B1-37E554D50ED6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.Services", "BLL\Wunderlist.Services.csproj", "{5BAC3D88-BEF8-4709-87FC-DB61703C0205}"
 EndProject
