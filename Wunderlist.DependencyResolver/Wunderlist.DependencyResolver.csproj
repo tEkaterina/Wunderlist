@@ -65,23 +65,23 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL.Interface\Wunderlist.Services.Interfaces.csproj">
+    <ProjectReference Include="..\Wunderlist.Services.Interfaces\Wunderlist.Services.Interfaces.csproj">
       <Project>{820E68F3-825F-4D65-B9B1-37E554D50ED6}</Project>
       <Name>Wunderlist.Services.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BLL\Wunderlist.Services.csproj">
+    <ProjectReference Include="..\Wunderlist.Services\Wunderlist.Services.csproj">
       <Project>{5BAC3D88-BEF8-4709-87FC-DB61703C0205}</Project>
       <Name>Wunderlist.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL.Interfaces\Wunderlist.DataAccess.Interfaces.csproj">
+    <ProjectReference Include="..\Wunderlist.DataAccess.Interfaces\Wunderlist.DataAccess.Interfaces.csproj">
       <Project>{ACD605B0-1766-4D17-AB39-DBAA038071FA}</Project>
       <Name>Wunderlist.DataAccess.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL\Wunderlist.DataAccess.MSSQL.csproj">
+    <ProjectReference Include="..\Wunderlist.DataAccess.MSSQL\Wunderlist.DataAccess.MSSQL.csproj">
       <Project>{04BDE8ED-D519-495B-BFC4-1B66E35C1451}</Project>
       <Name>Wunderlist.DataAccess.MSSQL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ORM\Wunderlist.ORM.csproj">
+    <ProjectReference Include="..\Wunderlist.ORM\Wunderlist.ORM.csproj">
       <Project>{44EF1C3B-3396-4694-9CC8-1E8624018AFB}</Project>
       <Name>Wunderlist.ORM</Name>
     </ProjectReference>
