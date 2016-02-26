@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A365388-623E-4999-BA9E-B15A69EF6F27}</ProjectGuid>
+    <ProjectGuid>{04BDE8ED-D519-495B-BFC4-1B66E35C1451}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DependencyResolver</RootNamespace>
-    <AssemblyName>DependencyResolver</AssemblyName>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,11 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.Web.Common.3.2.2.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -57,35 +53,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resolver.cs" />
+    <Compile Include="Concrete\UnitOfWork.cs" />
+    <Compile Include="Expressions\ExpressionMapper.cs" />
+    <Compile Include="Mappers\Property\MapperProperty.cs" />
+    <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Repository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wunderlist.DataAccess.Interfaces\Wunderlist.DataAccess.Interfaces.csproj">
+      <Project>{acd605b0-1766-4d17-ab39-dbaa038071fa}</Project>
+      <Name>Wunderlist.DataAccess.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.ORM\Wunderlist.ORM.csproj">
+      <Project>{44ef1c3b-3396-4694-9cc8-1e8624018afb}</Project>
+      <Name>Wunderlist.ORM</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BLL.Interface\BLL.Interface.csproj">
-      <Project>{820E68F3-825F-4D65-B9B1-37E554D50ED6}</Project>
-      <Name>BLL.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{5BAC3D88-BEF8-4709-87FC-DB61703C0205}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL.Interfaces\DAL.Interfaces.csproj">
-      <Project>{ACD605B0-1766-4D17-AB39-DBAA038071FA}</Project>
-      <Name>DAL.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{04BDE8ED-D519-495B-BFC4-1B66E35C1451}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ORM\ORM.csproj">
-      <Project>{44EF1C3B-3396-4694-9CC8-1E8624018AFB}</Project>
-      <Name>ORM</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
