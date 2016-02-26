@@ -20,12 +20,12 @@ namespace DependencyResolver
             kernel.Bind<DbContext>().To<EntityContext>().InRequestScope();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
 
-            kernel.Bind<IRepository<UserDal>>().To<Repository<User, UserDal>>();
-            kernel.Bind<IRepository<TaskDal>>().To<Repository<Task, TaskDal>>();
-            kernel.Bind<IRepository<TaskStatusDal>>().To<Repository<TaskStatus, TaskStatusDal>>();
-            kernel.Bind<IRepository<ToDoListDal>>().To<Repository<ToDoList, ToDoListDal>>();
+            kernel.Bind<IRepository<UserDalEntity>>().To<Repository<User, UserDalEntity>>();
+            kernel.Bind<IRepository<TaskDalEntity>>().To<Repository<Task, TaskDalEntity>>();
+            kernel.Bind<IRepository<TaskStatusDalEntity>>().To<Repository<TaskStatus, TaskStatusDalEntity>>();
+            kernel.Bind<IRepository<ToDoListDalEntity>>().To<Repository<ToDoList, ToDoListDalEntity>>();
 
-            kernel.Bind<IMapper<User, UserDal>>().To<UserMapper>().InSingletonScope();
+            kernel.Bind<IMapper<User, UserDalEntity>>().To<UserMapper>().InSingletonScope();
             //TODO: mappers for other
             
             kernel.Bind<IUserService>().To<UserService>();
