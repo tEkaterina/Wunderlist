@@ -2,7 +2,7 @@
 
 namespace DAL.Interfaces.Entities
 {
-    public class TaskDal : IDalEntity
+    public class TaskDalEntity : IDalEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

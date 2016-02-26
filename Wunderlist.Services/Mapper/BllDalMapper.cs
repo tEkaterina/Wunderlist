@@ -8,12 +8,12 @@ namespace BLL.Mapper
     {
         static BllServiceMapper()
         {
-            AddRule<UserDal, UserServiceEntity>();
+            AddRule<UserDalEntity, UserServiceEntity>();
         }
 
-        public static UserServiceEntity ToServiceEntity(this UserDal userDal)
+        public static UserServiceEntity ToServiceEntity(this UserDalEntity userDal)
         {
-            return Map<UserDal, UserServiceEntity>(userDal);
+            return Map<UserDalEntity, UserServiceEntity>(userDal);
         }
 
     }

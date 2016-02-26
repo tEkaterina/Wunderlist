@@ -1,6 +1,6 @@
 ﻿namespace DAL.Interfaces.Entities
 {
-    public class ToDoListDal : IDalEntity
+    public class ToDoListDalEntity : IDalEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
