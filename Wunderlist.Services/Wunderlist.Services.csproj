@@ -52,13 +52,13 @@
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL.Interface\BLL.Interface.csproj">
+    <ProjectReference Include="..\Wunderlist.Services.Interfaces\Wunderlist.Services.Interfaces.csproj">
       <Project>{820e68f3-825f-4d65-b9b1-37e554d50ed6}</Project>
-      <Name>BLL.Interface</Name>
+      <Name>Wunderlist.Services.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL.Interfaces\DAL.Interfaces.csproj">
+    <ProjectReference Include="..\Wunderlist.DataAccess.Interfaces\Wunderlist.DataAccess.Interfaces.csproj">
       <Project>{acd605b0-1766-4d17-ab39-dbaa038071fa}</Project>
-      <Name>DAL.Interfaces</Name>
+      <Name>Wunderlist.DataAccess.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

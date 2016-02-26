@@ -5,19 +5,19 @@ using ORM.Entities;
 
 namespace DAL.Mappers
 {
-    public class UserMapper : IMapper<User, UserDal>
+    public class UserMapper : IMapper<User, UserDalEntity>
     {
-        public User ToEntity(UserDal item)
+        public User ToEntity(UserDalEntity item)
         {
             return item?.ToModel();
         }
 
-        public UserDal ToDal(User item)
+        public UserDalEntity ToDal(User item)
         {
             return item?.ToDal();
         }
 
-        public void CopyFields(UserDal dalEntity, User entity)
+        public void CopyFields(UserDalEntity dalEntity, User entity)
         {
             if (dalEntity == null || entity == null)
                 return;

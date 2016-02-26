@@ -7,7 +7,7 @@ namespace DAL.Mappers.Property
     {
         #region DAL to Model
 
-        public static User ToModel(this UserDal item)
+        public static User ToModel(this UserDalEntity item)
         {
             User userEntity = new User
             {
@@ -25,9 +25,9 @@ namespace DAL.Mappers.Property
 
         #region Model to DAL
 
-        public static UserDal ToDal(this User item)
+        public static UserDalEntity ToDal(this User item)
         {
-            UserDal userDalEntity = new UserDal
+            UserDalEntity userDalEntity = new UserDalEntity
             {
                 Id = item.Id,
                 Name = item.Name,

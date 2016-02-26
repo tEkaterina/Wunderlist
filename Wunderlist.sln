@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORM", "ORM\ORM.csproj", "{44EF1C3B-3396-4694-9CC8-1E8624018AFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.ORM", "Wunderlist.ORM\Wunderlist.ORM.csproj", "{44EF1C3B-3396-4694-9CC8-1E8624018AFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{04BDE8ED-D519-495B-BFC4-1B66E35C1451}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.DataAccess.MSSQL", "Wunderlist.DataAccess.MSSQL\Wunderlist.DataAccess.MSSQL.csproj", "{04BDE8ED-D519-495B-BFC4-1B66E35C1451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Interfaces", "DAL.Interfaces\DAL.Interfaces.csproj", "{ACD605B0-1766-4D17-AB39-DBAA038071FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.DataAccess.Interfaces", "Wunderlist.DataAccess.Interfaces\Wunderlist.DataAccess.Interfaces.csproj", "{ACD605B0-1766-4D17-AB39-DBAA038071FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL.Interface", "BLL.Interface\BLL.Interface.csproj", "{820E68F3-825F-4D65-B9B1-37E554D50ED6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.Services.Interfaces", "Wunderlist.Services.Interfaces\Wunderlist.Services.Interfaces.csproj", "{820E68F3-825F-4D65-B9B1-37E554D50ED6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{5BAC3D88-BEF8-4709-87FC-DB61703C0205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.Services", "Wunderlist.Services\Wunderlist.Services.csproj", "{5BAC3D88-BEF8-4709-87FC-DB61703C0205}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyResolver", "DependencyResolver\DependencyResolver.csproj", "{0A365388-623E-4999-BA9E-B15A69EF6F27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.DependencyResolver", "Wunderlist.DependencyResolver\Wunderlist.DependencyResolver.csproj", "{0A365388-623E-4999-BA9E-B15A69EF6F27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\TaskDal.cs" />
-    <Compile Include="Entities\TaskStatusDal.cs" />
-    <Compile Include="Entities\ToDoListDal.cs" />
-    <Compile Include="Entities\UserDal.cs" />
+    <Compile Include="Entities\TaskDalEntity.cs" />
+    <Compile Include="Entities\TaskStatusDalEntity.cs" />
+    <Compile Include="Entities\ToDoListDalEntity.cs" />
+    <Compile Include="Entities\UserDalEntity.cs" />
     <Compile Include="IDalEntity.cs" />
     <Compile Include="IMapper.cs" />
     <Compile Include="IRepository.cs" />
