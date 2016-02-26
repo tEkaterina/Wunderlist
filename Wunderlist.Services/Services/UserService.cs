@@ -27,12 +27,18 @@ namespace BLL.Services
 
         public UserServiceEntity GetUserEntity(int id)
         {
+            if (id <= 0)
+                throw new ArgumentException("User id must be greater than 0.", nameof(id));
+
             var userDalEntity = GetUserById(id);
             return userDalEntity?.ToServiceEntity();
         }
 
         public UserServiceEntity GetUserEntity(string email)
         {
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentException("User email is null or empty.", nameof(email));
+
             var userDalEntity = GetUserByEmail(email);
             return userDalEntity?.ToServiceEntity();
         }
@@ -44,6 +50,9 @@ namespace BLL.Services
 
         public void CreateUser(UserServiceEntity user)
         {
+            if (user == null)
+                throw new ArgumentNullException(nameof(user));
+
             var userDalEntity = user.ToDalEntity();
             _repository.Create(userDalEntity);
             _uow.Commit();
@@ -51,44 +60,49 @@ namespace BLL.Services
 
         public void DeleteUser(int id)
         {
+            if (id <= 0)
+                throw new ArgumentException("User id must be greater than 0.", nameof(id));
+
             DeleteUser(GetUserById(id));
         }
-
-        public void DeleteUser(string email)
-        {
-            DeleteUser(GetUserByEmail(email));
-        }
-
+        
         public void UpdateUser(UserServiceEntity user)
         {
+            if (user == null)
+                throw new ArgumentNullException(nameof(user));
+
             var updatedUser = GetUserById(user.Id);
-            if (updatedUser != null)
-            {
-                _repository.Update(user.ToDalEntity());
-                _uow.Commit();
-            }
+
+            if (updatedUser == null)
+                throw  new ArgumentException($"User with id = {user.Id} cannot be found.", nameof(user));
+
+            _repository.Update(user.ToDalEntity());
+            _uow.Commit();
+            
         }
 
         private void DeleteUser(UserDalEntity user)
         {
-            if (user != null)
-            {
-                _repository.Delete(user);
-                _uow.Commit();
-            }
+            if (user == null)
+                throw new ArgumentNullException(nameof(user));
+
+            _repository.Delete(user);
+            _uow.Commit();
         }
 
         private UserDalEntity GetUserById(int id)
         {
             if (id <= 0)
-                throw new ArgumentException("Invalid user id. The id must be greater than 0", nameof(id));
+                throw new ArgumentException("User id must be greater than 0", nameof(id));
+
             return _repository.GetById(id);
         }
 
         private UserDalEntity GetUserByEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
-                throw new ArgumentException("Invalid email: email is null or empty.", nameof(email));
+                throw new ArgumentException("User email is null or empty.", nameof(email));
+
             return _repository.GetByPredicate(user => user.Email == email);
         }
     }
