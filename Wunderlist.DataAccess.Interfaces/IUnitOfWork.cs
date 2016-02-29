@@ -2,7 +2,7 @@
 
 namespace Wunderlist.DataAccess.Interfaces
 {
-    public Interfaces IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         void Commit();
     }

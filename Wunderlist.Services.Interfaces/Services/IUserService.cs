@@ -3,7 +3,7 @@ using Wunderlist.Services.Interfaces.Entities;
 
 namespace Wunderlist.Services.Interfaces.Services
 {
-    public Interfaces IUserService
+    public interface IUserService
     {
         UserServiceEntity GetUserEntity(int id);
         UserServiceEntity GetUserEntity(string email);

@@ -222,7 +222,7 @@ window.Modernizr = (function( window, document, undefined ) {
         var isSupported = eventName in element;
 
         if ( !isSupported ) {
-          // If it has no `setAttribute` (i.e. doesn't implement Node Interfaces), try generic element
+          // If it has no `setAttribute` (i.e. doesn't implement Nodeinterface, try generic element
           if ( !element.setAttribute ) {
             element = document.createElement('div');
           }

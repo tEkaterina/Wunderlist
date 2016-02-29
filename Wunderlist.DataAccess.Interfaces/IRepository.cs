@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Wunderlist.DataAccess.Interfaces
 {
-    public Interfaces IRepository<TEntity>
+    public interface IRepository<TEntity>
         where TEntity : IDalEntity
     {
         void Create(TEntity entity);
