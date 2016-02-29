@@ -7,8 +7,8 @@
     <ProjectGuid>{04BDE8ED-D519-495B-BFC4-1B66E35C1451}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAL</RootNamespace>
-    <AssemblyName>DAL</AssemblyName>
+    <RootNamespace>Wunderlist.DataAccess.MsSql</RootNamespace>
+    <AssemblyName>Wunderlist.DataAccess.MsSql</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

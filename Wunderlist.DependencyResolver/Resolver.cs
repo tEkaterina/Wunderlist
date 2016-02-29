@@ -1,17 +1,17 @@
 ﻿using System.Data.Entity;
-using BLL.Interface.Services;
-using BLL.Services;
-using DAL.Concrete;
-using DAL.Interfaces;
-using DAL.Interfaces.Entities;
-using DAL.Mappers;
-using DAL.Repository;
+using Wunderlist.Services.Interfaces.Services;
+using Wunderlist.Services.Services;
+using Wunderlist.DataAccess.MsSql.Concrete;
+using Wunderlist.DataAccess.Interfaces;
+using Wunderlist.DataAccess.Interfaces.Entities;
+using Wunderlist.DataAccess.MsSql.Mappers;
+using Wunderlist.DataAccess.MsSql.Repository;
 using Ninject;
 using Ninject.Web.Common;
-using ORM;
-using ORM.Entities;
+using Wunderlist.ORM;
+using Wunderlist.ORM.Entities;
 
-namespace DependencyResolver
+namespace Wunderlist.DependencyResolver
 {
     public static class ResolverSettings
     {

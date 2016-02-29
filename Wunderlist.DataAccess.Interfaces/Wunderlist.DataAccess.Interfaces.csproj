@@ -7,8 +7,8 @@
     <ProjectGuid>{ACD605B0-1766-4D17-AB39-DBAA038071FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAL.Interfaces</RootNamespace>
-    <AssemblyName>DAL.Interfaces</AssemblyName>
+    <RootNamespace>Wunderlist.DataAccess.Interfaces</RootNamespace>
+    <AssemblyName>Wunderlist.DataAccess.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

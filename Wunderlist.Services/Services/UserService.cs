@@ -1,13 +1,13 @@
-﻿using DAL.Interfaces;
-using DAL.Interfaces.Entities;
+﻿using Wunderlist.DataAccess.Interfaces;
+using Wunderlist.DataAccess.Interfaces.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BLL.Interface.Entities;
-using BLL.Interface.Services;
-using BLL.Mapper;
+using Wunderlist.Services.Interfaces.Entities;
+using Wunderlist.Services.Interfaces.Services;
+using Wunderlist.Services.Mapper;
 
-namespace BLL.Services
+namespace Wunderlist.Services.Services
 {
     public class UserService: IUserService
     {

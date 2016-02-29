@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DAL.Interfaces.Entities
+namespace Wunderlist.DataAccess.Interfaces.Entities
 {
     public class TaskDalEntity : IDalEntity
     {

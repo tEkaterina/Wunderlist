@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace DAL.Interfaces
+namespace Wunderlist.DataAccess.Interfaces
 {
     public interface IRepository<TEntity>
         where TEntity : IDalEntity
