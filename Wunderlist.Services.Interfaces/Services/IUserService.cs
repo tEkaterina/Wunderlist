@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using BLL.Interface.Entities;
+using Wunderlist.Services.Interfaces.Entities;
 
-namespace BLL.Interface.Services
+namespace Wunderlist.Services.Interfaces.Services
 {
-    public interface IUserService
+    public Interfaces IUserService
     {
         UserServiceEntity GetUserEntity(int id);
         UserServiceEntity GetUserEntity(string email);

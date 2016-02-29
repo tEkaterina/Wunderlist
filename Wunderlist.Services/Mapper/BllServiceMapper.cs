@@ -1,8 +1,8 @@
-﻿using BLL.Interface.Entities;
-using DAL.Interfaces.Entities;
-using static BLL.Mapper.MapRules.Mapper;
+﻿using Wunderlist.Services.Interfaces.Entities;
+using Wunderlist.DataAccess.Interfaces.Entities;
+using static Wunderlist.Services.Mapper.MapRules.Mapper;
 
-namespace BLL.Mapper
+namespace Wunderlist.Services.Mapper
 {
     public static class BllDalMapper
     {

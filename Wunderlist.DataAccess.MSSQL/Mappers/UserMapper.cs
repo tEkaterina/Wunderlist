@@ -1,9 +1,9 @@
-﻿using DAL.Interfaces;
-using DAL.Interfaces.Entities;
-using DAL.Mappers.Property;
-using ORM.Entities;
+﻿using Wunderlist.DataAccess.Interfaces;
+using Wunderlist.DataAccess.Interfaces.Entities;
+using Wunderlist.DataAccess.Mappers.Property;
+using Wunderlist.ORM.Entities;
 
-namespace DAL.Mappers
+namespace Wunderlist.DataAccess.Mappers
 {
     public class UserMapper : IMapper<User, UserDalEntity>
     {

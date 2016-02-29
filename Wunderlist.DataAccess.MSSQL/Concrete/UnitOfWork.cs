@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
-using DAL.Interfaces;
+using Wunderlist.DataAccess.Interfaces;
 
-namespace DAL.Concrete
+namespace Wunderlist.DataAccess.Concrete
 {
     public class UnitOfWork : IUnitOfWork
     {

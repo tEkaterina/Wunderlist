@@ -1,11 +1,11 @@
-﻿using DAL.Interfaces.Entities;
-using ORM.Entities;
+﻿using Wunderlist.DataAccess.Interfaces.Entities;
+using Wunderlist.ORM.Entities;
 
-namespace DAL.Mappers.Property
+namespace Wunderlist.DataAccess.Mappers.Property
 {
     public static class MapperProperty
     {
-        #region DAL to Model
+        #region Wunderlist.DataAccess to Model
 
         public static User ToModel(this UserDalEntity item)
         {
@@ -23,7 +23,7 @@ namespace DAL.Mappers.Property
 
         #endregion
 
-        #region Model to DAL
+        #region Model to Wunderlist.DataAccess
 
         public static UserDalEntity ToDal(this User item)
         {

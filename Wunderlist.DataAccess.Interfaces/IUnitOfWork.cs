@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace DAL.Interfaces
+namespace Wunderlist.DataAccess.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public Interfaces IUnitOfWork : IDisposable
     {
         void Commit();
     }

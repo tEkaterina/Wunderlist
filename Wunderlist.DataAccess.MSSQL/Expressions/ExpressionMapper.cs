@@ -2,7 +2,7 @@
 using System.Linq;
 using System;
 
-namespace DAL.Expressions
+namespace Wunderlist.DataAccess.Expressions
 {
     public class ExpressionMapper<TFrom, TO, TResult>
     {

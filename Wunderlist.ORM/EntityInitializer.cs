@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace ORM
+namespace Wunderlist.ORM
 {
     public class EntityInitializer : DropCreateDatabaseIfModelChanges<EntityContext>
     {

@@ -1,15 +1,15 @@
 ﻿using System.Data.Entity;
-using BLL.Interface.Services;
-using BLL.Services;
-using DAL.Concrete;
-using DAL.Interfaces;
-using DAL.Interfaces.Entities;
-using DAL.Mappers;
-using DAL.Repository;
+using Wunderlist.Services.Interfaces.Services;
+using Wunderlist.Services.Services;
+using Wunderlist.DataAccess.Concrete;
+using Wunderlist.DataAccess.Interfaces;
+using Wunderlist.DataAccess.Interfaces.Entities;
+using Wunderlist.DataAccess.Mappers;
+using Wunderlist.DataAccess.Repository;
 using Ninject;
 using Ninject.Web.Common;
-using ORM;
-using ORM.Entities;
+using Wunderlist.ORM;
+using Wunderlist.ORM.Entities;
 
 namespace DependencyResolver
 {

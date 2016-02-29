@@ -1,6 +1,6 @@
-﻿namespace DAL.Interfaces
+﻿namespace Wunderlist.DataAccess.Interfaces
 {
-    public interface IMapper<TEntity, TDal>
+    public Interfaces IMapper<TEntity, TDal>
     {
         TEntity ToEntity(TDal item);
         TDal ToDal(TEntity item);

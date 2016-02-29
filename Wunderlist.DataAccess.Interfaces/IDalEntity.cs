@@ -1,4 +1,4 @@
-﻿namespace DAL.Interfaces
+﻿namespace Wunderlist.DataAccess.Interfaces
 {
     public interface IDalEntity
     {
