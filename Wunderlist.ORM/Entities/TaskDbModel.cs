@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ORM.Entities
 {
-    public class Task
+    public class TaskDbModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -14,7 +14,7 @@ namespace ORM.Entities
 
         public virtual ICollection<TaskStatus> TaskStatuses { get; set; }
 
-        public Task()
+        public TaskDbModel()
         {
             TaskStatuses = new List<TaskStatus>();
         }
