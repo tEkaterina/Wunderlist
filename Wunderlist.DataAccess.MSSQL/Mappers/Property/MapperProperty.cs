@@ -27,9 +27,8 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
 
         public static UserDalEntity ToDal(this User item)
         {
-            UserDalEntity userDalEntity = new UserDalEntity
+            UserDalEntity userDalEntity = new UserDalEntity(item.Id)
             {
-                Id = item.Id,
                 Name = item.Name,
                 Password = item.Password,
                 Avatar = item.Avatar,

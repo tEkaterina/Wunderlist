@@ -2,7 +2,12 @@
 {
     public class ToDoListDalEntity : IDalEntity
     {
-        public int Id { get; set; }
+        public ToDoListDalEntity(int id)
+        {
+            Id = id;
+        }
+
+        public int Id { get; }
         public string Name { get; set; }
         public int UserId { get; set; }
     }

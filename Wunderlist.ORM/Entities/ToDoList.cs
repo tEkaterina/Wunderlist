@@ -10,11 +10,11 @@ namespace Wunderlist.ORM.Entities
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual ICollection<TaskDbModel> Tasks { get; set; }
 
         public ToDoList()
         {
-            Tasks = new List<Task>();
+            Tasks = new List<TaskDbModel>();
         }
     }
 }
