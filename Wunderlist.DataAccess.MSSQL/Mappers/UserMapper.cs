@@ -1,9 +1,9 @@
 ﻿using Wunderlist.DataAccess.Interfaces;
 using Wunderlist.DataAccess.Interfaces.Entities;
-using Wunderlist.DataAccess.Mappers.Property;
+using Wunderlist.DataAccess.MsSql.Mappers.Property;
 using Wunderlist.ORM.Entities;
 
-namespace Wunderlist.DataAccess.Mappers
+namespace Wunderlist.DataAccess.MsSql.Mappers
 {
     public class UserMapper : IMapper<User, UserDalEntity>
     {

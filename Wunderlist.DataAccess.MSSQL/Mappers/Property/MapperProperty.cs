@@ -1,11 +1,11 @@
 ﻿using Wunderlist.DataAccess.Interfaces.Entities;
 using Wunderlist.ORM.Entities;
 
-namespace Wunderlist.DataAccess.Mappers.Property
+namespace Wunderlist.DataAccess.MsSql.Mappers.Property
 {
     public static class MapperProperty
     {
-        #region Wunderlist.DataAccess to Model
+        #region Wunderlist.DataAccess.MsSql to Model
 
         public static User ToModel(this UserDalEntity item)
         {
@@ -23,7 +23,7 @@ namespace Wunderlist.DataAccess.Mappers.Property
 
         #endregion
 
-        #region Model to Wunderlist.DataAccess
+        #region Model to Wunderlist.DataAccess.MsSql
 
         public static UserDalEntity ToDal(this User item)
         {

@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using Wunderlist.DataAccess.Interfaces;
 
-namespace Wunderlist.DataAccess.Concrete
+namespace Wunderlist.DataAccess.MsSql.Concrete
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using System;
 
-namespace Wunderlist.DataAccess.Expressions
+namespace Wunderlist.DataAccess.MsSql.Expressions
 {
     public class ExpressionMapper<TFrom, TO, TResult>
     {

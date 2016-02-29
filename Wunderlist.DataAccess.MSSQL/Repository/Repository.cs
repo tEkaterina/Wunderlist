@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using Wunderlist.DataAccess.Expressions;
+using Wunderlist.DataAccess.MsSql.Expressions;
 using Wunderlist.DataAccess.Interfaces;
 
-namespace Wunderlist.DataAccess.Repository
+namespace Wunderlist.DataAccess.MsSql.Repository
 {
     public class Repository<TEntity, TDal> : IRepository<TDal>
         where TEntity : class
