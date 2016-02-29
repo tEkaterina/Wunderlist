@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -50,8 +54,25 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="UserUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wunderlist.DataAccess.Interfaces\Wunderlist.DataAccess.Interfaces.csproj">
+      <Project>{acd605b0-1766-4d17-ab39-dbaa038071fa}</Project>
+      <Name>Wunderlist.DataAccess.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.DependencyResolver\Wunderlist.DependencyResolver.csproj">
+      <Project>{0a365388-623e-4999-ba9e-b15a69ef6f27}</Project>
+      <Name>Wunderlist.DependencyResolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.Services.Interfaces\Wunderlist.Services.Interfaces.csproj">
+      <Project>{820e68f3-825f-4d65-b9b1-37e554d50ed6}</Project>
+      <Name>Wunderlist.Services.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
