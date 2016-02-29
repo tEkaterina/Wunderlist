@@ -7,8 +7,8 @@
     <ProjectGuid>{820E68F3-825F-4D65-B9B1-37E554D50ED6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BLL.Interface</RootNamespace>
-    <AssemblyName>BLL.Interface</AssemblyName>
+    <RootNamespace>Wunderlist.Services.Interfaces</RootNamespace>
+    <AssemblyName>Wunderlist.Services.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

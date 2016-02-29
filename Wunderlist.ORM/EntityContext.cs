@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using ORM.Entities;
+using Wunderlist.ORM.Entities;
 
-namespace ORM
+namespace Wunderlist.ORM
 {
     public class EntityContext: DbContext
     {

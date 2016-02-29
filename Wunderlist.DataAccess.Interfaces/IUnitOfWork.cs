@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DAL.Interfaces
+namespace Wunderlist.DataAccess.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ORM.Entities
+namespace Wunderlist.ORM.Entities
 {
     public class User
     {

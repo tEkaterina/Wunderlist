@@ -1,4 +1,4 @@
-﻿namespace BLL.Interface.Entities
+﻿namespace Wunderlist.Services.Interfaces.Entities
 {
     public class UserServiceEntity : IServiceEntity
     {

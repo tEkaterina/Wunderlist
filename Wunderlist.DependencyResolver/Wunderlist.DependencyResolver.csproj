@@ -7,8 +7,8 @@
     <ProjectGuid>{0A365388-623E-4999-BA9E-B15A69EF6F27}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DependencyResolver</RootNamespace>
-    <AssemblyName>DependencyResolver</AssemblyName>
+    <RootNamespace>Wunderlist.DependencyResolver</RootNamespace>
+    <AssemblyName>Wunderlist.DependencyResolver</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -77,9 +77,9 @@
       <Project>{ACD605B0-1766-4D17-AB39-DBAA038071FA}</Project>
       <Name>Wunderlist.DataAccess.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wunderlist.DataAccess.MSSQL\Wunderlist.DataAccess.MssqlProvider.csproj">
+    <ProjectReference Include="..\Wunderlist.DataAccess.MSSQL\Wunderlist.DataAccess.MsSql.csproj">
       <Project>{04BDE8ED-D519-495B-BFC4-1B66E35C1451}</Project>
-      <Name>Wunderlist.DataAccess.MssqlProvider</Name>
+      <Name>Wunderlist.DataAccess.MsSql</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wunderlist.ORM\Wunderlist.ORM.csproj">
       <Project>{44EF1C3B-3396-4694-9CC8-1E8624018AFB}</Project>

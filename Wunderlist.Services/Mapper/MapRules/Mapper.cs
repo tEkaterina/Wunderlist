@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace BLL.Mapper.MapRules
+namespace Wunderlist.Services.Mapper.MapRules
 {
     public static class Mapper
     {

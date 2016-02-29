@@ -1,4 +1,4 @@
-﻿namespace DAL.Interfaces.Entities
+﻿namespace Wunderlist.DataAccess.Interfaces.Entities
 {
     public class TaskStatusDalEntity : IDalEntity
     {
