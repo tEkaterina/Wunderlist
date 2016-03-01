@@ -1,4 +1,44 @@
-﻿.left-inner-addon {
+﻿@font-face {
+    font-family: "Helvetica Neue";
+    src: url("/Content/fonts/helveticaneuecyr-thin.otf");
+}
+
+body {
+    color: #423e3e;
+    background-color: #fafafa;
+    font-size: 16px;
+    font-weight: normal;
+    min-width: 360px;
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.logo {
+    margin: 40px auto 0 auto;
+}
+.logo:before {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 80px;
+    width: 80px;
+
+    background-image: url("/Content/images/logo.png");
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.signup-logo-text {
+    margin: 20px auto 20px auto;
+
+    text-align: center;
+    font-size: 32px;
+    
+    color: #666;
+}
+
+.left-inner-addon {
     position: relative;
 }
 .left-inner-addon input {
@@ -12,36 +52,41 @@
 
 .icon {
     width: 25px;
-    height: 25px;
+    height: 21px;
 }
 
 form.singup,
 form.singin {
     border: solid 1px;
-    border-color: lightgray;
+    border-color: #DDD;
     border-radius: 5px;
 
-    box-shadow: 0 0 3px lightgray;
+    box-shadow: 0 0 3px #DDD;
 
     padding: 2px 0 2px 0;
+
+    font-family: Arial;
 }
+
+.form-submit-block {
+    text-align: center;
+    padding: 5px;
+} 
 
 .input-name,
 .input-email,
 .input-password {
     height: 50px;
     border-radius: 0;
-    border-width: 1px 0 0 0;
+    border-width: 0 0 1px 0;
     box-shadow: none;
+    border-color: #EEE;
 }
 
 .input-name:focus,
 .input-email:focus,
 .input-password:focus {
-    border-color: lightgray;
+    border-color: #EEE;
     box-shadow: none !important;
 }
 
-.input-first {
-    border-width: 0;
-}
