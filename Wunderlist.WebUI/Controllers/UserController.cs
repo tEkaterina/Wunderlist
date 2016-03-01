@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Wunderlist.WebUI.Models;
 
 namespace Wunderlist.WebUI.Controllers
 {
@@ -13,6 +14,17 @@ namespace Wunderlist.WebUI.Controllers
         public ActionResult Singup()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Singup(User user)
+        {
+            if (ModelState.IsValid)
+            {
+
+                return RedirectToAction("Index", "Home");
+            }
+            return new EmptyResult();
         }
     }
 }
