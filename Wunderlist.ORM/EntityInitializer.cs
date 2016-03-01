@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Wunderlist.ORM.Entities;
 
 namespace Wunderlist.ORM
 {
@@ -6,8 +7,12 @@ namespace Wunderlist.ORM
     {
         protected override void Seed(EntityContext context)
         {
-            // Add some initial values
-
+            context.Set<User>().Add(new User()
+            {
+                Email = "admin@mail.com",
+                Password = "sdgsd",
+                Salt = "12345"
+            });
             base.Seed(context);
         }
     }

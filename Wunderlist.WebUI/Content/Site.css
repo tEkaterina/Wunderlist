@@ -1,24 +1,47 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 50px;    
+}
+.left-inner-addon span {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.icon {
+    width: 25px;
+    height: 25px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+form.singup,
+form.singin {
+    border: solid 1px;
+    border-color: lightgray;
+    border-radius: 5px;
+
+    box-shadow: 0 0 3px lightgray;
+
+    padding: 2px 0 2px 0;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.input-name,
+.input-email,
+.input-password {
+    height: 50px;
+    border-radius: 0;
+    border-width: 1px 0 0 0;
+    box-shadow: none;
+}
+
+.input-name:focus,
+.input-email:focus,
+.input-password:focus {
+    border-color: lightgray;
+    box-shadow: none !important;
+}
+
+.input-first {
+    border-width: 0;
 }
