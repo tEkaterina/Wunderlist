@@ -2,7 +2,12 @@
 {
     public class TaskStatusDalEntity : IDalEntity
     {
-        public int Id { get; set; }
+        public TaskStatusDalEntity(int id)
+        {
+            Id = id;
+        }
+
+        public int Id { get; }
         public string Name { get; set; }
     }
 }

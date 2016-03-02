@@ -8,7 +8,7 @@ namespace Wunderlist.DataAccess.MsSql.Expressions
     {
         private class Visitor<TTFrom, TTo> : ExpressionVisitor
         {
-            public ParameterExpression ParameterExpression { get; private set; }
+            public ParameterExpression ParameterExpression { get; }
 
             public Visitor(ParameterExpression parameterExpression)
             {

@@ -7,7 +7,7 @@ namespace Wunderlist.ORM
     {
         static EntityContext()
         {
-            Database.SetInitializer<EntityContext>(new EntityInitializer());
+            Database.SetInitializer(new EntityInitializer());
         }
 
         public EntityContext()
@@ -17,7 +17,7 @@ namespace Wunderlist.ORM
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ToDoList> ToDoLists { get; set; }
-        public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<TaskDbModel> Tasks { get; set; }
         public virtual DbSet<TaskStatus> TaskStatuses { get; set; }
         
     }
