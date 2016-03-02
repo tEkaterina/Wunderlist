@@ -7,7 +7,7 @@
             Id = id;
         }
 
-        public int Id { get; }
+        public int Id { get; private set; }
         public string Name { get; set; }
         public int UserId { get; set; }
     }
