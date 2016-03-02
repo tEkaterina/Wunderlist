@@ -23,6 +23,7 @@ namespace Wunderlist.WebUI.Controllers
             {
                 
             }
+            return new EmptyResult();
         }
 
         [HttpGet]
@@ -38,6 +39,7 @@ namespace Wunderlist.WebUI.Controllers
             {
 
             }
+            return new EmptyResult();
         }
     }
 }

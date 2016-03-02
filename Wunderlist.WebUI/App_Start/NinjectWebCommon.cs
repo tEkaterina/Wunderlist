@@ -10,7 +10,6 @@ namespace Wunderlist.WebUI.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-
     using DependencyResolver;
 
     public static class NinjectWebCommon 
