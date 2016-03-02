@@ -1,0 +1,62 @@
+﻿
+@model Wunderlist.WebUI.Models.User
+
+@{
+    ViewBag.Title = "Singup";
+}
+
+@section Body
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                <div class="logo"></div>
+                <h4 class="signup-logo-text">
+                    Получите Wunderlist бесплатно
+                </h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                @using (Html.BeginForm("Singup", "User", FormMethod.Post, new {@class = "singup"}))
+                {
+                    <div class="left-inner-addon">
+                        <span><img class="icon" src="/Content/icons/person.png"/></span>
+                        @Html.TextBoxFor(
+                            u => u.Name,
+                            new
+                            {
+                                @class = "form-control input-name",
+                                placeholder = "Имя"
+                            })
+                    </div>
+                    <div class="left-inner-addon">
+                        <span><img class="icon" src="/Content/icons/email.png" /></span>
+                        @Html.TextBoxFor(
+                            u => u.Email,
+                            new
+                            {
+                                @class = "form-control input-email",
+                                placeholder = "Электронная почта"
+                            })
+                    </div>
+                    <div class="left-inner-addon">
+                        <span><img class="icon" src="/Content/icons/password.png" /></span>
+                        @Html.PasswordFor(
+                            u => u.Password,
+                            new
+                            {
+                                @class = "form-control input-password",
+                                placeholder = "Пароль"
+                            })
+                    </div>
+                    <div class="form-submit-block">
+                        <input type="submit" class="btn btn-info btn-lg" value="Создать учетную запись"/>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+                        
+
