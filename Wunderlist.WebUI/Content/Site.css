@@ -6,7 +6,7 @@
 body {
     color: #423e3e;
     background-color: #fafafa;
-    font-size: 16px;
+    font-size: 25px;
     font-weight: normal;
     min-width: 360px;
 
@@ -14,7 +14,7 @@ body {
 }
 
 .logo {
-    margin: 40px auto 0 auto;
+    margin: 40px auto 40px auto;
 }
 .logo:before {
     content: '';
@@ -30,7 +30,7 @@ body {
 }
 
 .signup-logo-text {
-    margin: 20px auto 20px auto;
+    margin: 0 auto 20px auto;
 
     text-align: center;
     font-size: 32px;
@@ -66,6 +66,7 @@ form.singin {
     padding: 2px 0 2px 0;
 
     font-family: Arial;
+    font-size: 20px;
 }
 
 .form-submit-block {

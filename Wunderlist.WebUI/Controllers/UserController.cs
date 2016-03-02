@@ -14,5 +14,11 @@ namespace Wunderlist.WebUI.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Singin()
+        {
+            return View();
+        }
     }
 }
