@@ -1,7 +1,7 @@
 ﻿app.controller('ShowTasksController', function ($scope, $location, service, shareData) {
-    window.loadAllTasksRecords();
+    loadAllTasksRecords();
 
-    function loadAllStudentsRecords() {
+    function loadAllTasksRecords() {
         var promiseGetTask = service.getTasks();
 
         promiseGetTask.then(function (pl) { $scope.Students = pl.data },

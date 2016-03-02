@@ -14,5 +14,10 @@ namespace Wunderlist.WebUI.Controllers
         {
             return PartialView("ShowAllTasks");
         }
+
+        public ActionResult Main()
+        {
+            return View("Main");
+        }
     }
 }

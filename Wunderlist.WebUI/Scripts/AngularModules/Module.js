@@ -6,7 +6,7 @@ app.factory("ShareData", function () {
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {  
     debugger;  
-    $routeProvider.when('/showTasks',  
+    $routeProvider.when('/ShowTasks',  
                         {  
                             templateUrl: 'Main/ShowTasks',
                             controller: 'ShowTasksController' 
