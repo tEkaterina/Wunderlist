@@ -13,7 +13,6 @@ namespace Wunderlist.WebUI.Infrastructure
         public NinjectDependencyResolver(IKernel kernel)
         {
             _kernel = kernel;
-            kernel.Configure();
         }
         public object GetService(Type serviceType)
         {
