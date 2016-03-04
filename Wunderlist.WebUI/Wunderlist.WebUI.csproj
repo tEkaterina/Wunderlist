@@ -1014,9 +1014,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
-    <Content Include="Scripts\version.json" />
     <Content Include="Views\Main\ShowAllTasks.cshtml" />
     <Content Include="Views\Main\Main.cshtml" />
+    <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
