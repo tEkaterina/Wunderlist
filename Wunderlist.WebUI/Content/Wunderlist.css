@@ -26,7 +26,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: rgba(102,137,100,0.75);
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -67,13 +67,13 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #262626;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
+    background: #7079AD;
 }
 
 .sidebar-nav li a:active,
@@ -122,4 +122,19 @@
         position: relative;
         margin-right: 0;
     }
+}
+
+.background-06 {
+    background-image: url("http://030mm-photography.com/wp-content/uploads/2015/07/berlin-skyline-alexanderplatz-sunset-sonnenuntergang-tv-tower-fernsehturm.jpg");
+    background-size: cover;
+}
+
+.wrapper {
+    display:inline-block;
+}
+
+input,
+button {
+    background-color:transparent;
+    border:0;
 }
