@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using Wunderlist.Services.Interfaces;
 using System.Web.Mvc;
-using Ninject.Modules;
 using Wunderlist.Services.Interfaces.Services;
-using Wunderlist.WebUI.Mapper;
+using Wunderlist.WebUI.Infrastructure;
 using Wunderlist.WebUI.Models;
 
 namespace Wunderlist.WebUI.Controllers
