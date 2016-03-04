@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Wunderlist.Services.Interfaces;
 using System.Web.Mvc;
+using Wunderlist.Services.Interfaces.Services;
 using Wunderlist.WebUI.Models;
 
 namespace Wunderlist.WebUI.Controllers
 {
     public class UserController : Controller
     {
+        private IUserService _userService;
+
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         // GET: User
         [HttpGet]
         public ActionResult Singup()
@@ -21,7 +26,11 @@ namespace Wunderlist.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                var existedUser = _userService.GetUserEntity(user.Email);
+                if (existedUser == null)
+                {
+                    _userService.CreateUser(null);
+                }
             }
             return new EmptyResult();
         }

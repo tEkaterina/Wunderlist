@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Wunderlist.Services.Mapper.MapRules
+namespace Wunderlist.Mapper
 {
     internal abstract class MapRule
     {

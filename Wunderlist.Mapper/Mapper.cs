@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Wunderlist.Services.Mapper.MapRules
+namespace Wunderlist.Mapper
 {
     public static class Mapper
     {
@@ -71,17 +71,19 @@ namespace Wunderlist.Services.Mapper.MapRules
             Type sourceType = typeof(TSource);
             Type targetType = typeof(TTarget);
 
-            foreach (var targetProperty in targetType.GetProperties())
+            var properties = targetType
+                .GetProperties()
+                .Where(p => p.CanWrite);
+
+            foreach (var targetProperty in properties)
             {
-                if (targetProperty.CanWrite)
+                PropertyInfo sourceProperty = sourceType.GetProperty(
+                    targetProperty.Name, targetProperty.PropertyType, new Type[0]);
+                if (sourceProperty != null && sourceProperty.CanRead)
                 {
-                    PropertyInfo sourceProperty = sourceType.GetProperty(
-                        targetProperty.Name, targetProperty.PropertyType, new Type[0]);
-                    if (sourceProperty != null && sourceProperty.CanRead)
-                    {
-                        targetProperty.SetValue(target, sourceProperty.GetValue(source));
-                    }
+                    targetProperty.SetValue(target, sourceProperty.GetValue(source));
                 }
+
             }
         }
 
