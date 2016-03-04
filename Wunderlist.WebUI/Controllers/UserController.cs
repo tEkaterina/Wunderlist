@@ -1,6 +1,11 @@
-﻿using Wunderlist.Services.Interfaces;
+﻿using System;
+using System.Security.Cryptography;
+using System.Text;
+using Wunderlist.Services.Interfaces;
 using System.Web.Mvc;
+using Ninject.Modules;
 using Wunderlist.Services.Interfaces.Services;
+using Wunderlist.WebUI.Mapper;
 using Wunderlist.WebUI.Models;
 
 namespace Wunderlist.WebUI.Controllers
@@ -29,10 +34,16 @@ namespace Wunderlist.WebUI.Controllers
                 var existedUser = _userService.GetUserEntity(user.Email);
                 if (existedUser == null)
                 {
-                    _userService.CreateUser(null);
+                    var newServiceUser = user.ToServiceEntity();
+                    string salt = GetSalt();
+
+                    newServiceUser.Salt = salt;
+                    newServiceUser.Password = GetPasswordHash(user.Password, salt);
+
+                    _userService.CreateUser(newServiceUser);
                 }
             }
-            return new EmptyResult();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -46,9 +57,35 @@ namespace Wunderlist.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                var existedUser = _userService.GetUserEntity(user.Email);
+                if (existedUser != null)
+                {
+                    var singinPassHash = GetPasswordHash(user.Password, existedUser.Salt);
+                    if (singinPassHash == existedUser.Password)
+                        return RedirectToAction("Index", "Home");
+                }
+                return RedirectToAction("Singup");
             }
             return new EmptyResult();
+        }
+
+        private string GetSalt()
+        {
+            var random = new Random();
+            var saltBytes = new byte[sizeof (int)];
+
+            random.NextBytes(saltBytes);
+
+            return Encoding.Unicode.GetString(saltBytes);
+        }
+
+        private string GetPasswordHash(string password, string salt)
+        {
+            password += salt;
+            var sha1 = new SHA1CryptoServiceProvider();
+            var hash = sha1.ComputeHash(Encoding.Unicode.GetBytes(password));
+
+            return Encoding.Unicode.GetString(hash);
         }
     }
 }
