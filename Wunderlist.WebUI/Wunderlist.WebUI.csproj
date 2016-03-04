@@ -170,7 +170,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\ServiceEntittiesMapper.cs" />
+    <Compile Include="Mapper\ServiceEntitiesMapper.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -231,6 +231,10 @@
     <ProjectReference Include="..\Wunderlist.DependencyResolver\Wunderlist.DependencyResolver.csproj">
       <Project>{0a365388-623e-4999-ba9e-b15a69ef6f27}</Project>
       <Name>Wunderlist.DependencyResolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.Mapper\Wunderlist.Mapper.csproj">
+      <Project>{766de6c8-f61d-4a9c-a10e-5d42e5d0e915}</Project>
+      <Name>Wunderlist.Mapper</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wunderlist.Services.Interfaces\Wunderlist.Services.Interfaces.csproj">
       <Project>{820e68f3-825f-4d65-b9b1-37e554d50ed6}</Project>

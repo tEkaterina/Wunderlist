@@ -11,7 +11,7 @@ namespace Wunderlist.ORM
         }
 
         public EntityContext()
-            : base("name=EntityContext")
+            : base("WunderlistDB")
         {
         }
 
