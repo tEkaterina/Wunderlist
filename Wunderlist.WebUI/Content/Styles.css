@@ -42,10 +42,10 @@
     }
 
         #wunderlist-base #tasks .heading.active a {
-            background: rgba(50, 138, 214, 0.75) none repeat scroll 0 0 !important;
+            background: #328ad6 none repeat scroll 0 0 !important;
         }
 
-        #wunderlist-base #tasks .heading a {
+#wunderlist-base #tasks .heading a {
             border-radius: 3px;
             box-sizing: border-box;
             color: #fff;
@@ -111,3 +111,18 @@
         margin-bottom: 0;
         margin-top: 0;
     }
+
+#wunderlist-base .add-task {
+    border-radius: 3px;
+    margin: 14px 0;
+    overflow: hidden;
+    padding: 0 12px;
+    position: relative;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#wunderlist-base .add-task {
+    background: #668964 none repeat scroll 0 0;
+}
