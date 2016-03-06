@@ -4,6 +4,7 @@ using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.Mvc;
+using Wunderlist.DependencyResolver;
 using Wunderlist.WebUI;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
@@ -61,6 +62,7 @@ namespace Wunderlist.WebUI
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Configure();
             System.Web.Mvc.DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }        
     }

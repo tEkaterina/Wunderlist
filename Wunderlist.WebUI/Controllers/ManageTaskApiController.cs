@@ -14,7 +14,7 @@ namespace Wunderlist.WebUI.Controllers
             _userService = userService;
         }
 
-        // GET: api/ManageTaskController 
+        // GET: api/ManageTaskApiController 
         // TODO: edit task = user
         public IEnumerable<UserServiceEntity> GetTasksEntities()
         {

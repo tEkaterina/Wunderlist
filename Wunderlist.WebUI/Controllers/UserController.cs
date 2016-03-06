@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using Wunderlist.Services.Interfaces;
 using System.Web.Mvc;
-using Ninject.Modules;
 using Wunderlist.Services.Interfaces.Services;
-using Wunderlist.WebUI.Mapper;
+using Wunderlist.WebUI.Infrastructure;
 using Wunderlist.WebUI.Models;
 
 namespace Wunderlist.WebUI.Controllers
 {
     public class UserController : Controller
     {
-        private IUserService _userService;
+        private readonly IUserService _userService;
 
         public UserController(IUserService userService)
         {
@@ -43,7 +41,7 @@ namespace Wunderlist.WebUI.Controllers
                     _userService.CreateUser(newServiceUser);
                 }
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Main", "Main");
         }
 
         [HttpGet]
@@ -62,7 +60,7 @@ namespace Wunderlist.WebUI.Controllers
                 {
                     var singinPassHash = GetPasswordHash(user.Password, existedUser.Salt);
                     if (singinPassHash == existedUser.Password)
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Main", "Main");
                 }
                 return RedirectToAction("Singup");
             }

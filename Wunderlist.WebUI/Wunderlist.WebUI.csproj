@@ -186,7 +186,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
-    <Compile Include="Mapper\ServiceEntittiesMapper.cs" />
+    <Compile Include="Infrastructure\ServiceEntitiesMapper.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -197,6 +197,7 @@
     <Content Include="Content\icons\password.PNG" />
     <Content Include="Content\icons\person.PNG" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\Styles.css" />
     <Content Include="Content\Wunderlist.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1070,7 +1071,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51590</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
