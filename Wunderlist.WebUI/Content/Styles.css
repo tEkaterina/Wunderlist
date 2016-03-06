@@ -1,0 +1,128 @@
+﻿#wunderlist-base #tasks {
+    -moz-box-flex: 1;
+    -moz-box-orient: vertical;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    position: relative;
+}
+
+    #wunderlist-base #tasks .tasks-scroll {
+        -moz-box-flex: 1;
+        flex: 1 1 0;
+        margin-left: 7px;
+        margin-right: 7px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+        #wunderlist-base #tasks .tasks-scroll .task-list {
+            padding-bottom: 72px;
+        }
+
+    #wunderlist-base #tasks .grouped-tasks {
+        position: relative;
+    }
+
+        #wunderlist-base #tasks .grouped-tasks.positionForDrop {
+            margin-top: -60px;
+            padding-bottom: 60px;
+            padding-top: 60px;
+        }
+
+    #wunderlist-base #tasks .heading {
+        color: #fff;
+        font-size: 11px;
+        margin-bottom: 10px;
+        margin-top: 20px !important;
+        position: relative;
+        word-wrap: break-word;
+    }
+
+        #wunderlist-base #tasks .heading.active a {
+            background: #328ad6 none repeat scroll 0 0 !important;
+        }
+
+#wunderlist-base #tasks .heading a {
+            border-radius: 3px;
+            box-sizing: border-box;
+            color: #fff;
+            display: inline-block;
+            font-weight: 400;
+            letter-spacing: 1px;
+            line-height: 16px;
+            padding: 3px 10px;
+            text-transform: uppercase;
+        }
+
+#wunderlist-base #tasks .heading a.no-hover:hover {
+    cursor: default !important;
+}
+
+#wunderlist-base #tasks .heading.no-results {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: none;
+}
+
+#wunderlist-base #tasks .heading .delete-completed {
+    cursor: pointer;
+    height: 22px;
+    padding: 3px 3px 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+    #wunderlist-base #tasks .heading .delete-completed svg {
+        fill: #fff;
+        height: 16px;
+        width: 16px;
+    }
+
+    #wunderlist-base #tasks .heading .delete-completed + a {
+        margin-right: 32px;
+    }
+
+
+#list-toolbar {
+    display: flex;
+    height: 40px;
+    min-height: 40px;
+    position: relative;
+}
+
+#list-toolbar {
+    background: #668964 none repeat scroll 0 0;
+}
+
+    #list-toolbar h1 {
+        -moz-box-flex: 1;
+        color: #fff;
+        flex: 1 1 0;
+        font-size: 20px;
+        font-weight: 200;
+        overflow: hidden;
+        padding: 10px 14px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+#wunderlist-base .add-task {
+    border-radius: 3px;
+    margin: 14px 0;
+    overflow: hidden;
+    padding: 0 12px;
+    position: relative;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#wunderlist-base .add-task {
+    background: #668964 none repeat scroll 0 0;
+}

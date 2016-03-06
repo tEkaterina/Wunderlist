@@ -2,6 +2,6 @@
 
     this.getTasks = function () {
 
-        return $http.get("/ManageTaskApi");
+        return $http.get("/api/ManageTaskApi");
     };
 });
