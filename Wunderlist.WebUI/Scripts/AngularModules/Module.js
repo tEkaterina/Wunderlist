@@ -1,20 +1,13 @@
-﻿var app = angular.module("WunderlistModule", ["ngRoute"]);  
-  
-app.factory("ShareData", function () {  
-    return { value: 0 }  
-});  
+﻿var app = angular.module("WunderlistModule", []);
 
-app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {  
-    debugger;  
-    $routeProvider.when('/showtasks',
-                        {  
-                            templateUrl: 'Main/ShowTasks',
-                            controller: 'ShowTasksController' 
-                        });   
-    $routeProvider.otherwise(  
-                        {  
-                            redirectTo: '/Main'  
-                        });  
-      
-    $locationProvider.html5Mode(true).hashPrefix('!')  
-}]);  
+app.controller('toDoListCtrl', function($scope, $http) {
+
+    $scope.toDoList = "";
+    $http.get("/Main/GetToDoLists")
+        .success(function(result) {
+            $scope.toDoList = result;
+        })
+        .error(function(result) {
+            console.log(result);
+        });
+});
