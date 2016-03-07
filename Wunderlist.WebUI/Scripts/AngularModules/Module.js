@@ -6,14 +6,14 @@ app.factory("ShareData", function () {
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {  
     debugger;  
-    $routeProvider.when('/ShowTasks',  
+    $routeProvider.when('/showtasks',
                         {  
                             templateUrl: 'Main/ShowTasks',
                             controller: 'ShowTasksController' 
                         });   
     $routeProvider.otherwise(  
                         {  
-                            redirectTo: '/'  
+                            redirectTo: '/Main'  
                         });  
       
     $locationProvider.html5Mode(true).hashPrefix('!')  
