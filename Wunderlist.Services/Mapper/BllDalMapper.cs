@@ -9,6 +9,7 @@ namespace Wunderlist.Services.Mapper
         static BllServiceMapper()
         {
             AddRule<UserDalEntity, UserServiceEntity>();
+            AddRule<ToDoListDalEntity, ToDoListServiceEntity>();
         }
 
         public static UserServiceEntity ToServiceEntity(this UserDalEntity userDal)
@@ -16,5 +17,9 @@ namespace Wunderlist.Services.Mapper
             return Map<UserDalEntity, UserServiceEntity>(userDal);
         }
 
+        public static ToDoListServiceEntity ToServiceEntity(this ToDoListDalEntity toDoListDal)
+        {
+            return Map<ToDoListDalEntity, ToDoListServiceEntity>(toDoListDal);
+        }
     }
 }
