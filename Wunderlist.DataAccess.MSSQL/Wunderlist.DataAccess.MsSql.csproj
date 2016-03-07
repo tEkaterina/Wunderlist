@@ -56,6 +56,7 @@
     <Compile Include="Concrete\UnitOfWork.cs" />
     <Compile Include="Expressions\ExpressionMapper.cs" />
     <Compile Include="Mappers\Property\MapperProperty.cs" />
+    <Compile Include="Mappers\ToDoListMapper.cs" />
     <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Repository.cs" />
