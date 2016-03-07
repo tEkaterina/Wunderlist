@@ -3,6 +3,11 @@
     src: url("/Content/fonts/helveticaneuecyr-thin.otf");
 }
 
+@font-face {
+    font-family: "Lato";
+    src: url("/Content/fonts/Lato-Regular.ttf");
+}
+
 body {
     color: #423e3e;
     background-color: #fafafa;
@@ -91,3 +96,18 @@ form.singin {
     box-shadow: none !important;
 }
 
+.singin-error-message {
+    font-size: 12pt !important;
+    text-align: center !important;
+    font-family: "Arial";
+}
+
+.link {
+    margin: 10px 0 10px 0;
+    font-size: 13pt;
+    text-align: center;
+}
+
+.link a {
+    text-decoration: none;
+}

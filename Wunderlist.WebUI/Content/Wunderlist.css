@@ -21,6 +21,10 @@
     #wrapper input {
         outline: none;
     }
+    
+    #wrapper button {
+        outline: none;
+    }
 
 #sidebar-wrapper {
     z-index: 1000;

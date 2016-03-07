@@ -25,7 +25,7 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Singup(User user)
+        public ActionResult Singup(RegistrationUserModel user)
         {
             if (ModelState.IsValid)
             {
@@ -39,9 +39,10 @@ namespace Wunderlist.WebUI.Controllers
                     newServiceUser.Password = GetPasswordHash(user.Password, salt);
 
                     _userService.CreateUser(newServiceUser);
+                    return RedirectToAction("Main", "Main");
                 }
             }
-            return RedirectToAction("Main", "Main");
+            return View(user);
         }
 
         [HttpGet]
@@ -51,7 +52,7 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Singin(User user)
+        public ActionResult Singin(SinginUserModel user)
         {
             if (ModelState.IsValid)
             {
@@ -62,15 +63,15 @@ namespace Wunderlist.WebUI.Controllers
                     if (singinPassHash == existedUser.Password)
                         return RedirectToAction("Main", "Main");
                 }
-                return RedirectToAction("Singup");
+                ViewBag.ErrorMessage = "Неправильный адрес электронной почты или пароль. Попробуйте ещё раз.";
             }
-            return new EmptyResult();
+            return View(user);
         }
 
         private string GetSalt()
         {
             var random = new Random();
-            var saltBytes = new byte[sizeof (int)];
+            var saltBytes = new byte[sizeof(int)];
 
             random.NextBytes(saltBytes);
 
