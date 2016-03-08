@@ -21,7 +21,7 @@
     #wrapper input {
         outline: none;
     }
-    
+
     #wrapper button {
         outline: none;
     }
@@ -159,4 +159,36 @@ button {
 .list-item {
     background-color: #f7f7f7;
     height: 40px;
+}
+
+.sidebarActions {
+    background: #f7f7f7 none repeat scroll 0 0;
+    padding-left: 10%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.sidebarActions-addList {
+    -moz-box-align: center;
+    align-items: center;
+    color: #328ad6;
+    display: flex;
+    fill: #328ad6;
+    font-size: 15px;
+    height: 42px;
+}
+
+    .sidebarActions-addList.dragOver {
+        background: #328ad6 none repeat scroll 0 0;
+    }
+
+.sidebarActions-icon {
+    height: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebarActions-label {
+    -moz-box-flex: 1;
+    flex: 1 1 0;
 }

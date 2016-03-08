@@ -10,4 +10,14 @@ app.controller('toDoListCtrl', function($scope, $http) {
         .error(function(result) {
             console.log(result);
         });
+
+    $scope.savedata = function (toDoList) {
+        $http.post("/Main/AddToDoList", { name: toDoList.Name })
+            .success(function (result) {
+                $scope.toDoList = result;
+            })
+            .error(function(result) {
+                console.log(result);
+            });
+    }
 });

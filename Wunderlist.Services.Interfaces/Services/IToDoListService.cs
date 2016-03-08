@@ -5,6 +5,7 @@ namespace Wunderlist.Services.Interfaces.Services
 {
     public interface IToDoListService
     {
-        IEnumerable<ToDoListServiceEntity> GetAllToDoListEntities();
+        IEnumerable<ToDoListServiceEntity> GetAllToDoListEntitiesByEmail(string email, int userId);
+        void Create(string name, string userEmail, int userId);
     }
 }

@@ -2,12 +2,14 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.Security;
 using Wunderlist.Services.Interfaces.Services;
 using Wunderlist.WebUI.Infrastructure;
 using Wunderlist.WebUI.Models;
 
 namespace Wunderlist.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -39,10 +41,10 @@ namespace Wunderlist.WebUI.Controllers
                     newServiceUser.Password = GetPasswordHash(user.Password, salt);
 
                     _userService.CreateUser(newServiceUser);
-                    return RedirectToAction("Main", "Main");
                 }
             }
-            return View(user);
+            FormsAuthentication.SetAuthCookie(user.Email, true);
+            return RedirectToAction("Main", "Main");
         }
 
         [HttpGet]
@@ -61,9 +63,13 @@ namespace Wunderlist.WebUI.Controllers
                 {
                     var singinPassHash = GetPasswordHash(user.Password, existedUser.Salt);
                     if (singinPassHash == existedUser.Password)
+                    {
+                        FormsAuthentication.SetAuthCookie(user.Email, true);
                         return RedirectToAction("Main", "Main");
+                    }
+                    ViewBag.ErrorMessage = "Неправильный адрес электронной почты или пароль. Попробуйте ещё раз.";
                 }
-                ViewBag.ErrorMessage = "Неправильный адрес электронной почты или пароль. Попробуйте ещё раз.";
+                return RedirectToAction("Singup");
             }
             return View(user);
         }
