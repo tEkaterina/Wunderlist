@@ -2,10 +2,8 @@
 
 namespace Wunderlist.WebUI.Models
 {
-    public class RegistrationUserModel
+    public class SinginUserModel
     {
-        [Required]
-        public string Name { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }

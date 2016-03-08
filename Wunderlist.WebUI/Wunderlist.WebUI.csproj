@@ -187,6 +187,7 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\ServiceEntitiesMapper.cs" />
     <Compile Include="Models\RegistrationUserModel.cs" />
+    <Compile Include="Models\SinginUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

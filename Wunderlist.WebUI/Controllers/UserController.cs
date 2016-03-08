@@ -54,7 +54,7 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Singin(RegistrationUserModel user)
+        public ActionResult Singin(SinginUserModel user)
         {
             if (ModelState.IsValid)
             {
@@ -66,8 +66,8 @@ namespace Wunderlist.WebUI.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(user.Email, true);
                         return RedirectToAction("Main", "Main");
-                }
-                ViewBag.ErrorMessage = "Неправильный адрес электронной почты или пароль. Попробуйте ещё раз.";
+                    }
+                    ViewBag.ErrorMessage = "Неправильный адрес электронной почты или пароль. Попробуйте ещё раз.";
                 }
                 return RedirectToAction("Singup");
             }
