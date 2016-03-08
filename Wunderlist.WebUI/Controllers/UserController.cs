@@ -54,7 +54,7 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Singin(SinginUserModel user)
+        public ActionResult Singin(RegistrationUserModel user)
         {
             if (ModelState.IsValid)
             {
