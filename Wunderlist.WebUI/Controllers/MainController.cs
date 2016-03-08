@@ -1,23 +1,33 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using Wunderlist.Services.Interfaces.Entities;
+using Wunderlist.Services.Interfaces.Services;
 
 namespace Wunderlist.WebUI.Controllers
 {
     public class MainController : Controller
     {
-        // GET: Main
-        public ActionResult Index()
+        private readonly IToDoListService _toDoListService;
+
+        public MainController(IToDoListService toDoListService)
         {
-            return View();
+            _toDoListService = toDoListService;
         }
 
-        public ActionResult ShowTasks()
-        {
-            return PartialView("ShowAllTasks");
-        }
-
+        [Authorize]
         public ActionResult Main()
         {
             return View("Main");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public JsonResult GetToDoLists()
+        {
+            var userEmail = HttpContext.User.Identity.Name;
+            List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail).ToList();
+            return Json(toDoLists, JsonRequestBehavior.AllowGet);
         }
     }
 }
