@@ -14,6 +14,9 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Wunderlist.css" rel="stylesheet">
     <link href="~/Content/Styles.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-2.2.1.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/AngularModules/Module.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,7 +26,7 @@
 </head>
 <body id="wunderlist-base" class="background-06">
     <div id="wrapper">
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" data-ng-app="WunderlistModule" data-ng-controller="toDoListCtrl">
             <ul class="sidebar-nav">
                 <li>
                     <div id="search-toolbar" class="search-bar">
@@ -42,23 +45,8 @@
                     </div>
                 </li>
                 <li>
-                    <div class="list-item">
-                        <a href="#">List1</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-item">
-                        <a href="#">List2</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-item">
-                        <a href="#">List3</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-item">
-                        <a href="#">List4</a>
+                    <div class="list-item" data-ng-repeat="item in toDoList">
+                        <a href="#">{{item.Name}}</a>
                     </div>
                 </li>
             </ul>

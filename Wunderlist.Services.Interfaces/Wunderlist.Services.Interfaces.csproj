@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\IServiceEntity.cs" />
+    <Compile Include="Entities\ToDoListServiceEntity.cs" />
+    <Compile Include="Services\IToDoListService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\UserServiceEntity.cs" />
