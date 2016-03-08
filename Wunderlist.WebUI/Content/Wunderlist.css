@@ -18,6 +18,14 @@
         padding-left: 250px;
     }
 
+    #wrapper input {
+        outline: none;
+    }
+    
+    #wrapper button {
+        outline: none;
+    }
+
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;

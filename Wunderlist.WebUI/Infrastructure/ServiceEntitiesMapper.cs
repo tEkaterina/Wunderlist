@@ -8,18 +8,18 @@ namespace Wunderlist.WebUI.Infrastructure
     {
         static ServiceEntitiesMapper()
         {
-            AddRule<UserServiceEntity, User>();
-            AddRule<User, UserServiceEntity>();
+            AddRule<UserServiceEntity, RegistrationUserModel>();
+            AddRule<RegistrationUserModel, UserServiceEntity>();
         }
 
-        public static UserServiceEntity ToServiceEntity(this User user)
+        public static UserServiceEntity ToServiceEntity(this RegistrationUserModel user)
         {
-            return Map<User, UserServiceEntity>(user);
+            return Map<RegistrationUserModel, UserServiceEntity>(user);
         }
 
-        public static User ToModelEntity(this UserServiceEntity user)
+        public static RegistrationUserModel ToModelEntity(this UserServiceEntity user)
         {
-            return Map<UserServiceEntity, User>(user);
+            return Map<UserServiceEntity, RegistrationUserModel>(user);
         }
     }
 }
