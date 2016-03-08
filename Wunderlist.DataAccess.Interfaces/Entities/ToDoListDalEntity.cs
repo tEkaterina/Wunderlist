@@ -2,6 +2,8 @@
 {
     public class ToDoListDalEntity : IDalEntity
     {
+        public ToDoListDalEntity() { }
+
         public ToDoListDalEntity(int id)
         {
             Id = id;

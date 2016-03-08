@@ -29,5 +29,14 @@ namespace Wunderlist.WebUI.Controllers
             List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail).ToList();
             return Json(toDoLists, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult AddToDoList(string name)
+        {
+            var userEmail = HttpContext.User.Identity.Name;
+            _toDoListService.Create(name, userEmail);
+            List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail).ToList();
+            return Json(toDoLists, JsonRequestBehavior.AllowGet);
+        }
     }
 }
