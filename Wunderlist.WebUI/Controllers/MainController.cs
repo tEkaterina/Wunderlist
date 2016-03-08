@@ -22,9 +22,11 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         [Authorize]
+        [HttpGet]
         public JsonResult GetToDoLists()
         {
-            List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntities().ToList();
+            var userEmail = HttpContext.User.Identity.Name;
+            List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail).ToList();
             return Json(toDoLists, JsonRequestBehavior.AllowGet);
         }
     }

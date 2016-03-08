@@ -13,8 +13,9 @@ namespace Wunderlist.Services.Services
     {
         private readonly IUnitOfWork _uow;
         private readonly IRepository<ToDoListDalEntity> _repository;
+        private readonly IUserService _userService;
 
-        public ToDoListService(IUnitOfWork uow, IRepository<ToDoListDalEntity> repository)
+        public ToDoListService(IUnitOfWork uow, IRepository<ToDoListDalEntity> repository, IUserService userService)
         {
             if (repository == null)
                 throw new ArgumentNullException(nameof(repository));
@@ -22,11 +23,13 @@ namespace Wunderlist.Services.Services
                 throw new ArgumentNullException(nameof(uow));
 
             _repository = repository;
+            _userService = userService;
             _uow = uow;
         }
-        public IEnumerable<ToDoListServiceEntity> GetAllToDoListEntities()
+        public IEnumerable<ToDoListServiceEntity> GetAllToDoListEntitiesByEmail(string email)
         {
-            return _repository.GetAll().Select(list => list.ToServiceEntity());
+            var userId = _userService.GetUserEntity(email);
+            return _repository.GetAll().Select(list => list.ToServiceEntity()).Where(list => list.UserId == userId.Id);
         }
     }
 }
