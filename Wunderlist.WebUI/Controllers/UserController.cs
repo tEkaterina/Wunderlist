@@ -2,12 +2,14 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.Security;
 using Wunderlist.Services.Interfaces.Services;
 using Wunderlist.WebUI.Infrastructure;
 using Wunderlist.WebUI.Models;
 
 namespace Wunderlist.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -41,6 +43,7 @@ namespace Wunderlist.WebUI.Controllers
                     _userService.CreateUser(newServiceUser);
                 }
             }
+            FormsAuthentication.SetAuthCookie(user.Email, true);
             return RedirectToAction("Main", "Main");
         }
 
@@ -60,7 +63,10 @@ namespace Wunderlist.WebUI.Controllers
                 {
                     var singinPassHash = GetPasswordHash(user.Password, existedUser.Salt);
                     if (singinPassHash == existedUser.Password)
+                    {
+                        FormsAuthentication.SetAuthCookie(user.Email, true);
                         return RedirectToAction("Main", "Main");
+                    }   
                 }
                 return RedirectToAction("Singup");
             }

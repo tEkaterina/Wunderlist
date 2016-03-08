@@ -15,22 +15,13 @@ namespace Wunderlist.WebUI.Controllers
             _toDoListService = toDoListService;
         }
 
-        // GET: Main
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult ShowTasks()
-        {
-            return PartialView("ShowAllTasks");
-        }
-
+        [Authorize]
         public ActionResult Main()
         {
             return View("Main");
         }
 
+        [Authorize]
         public JsonResult GetToDoLists()
         {
             List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntities().ToList();

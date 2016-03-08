@@ -41,7 +41,10 @@
                 </li>
                 <li>
                     <div id="user-info" class="list-item">
-                        UserName
+                        @{
+                            var username = HttpContext.Current.User.Identity.Name;
+                        }
+                        @username
                     </div>
                 </li>
                 <li>
@@ -62,7 +65,7 @@
                 <div class="tasks-scroll">
                     <div class="add-task">
                         <button style="padding-right: 5px"><span class="glyphicon glyphicon-plus" style="padding-right: 5px"></span></button>
-                        <input type="text"/>
+                        <input type="text" />
                     </div>
                 </div>
             </div>
