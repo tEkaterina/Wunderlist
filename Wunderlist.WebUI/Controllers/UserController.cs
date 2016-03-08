@@ -41,7 +41,6 @@ namespace Wunderlist.WebUI.Controllers
                     newServiceUser.Password = GetPasswordHash(user.Password, salt);
 
                     _userService.CreateUser(newServiceUser);
-                    return RedirectToAction("Main", "Main");
                 }
             }
             FormsAuthentication.SetAuthCookie(user.Email, true);
@@ -67,8 +66,8 @@ namespace Wunderlist.WebUI.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(user.Email, true);
                         return RedirectToAction("Main", "Main");
-                }
-                ViewBag.ErrorMessage = "Неправильный адрес электронной почты или пароль. Попробуйте ещё раз.";
+                    }
+                    ViewBag.ErrorMessage = "Неправильный адрес электронной почты или пароль. Попробуйте ещё раз.";
                 }
                 return RedirectToAction("Singup");
             }
