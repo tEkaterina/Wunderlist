@@ -13,9 +13,8 @@ namespace Wunderlist.Services.Services
     {
         private readonly IUnitOfWork _uow;
         private readonly IRepository<ToDoListDalEntity> _repository;
-        private readonly IUserService _userService;
 
-        public ToDoListService(IUnitOfWork uow, IRepository<ToDoListDalEntity> repository, IUserService userService)
+        public ToDoListService(IUnitOfWork uow, IRepository<ToDoListDalEntity> repository)
         {
             if (repository == null)
                 throw new ArgumentNullException(nameof(repository));
@@ -23,28 +22,22 @@ namespace Wunderlist.Services.Services
                 throw new ArgumentNullException(nameof(uow));
 
             _repository = repository;
-            _userService = userService;
             _uow = uow;
         }
-        public IEnumerable<ToDoListServiceEntity> GetAllToDoListEntitiesByEmail(string email)
+        public IEnumerable<ToDoListServiceEntity> GetAllToDoListEntitiesByEmail(string email, int userId)
         {
             return _repository.GetAll().Select(list => list.ToServiceEntity())
-                .Where(list => list.UserId == GetUserIdByEmail(email));
+                .Where(list => list.UserId == userId);
         }
 
-        public void Create(string name, string userEmail)
+        public void Create(string name, string userEmail, int userId)
         {
             _repository.Create(new ToDoListDalEntity()
             {
                 Name = name,
-                UserId = GetUserIdByEmail(userEmail)
+                UserId = userId
             });
             _uow.Commit();
-        }
-
-        private int GetUserIdByEmail(string email)
-        {
-            return _userService.GetUserEntity(email).Id;
         }
     }
 }
