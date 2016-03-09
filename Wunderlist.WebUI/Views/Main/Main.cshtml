@@ -73,12 +73,16 @@
                             <h1 data-ng-model="namelist">{{namelist}}</h1>
                         </div>
                     </div>
-                    <div class="tasks-scroll">
+                    <div class="tasks-scroll" data-ng-controller="toDoItemCtrl">
                         <div class="add-task">
                             <button style="padding-right: 5px; padding-top: 10px">
                                 <span class="glyphicon glyphicon-plus" style="padding-right: 5px"></span>
                             </button>
                             <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" />
+                        </div>
+                        <div class="task" data-ng-repeat="item in toDoItems" style="padding-right: 10px; padding-top: 10px">
+                            <input type="checkbox"/>
+                            <span>{{item.Name}}</span>
                         </div>
                     </div>
                 </div>

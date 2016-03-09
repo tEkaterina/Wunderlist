@@ -25,3 +25,15 @@ app.controller('toDoListCtrl', function($scope, $http) {
         $scope.namelist = item.Name;
     };
 });
+
+app.Controller('toDoItemCtrl', function($scope, $http) {
+
+    $scope.toDoItems = "";
+    $http.post("/Main/GetToDoItems", { name: $scope.namelist })
+            .success(function (result) {
+                $scope.toDoItems = result;
+            })
+            .error(function (result) {
+                console.log(result);
+            });
+})

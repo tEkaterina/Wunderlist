@@ -10,11 +10,13 @@ namespace Wunderlist.WebUI.Controllers
     {
         private readonly IToDoListService _toDoListService;
         private readonly IUserService _userService;
+        private readonly IToDoTaskService _toDoTaskService;
 
-        public MainController(IToDoListService toDoListService, IUserService userService)
+        public MainController(IToDoListService toDoListService, IUserService userService, IToDoTaskService toDoTaskService)
         {
             _toDoListService = toDoListService;
             _userService = userService;
+            _toDoTaskService = toDoTaskService;
         }
 
         [Authorize]
@@ -41,6 +43,21 @@ namespace Wunderlist.WebUI.Controllers
             _toDoListService.Create(name, userEmail, userId);
             List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail, userId).ToList();
             return Json(toDoLists, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GetToDoItems(string listName)
+        {
+            var userEmail = HttpContext.User.Identity.Name;
+            var userId = _userService.GetUserEntity(userEmail).Id;
+            var toDoList = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail, userId)
+                    .FirstOrDefault(c => c.Name == listName);
+            if (toDoList != null)
+            {
+                var tasks = _toDoTaskService.GetAllTasksByListNameAndUsername(toDoList.Id).ToList();
+                return Json(tasks, JsonRequestBehavior.AllowGet);
+            }
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
     }
 }
