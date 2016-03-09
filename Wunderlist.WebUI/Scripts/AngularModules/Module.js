@@ -20,4 +20,8 @@ app.controller('toDoListCtrl', function($scope, $http) {
                 console.log(result);
             });
     }
+    $scope.namelist = "";
+    $scope.selectList = function (item) {
+        $scope.namelist = item.Name;
+    };
 });
