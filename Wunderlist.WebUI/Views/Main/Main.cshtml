@@ -84,6 +84,9 @@
                             <div class="task" data-ng-repeat="item in toDoItems" style="padding-right: 10px; padding-top: 10px">
                                 <input type="checkbox" />
                                 <span>{{item.Name}}</span>
+                                <button id="{{item.Id}}" style="float: right;" data-ng-click="deletetoDoItem($element.target)">
+                                    <span class="glyphicon glyphicon-remove-circle" style="float: right;"></span>
+                                </button>
                             </div>
                         </div>
                     </div>

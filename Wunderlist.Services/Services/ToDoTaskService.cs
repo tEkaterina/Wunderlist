@@ -40,5 +40,13 @@ namespace Wunderlist.Services.Services
             });
             _uow.Commit();
         }
+
+        public void Delete(int taskId)
+        {
+            var task = _repository.GetById(taskId);
+            if (task != null)
+                _repository.Delete(task);
+            _uow.Commit();
+        }
     }
 }

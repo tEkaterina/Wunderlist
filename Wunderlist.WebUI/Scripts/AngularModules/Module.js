@@ -46,4 +46,17 @@ app.controller('toDoListCtrl', function($scope, $http) {
                 console.log(result);
             });
     };
+
+    $scope.deletetoDoItem = function(item) {
+        var listname = $scope.namelist;
+        //TODO: check on empty string
+        var toDoItemId = item.attributes['id'].value;
+        $http.post("/Main/DeleteToDoItem", { taskId: toDoItemId, listname: listname })
+                .success(function (result) {
+                    $scope.toDoItems = result;
+                })
+                .error(function (result) {
+                    console.log(result);
+                });
+    }
 });
