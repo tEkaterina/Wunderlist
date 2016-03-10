@@ -4,6 +4,8 @@ namespace Wunderlist.DataAccess.Interfaces.Entities
 {
     public class TaskDalEntity : IDalEntity
     {
+        public TaskDalEntity(){ }
+
         public TaskDalEntity(int id)
         {
             Id = id;

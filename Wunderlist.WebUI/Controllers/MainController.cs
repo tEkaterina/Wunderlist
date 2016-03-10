@@ -59,5 +59,19 @@ namespace Wunderlist.WebUI.Controllers
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult AddToDoItem(string name, string listname)
+        {
+            var userEmail = HttpContext.User.Identity.Name;
+            var userId = _userService.GetUserEntity(userEmail).Id;
+            var toDoListServiceEntity = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail, userId)
+                .FirstOrDefault(c => c.Name == listname);
+            if (toDoListServiceEntity == null)
+                return Json(null, JsonRequestBehavior.AllowGet);
+            var toDoListId = toDoListServiceEntity.Id;
+            _toDoTaskService.Create(name, toDoListId);
+            return GetToDoItems(listname);
+        }
     }
 }

@@ -6,5 +6,6 @@ namespace Wunderlist.Services.Interfaces.Services
     public interface IToDoTaskService
     {
         IEnumerable<ToDoTaskServiceEntity> GetAllTasksByListNameAndUsername(int listId);
+        void Create(string name, int listId);
     }
 }

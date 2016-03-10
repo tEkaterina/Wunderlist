@@ -22,18 +22,28 @@ app.controller('toDoListCtrl', function($scope, $http) {
     }
     $scope.namelist = "";
     $scope.selectList = function (item) {
-        $scope.namelist = item.Name;
+        var listname = item.Name;
+        $scope.namelist = listname;
+        $scope.toDoItems = "";
+        $http.post("/Main/GetToDoItems", { listName: listname })
+                .success(function (result) {
+                    $scope.toDoItems = result;
+                })
+                .error(function (result) {
+                    console.log(result);
+                });
     };
-});
 
-app.Controller('toDoItemCtrl', function($scope, $http) {
-
-    $scope.toDoItems = "";
-    $http.post("/Main/GetToDoItems", { name: $scope.namelist })
+    $scope.addtodoitem = function ( todoitem ) {
+        var listname = $scope.namelist;
+        //TODO: check on empty string
+        $http.post("/Main/AddToDoItem", { name: todoitem.Name, listname: listname })
             .success(function (result) {
                 $scope.toDoItems = result;
+                todoitem.Name = "";
             })
             .error(function (result) {
                 console.log(result);
             });
-})
+    };
+});

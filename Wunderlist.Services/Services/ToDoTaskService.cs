@@ -29,5 +29,16 @@ namespace Wunderlist.Services.Services
             return _repository.GetAll().Select(c => c.ToServiceEntity())
                 .Where(c => c.ToDoListId == listId);
         }
+
+        public void Create(string name, int listId)
+        {
+            _repository.Create(new TaskDalEntity
+            {
+                DueDate = DateTime.Now,
+                Name = name,
+                ToDoListId = listId
+            });
+            _uow.Commit();
+        }
     }
 }
