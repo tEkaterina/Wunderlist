@@ -22,6 +22,7 @@ namespace Wunderlist.DataAccess.MsSql.Repository
             _mapper = mapper;
             _dbSet = context.Set<TEntity>();
         }
+
         public void Create(TDal item)
         {
             _dbSet.Add(_mapper.ToEntity(item));
