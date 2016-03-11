@@ -87,5 +87,12 @@ namespace Wunderlist.WebUI.Controllers
             _toDoListService.Delete(listItemId);
             return GetToDoLists();
         }
+
+        [HttpPost]
+        public JsonResult RenameToDoList(int listItemId, string listname)
+        {
+            _toDoListService.Update(listItemId, listname);
+            return GetToDoLists();
+        }
     }
 }

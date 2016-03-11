@@ -8,5 +8,6 @@ namespace Wunderlist.Services.Interfaces.Services
         IEnumerable<ToDoListServiceEntity> GetAllToDoListEntitiesByEmail(string email, int userId);
         void Create(string name, string userEmail, int userId);
         void Delete(int listId);
+        void Update(int listId, string listName);
     }
 }

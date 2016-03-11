@@ -4,6 +4,8 @@
 },
         textField = document.getElementById('inputTask'),
         placeholder = 'Добавить задачу...';
+        textField = document.getElementById('inputText'),
+        placeholder = 'Введите название списка...';
 
 addEvent(textField, 'focus', function () {
     if (this.value === placeholder) this.value = '';

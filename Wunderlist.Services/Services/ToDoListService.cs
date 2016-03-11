@@ -57,5 +57,13 @@ namespace Wunderlist.Services.Services
             }
             _uow.Commit();
         }
+
+        public void Update(int listId, string listName)
+        {
+            var entity = _repository.GetById(listId);
+            entity.Name = listName;
+            _repository.Update(entity);
+            _uow.Commit();
+        }
     }
 }
