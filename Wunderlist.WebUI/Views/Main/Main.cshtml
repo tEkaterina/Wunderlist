@@ -52,8 +52,13 @@
                             </div>
                         </li>
                         <li>
-                            <div class="list-item" data-ng-repeat="item in toDoList">
-                                <a id="link-1" href="#" data-ng-click="selectList(item)">{{item.Name}}</a>
+                            <div class="list-item" data-ng-repeat="listItem in toDoList">
+                                <div style="float: right;">
+                                    <button style="padding-right: 5px;" data-ng-click="deleteList()">
+                                        <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
+                                    </button>
+                                </div>
+                                <a id="{{listItem.Id}}" href="" data-ng-click="selectList(listItem)">{{listItem.Name}}</a>
                             </div>
                         </li>
                     </ul>
@@ -81,10 +86,10 @@
                             <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" name="todoitem.name" data-ng-model="todoitem.Name" />
                         </div>
                         <div>
-                            <div class="task" data-ng-repeat="item in toDoItems" style="padding-right: 10px; padding-top: 10px">
+                            <div class="task" data-ng-repeat="toDoItem in toDoItems" style="padding-right: 10px; padding-top: 10px">
                                 <input type="checkbox" />
-                                <span>{{item.Name}}</span>
-                                <button id="{{item.Id}}" style="float: right;" data-ng-click="deletetoDoItem()">
+                                <span>{{toDoItem.Name}}</span>
+                                <button id="{{toDoItem.Id}}" style="float: right;" data-ng-click="deletetoDoItem()">
                                     <span class="glyphicon glyphicon-remove-circle" style="float: right;"></span>
                                 </button>
                             </div>
