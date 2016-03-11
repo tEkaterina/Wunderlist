@@ -47,11 +47,10 @@ app.controller('toDoListCtrl', function($scope, $http) {
             });
     };
 
-    $scope.deletetoDoItem = function(item) {
+    $scope.deletetoDoItem = function () {
         var listname = $scope.namelist;
-        //TODO: check on empty string
-        var toDoItemId = item.attributes['id'].value;
-        $http.post("/Main/DeleteToDoItem", { taskId: toDoItemId, listname: listname })
+        var toDoItemId = this.item.Id;
+        $http.put("/Main/DeleteToDoItem", { taskId: toDoItemId, listname: listname })
                 .success(function (result) {
                     $scope.toDoItems = result;
                 })
