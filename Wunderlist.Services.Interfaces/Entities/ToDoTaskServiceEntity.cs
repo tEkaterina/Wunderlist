@@ -1,16 +1,10 @@
 ﻿using System;
+using Wunderlist.Services.Interfaces.Services;
 
-namespace Wunderlist.DataAccess.Interfaces.Entities
+namespace Wunderlist.Services.Interfaces.Entities
 {
-    public class TaskDalEntity : IDalEntity
+    public class ToDoTaskServiceEntity : IServiceEntity
     {
-        public TaskDalEntity(){ }
-
-        public TaskDalEntity(int id)
-        {
-            Id = id;
-        }
-
         public int Id { get; private set; }
         public string Name { get; set; }
         public DateTime? DueDate { get; set; }
