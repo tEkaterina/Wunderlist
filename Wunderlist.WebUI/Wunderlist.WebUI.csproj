@@ -184,6 +184,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AvatarCreator.cs" />
+    <Compile Include="Infrastructure\ImageExtension.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\ServiceEntitiesMapper.cs" />
     <Compile Include="Models\RegistrationUserModel.cs" />

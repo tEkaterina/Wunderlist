@@ -34,6 +34,7 @@ namespace Wunderlist.WebUI.Controllers
                 var existedUser = _userService.GetUserEntity(user.Email);
                 if (existedUser == null)
                 {
+                    user.Avatar = AvatarCreator.Get(user.Name);
                     var newServiceUser = user.ToServiceEntity();
                     string salt = GetSalt();
 
