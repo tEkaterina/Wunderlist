@@ -14,9 +14,11 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Wunderlist.css" rel="stylesheet">
     <link href="~/Content/Styles.css" rel="stylesheet">
+
     <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/AngularModules/Module.js"></script>
+    <script src="~/Scripts/ViewJs/addTaskInputText.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -24,50 +26,92 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body id="wunderlist-base" class="background-06">
-    <div id="wrapper">
-        <div id="sidebar-wrapper" data-ng-app="WunderlistModule" data-ng-controller="toDoListCtrl">
-            <ul class="sidebar-nav">
-                <li>
-                    <div id="search-toolbar" class="search-bar">
-                        <a id="menu-toggle" href="#menu-toggle" style="width: 20%; float: left; color: #ffffff">
-                            <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
-                        </a>
-                        <div class="wrapper" style="float: right; width: 80%">
-                            <input type="text" />
-                            <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
+<body id="wunderlist-base" class="background-06" data-ng-app="WunderlistModule">
+    <div data-ng-controller="toDoListCtrl">
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <div>
+                    <ul class="sidebar-nav">
+                        <li>
+                            <div id="search-toolbar" class="search-bar">
+                                <a id="menu-toggle" href="#menu-toggle" style="width: 20%; float: left; color: #ffffff">
+                                    <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
+                                </a>
+                                <div class="wrapper" style="float: right; width: 80%">
+                                    <input type="text" />
+                                    <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="user-info" class="list-item">
+                                @{
+                                    var username = HttpContext.Current.User.Identity.Name;
+                                }
+                                @username
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item" data-ng-repeat="listItem in toDoList">
+                                <div style="float: right;">
+                                    <button style="padding-right: 5px;" data-ng-click="deleteList()">
+                                        <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
+                                    </button>
+                                    <button style="padding-right: 5px;" data-ng-click="renameList(listItem)">
+                                        <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
+                                    </button>
+                                </div>
+                                <a id="{{listItem.Id}}" href="" data-ng-click="selectList(listItem)">{{listItem.Name}}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidebarActions">
+                    <a class="sidebarActions-addList" href="#createTask" >
+                        <span class="sidebarActions-icon glyphicon glyphicon-plus"></span>
+                        <span class="sidebarActions-label">Создать список</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div id="tasks" role="main">
+                        <div id="list-toolbar">
+                            <h1 data-ng-model="namelist">{{namelist}}</h1>
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div id="user-info" class="list-item">
-                        @{
-                            var username = HttpContext.Current.User.Identity.Name;
-                        }
-                        @username
+                    <div class="tasks-scroll">
+                        <div class="add-task">
+                            <button style="padding-right: 5px; padding-top: 10px" data-ng-click="addtodoitem(todoitem)">
+                                <span class="glyphicon glyphicon-plus" style="padding-right: 5px"></span>
+                            </button>
+                            <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" name="todoitem.name" data-ng-model="todoitem.Name" />
+                        </div>
+                        <div>
+                            <div class="task" data-ng-repeat="toDoItem in toDoItems" style="padding-right: 10px; padding-top: 10px">
+                                <input type="checkbox" />
+                                <span>{{toDoItem.Name}}</span>
+                                <button style="float: right;" data-ng-click="renametoDoItem(toDoItem)">
+                                    <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
+                                </button>
+                                <button id="{{toDoItem.Id}}" style="float: right;" data-ng-click="deletetoDoItem()">
+                                    <span class="glyphicon glyphicon-remove-circle" style="float: right;"></span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li>
-                    <div class="list-item" data-ng-repeat="item in toDoList">
-                        <a href="#">{{item.Name}}</a>
-                    </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div id="tasks" role="main">
-                    <div id="list-toolbar">
-                        <h1>Входящие</h1>
-                    </div>
-                </div>
-                <div class="tasks-scroll">
-                    <div class="add-task">
-                        <button style="padding-right: 5px"><span class="glyphicon glyphicon-plus" style="padding-right: 5px"></span></button>
-                        <input type="text" />
-                    </div>
-                </div>
+        <!--Modal window-->
+        <div id="createTask" class="modalDialog">
+            <div>
+                <a class="close" title="Закрыть" href="#close">X</a>
+                <h2 data-ng-model="nameOperation">{{nameOperation}}</h2>
+                <input id="listname" type="text" class="form-control input-email" name="todolist.name" placeholder="Введите название списка..." id="inputText" data-ng-model="todolist.Name" /><br />
+                <a href="#close" type="button" class="btn btn-info" data-ng-click="savedata(todolist)">Сохранить</a>
+                <a href="#close" type="button" class="btn btn-danger">Отмена</a>
             </div>
         </div>
     </div>
@@ -77,11 +121,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="~/Scripts/bootstrap.min.js"></script>
     <!-- Menu Toggle Script -->
-    <script>
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
+    <script src="~/Scripts/ViewJs/togglemenu.js"></script>
 </body>
 </html>
