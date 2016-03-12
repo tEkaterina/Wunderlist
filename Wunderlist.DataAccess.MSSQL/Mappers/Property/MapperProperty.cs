@@ -47,7 +47,7 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
         {
             return new Avatar()
             {
-                UserId = avatar.Id,
+                Id = avatar.Id,
                 Image = avatar.Image,
                 IsCustom = avatar.IsCustom,
             };
@@ -92,12 +92,12 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
 
         public static AvatarDalEntity ToDal(this Avatar avatar)
         {
-            return new AvatarDalEntity()
+            var avatarDalEntity = new AvatarDalEntity(avatar.Id)
             {
                 Image = avatar.Image,
                 IsCustom = avatar.IsCustom,
-                Id = avatar.UserId,
             };
+            return avatarDalEntity;
         }
 
         #endregion
