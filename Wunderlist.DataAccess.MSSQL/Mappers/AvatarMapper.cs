@@ -15,7 +15,11 @@ namespace Wunderlist.DataAccess.MsSql.Mappers
     {
         static AvatarMapper()
         {
-            AddRule<AvatarDalEntity, Avatar>();
+            AddRule<AvatarDalEntity, Avatar>(
+                (entity, avatar) =>
+                {
+                    avatar.UserId = entity.Id;
+                });
         }
 
         public void CopyFields(AvatarDalEntity dalEntity, Avatar entity)

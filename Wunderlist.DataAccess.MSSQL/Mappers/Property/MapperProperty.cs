@@ -47,7 +47,7 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
         {
             return new Avatar()
             {
-                UserId = avatar.UserId,
+                UserId = avatar.Id,
                 Image = avatar.Image,
                 IsCustom = avatar.IsCustom,
             };
@@ -96,7 +96,7 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
             {
                 Image = avatar.Image,
                 IsCustom = avatar.IsCustom,
-                UserId = avatar.UserId,
+                Id = avatar.UserId,
             };
         }
 

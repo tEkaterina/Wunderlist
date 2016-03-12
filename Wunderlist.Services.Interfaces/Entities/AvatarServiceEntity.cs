@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wunderlist.DataAccess.Interfaces.Entities
+namespace Wunderlist.Services.Interfaces.Entities
 {
-    public class AvatarDalEntity: IDalEntity
+    public class AvatarServiceEntity: IServiceEntity
     {
         public int Id { get; private set; }
-        public byte[] Image { get; set; }
         public bool IsCustom { get; set; }
+        public byte[] Image { get; set; }
 
-        public AvatarDalEntity(int id)
+        public AvatarServiceEntity(int id)
         {
             Id = id;
         }
 
-        public AvatarDalEntity() { }
+        public AvatarServiceEntity()
+        {
+        }
     }
 }

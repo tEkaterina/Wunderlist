@@ -11,6 +11,7 @@ namespace Wunderlist.Services.Mapper
             AddRule<UserDalEntity, UserServiceEntity>();
             AddRule<ToDoListDalEntity, ToDoListServiceEntity>();
             AddRule<TaskDalEntity, ToDoTaskServiceEntity>();
+            AddRule<AvatarDalEntity, AvatarServiceEntity>();
         }
 
         public static UserServiceEntity ToServiceEntity(this UserDalEntity userDal)
@@ -26,6 +27,11 @@ namespace Wunderlist.Services.Mapper
         public static ToDoTaskServiceEntity ToServiceEntity(this TaskDalEntity toDoTaskDal)
         {
             return Map<TaskDalEntity, ToDoTaskServiceEntity>(toDoTaskDal);
+        }
+
+        public static AvatarServiceEntity ToServiceEntity(this AvatarDalEntity avatarDal)
+        {
+            return Map<AvatarDalEntity, AvatarServiceEntity>(avatarDal);
         }
     }
 }
