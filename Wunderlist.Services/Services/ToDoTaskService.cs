@@ -48,5 +48,13 @@ namespace Wunderlist.Services.Services
                 _repository.Delete(task);
             _uow.Commit();
         }
+
+        public void Update(int taskId, string taskName)
+        {
+            var entity = _repository.GetById(taskId);
+            entity.Name = taskName;
+            _repository.Update(entity);
+            _uow.Commit();
+        }
     }
 }

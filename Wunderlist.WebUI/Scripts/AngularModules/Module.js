@@ -24,7 +24,8 @@ app.controller('toDoListCtrl', function ($scope, $http) {
                 .error(function (result) {
                     console.log(result);
                 });
-        } else {
+        }
+        if ($scope.nameOperation === "Переименовать список") {
             var listItemId = currentlistId;
             var listname = toDoList.Name;
             $http.post("/Main/RenameToDoList", { listItemId: listItemId, listname: listname })
@@ -32,6 +33,19 @@ app.controller('toDoListCtrl', function ($scope, $http) {
                         $scope.toDoList = result;
                         $scope.toDoItems = "";
                         $scope.namelist = "";
+                    })
+                    .error(function (result) {
+                        console.log(result);
+                    });
+            $scope.nameOperation = "Создать список";
+        }
+        if ($scope.nameOperation === "Переименовать задачу") {
+            var taskItemId = currentlistId;
+            var taskname = toDoList.Name;
+            var listItem = $scope.namelist;
+            $http.post("/Main/RenameToDoItem", { taskItemId: taskItemId, taskname: taskname, listname: listItem })
+                    .success(function (result) {
+                        $scope.toDoItems = result;
                     })
                     .error(function (result) {
                         console.log(result);
@@ -46,7 +60,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
         currentlistId = item.Id;
         $scope.namelist = listname;
         $scope.toDoItems = "";
-        $http.post("/Main/GetToDoItems", { listName: listname })
+        $http.get("/Main/GetToDoItems", { listName: listname })
                 .success(function (result) {
                     $scope.toDoItems = result;
                 })
@@ -93,11 +107,28 @@ app.controller('toDoListCtrl', function ($scope, $http) {
                 });
     }
 
-    $scope.renameList = function (listItem) {
-        $scope.nameOperation = "Переименовать список";
-        currentlistId = listItem.Id;
+    //$scope.renameList = function (listItem) {
+    //    $scope.nameOperation = "Переименовать список";
+    //    currentlistId = listItem.Id;
+    //    window.location.href = '#createTask';
+    //    var elem = document.getElementById('listname');
+    //    elem.value = listItem.Name;
+    //}
+
+    function rename(list) {
+        currentlistId = list.Id;
         window.location.href = '#createTask';
         var elem = document.getElementById('listname');
-        elem.value = listItem.Name;
+        elem.value = list.Name;
+    }
+
+    $scope.renameList = function (listItem) {
+        $scope.nameOperation = "Переименовать список";
+        rename(listItem);
+    }
+
+    $scope.renametoDoItem = function (toDoItem) {
+        $scope.nameOperation = "Переименовать задачу";
+        rename(toDoItem);
     }
 });
