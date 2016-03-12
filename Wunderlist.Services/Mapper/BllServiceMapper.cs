@@ -9,11 +9,17 @@ namespace Wunderlist.Services.Mapper
         static BllDalMapper()
         {
             AddRule<UserServiceEntity, UserDalEntity>();
+            AddRule<AvatarServiceEntity, AvatarDalEntity>();
         }
 
         public static UserDalEntity ToDalEntity(this UserServiceEntity userService)
         {
             return Map<UserServiceEntity, UserDalEntity>(userService);
+        }
+
+        public static AvatarDalEntity ToDalEntity(this AvatarServiceEntity avatarService)
+        {
+            return Map<AvatarServiceEntity, AvatarDalEntity>(avatarService);
         }
     }
 }

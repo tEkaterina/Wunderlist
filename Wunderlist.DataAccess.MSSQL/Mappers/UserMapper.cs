@@ -26,7 +26,6 @@ namespace Wunderlist.DataAccess.MsSql.Mappers
             entity.Password = dalEntity.Password ?? entity.Password;
             entity.Salt = dalEntity.Salt ?? entity.Salt;
             entity.Email = dalEntity.Email ?? entity.Email;
-            entity.Avatar = dalEntity.Avatar ?? entity.Avatar;
         }
     }
 }
