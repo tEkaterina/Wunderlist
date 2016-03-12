@@ -32,6 +32,18 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
             return toDoListEntity;
         }
 
+        public static TaskDbModel ToModel(this TaskDalEntity item)
+        {
+            TaskDbModel toDoTaskEntity = new TaskDbModel
+            {
+                Id = item.Id,
+                Name = item.Name,
+                ToDoListId = item.ToDoListId,
+                DueDate = item.DueDate
+            };
+            return toDoTaskEntity;
+        }
+
         #endregion
 
         #region Model to Wunderlist.DataAccess.MsSql
@@ -57,6 +69,17 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
                 UserId = item.UserId
             };
             return toDoListDalEntity;
+        }
+
+        public static TaskDalEntity ToDal(this TaskDbModel item)
+        {
+            TaskDalEntity toDoTaskEntity = new TaskDalEntity(item.Id)
+            {
+                Name = item.Name,
+                ToDoListId = item.ToDoListId,
+                DueDate = item.DueDate
+            };
+            return toDoTaskEntity;
         }
 
         #endregion

@@ -27,10 +27,12 @@ namespace Wunderlist.DependencyResolver
 
             kernel.Bind<IMapper<User, UserDalEntity>>().To<UserMapper>().InSingletonScope();
             kernel.Bind<IMapper<ToDoList, ToDoListDalEntity>>().To<ToDoListMapper>().InSingletonScope();
+            kernel.Bind<IMapper<TaskDbModel, TaskDalEntity>>().To<ToDoTaskMapper>().InSingletonScope();
             //TODO: mappers for other
-            
+
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IToDoListService>().To<ToDoListService>();
+            kernel.Bind<IToDoTaskService>().To<ToDoTaskService>();
             //TODO: bind other services
         }
     }
