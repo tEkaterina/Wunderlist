@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Avatar.cs" />
     <Compile Include="EntityContext.cs" />
     <Compile Include="EntityInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

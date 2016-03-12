@@ -14,7 +14,6 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
                 Id = item.Id,
                 Name = item.Name,
                 Password = item.Password,
-                Avatar = item.Avatar,
                 Email = item.Email,
                 Salt = item.Salt
             };
@@ -44,6 +43,16 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
             return toDoTaskEntity;
         }
 
+        public static Avatar ToModel(this AvatarDalEntity avatar)
+        {
+            return new Avatar()
+            {
+                UserId = avatar.UserId,
+                Image = avatar.Image,
+                IsCustom = avatar.IsCustom,
+            };
+        }
+
         #endregion
 
         #region Model to Wunderlist.DataAccess.MsSql
@@ -54,7 +63,6 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
             {
                 Name = item.Name,
                 Password = item.Password,
-                Avatar = item.Avatar,
                 Email = item.Email,
                 Salt = item.Salt
             };
@@ -80,6 +88,16 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
                 DueDate = item.DueDate
             };
             return toDoTaskEntity;
+        }
+
+        public static AvatarDalEntity ToDal(this Avatar avatar)
+        {
+            return new AvatarDalEntity()
+            {
+                Image = avatar.Image,
+                IsCustom = avatar.IsCustom,
+                UserId = avatar.UserId,
+            };
         }
 
         #endregion

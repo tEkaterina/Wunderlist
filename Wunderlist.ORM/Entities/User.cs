@@ -9,8 +9,8 @@ namespace Wunderlist.ORM.Entities
         public string Name { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
-
-        public byte[] Avatar { get; set; }
+        
+        public virtual Avatar Avatar { get; set; }
 
         public virtual ICollection<ToDoList> ToDoLists { get; set; }
 
