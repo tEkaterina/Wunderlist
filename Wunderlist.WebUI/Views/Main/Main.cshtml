@@ -57,6 +57,9 @@
                                     <button style="padding-right: 5px;" data-ng-click="deleteList()">
                                         <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
                                     </button>
+                                    <button style="padding-right: 5px;" data-ng-click="renameList(listItem)">
+                                        <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
+                                    </button>
                                 </div>
                                 <a id="{{listItem.Id}}" href="" data-ng-click="selectList(listItem)">{{listItem.Name}}</a>
                             </div>
@@ -64,7 +67,7 @@
                     </ul>
                 </div>
                 <div class="sidebarActions">
-                    <a class="sidebarActions-addList" href="#openModal">
+                    <a class="sidebarActions-addList" href="#createTask" >
                         <span class="sidebarActions-icon glyphicon glyphicon-plus"></span>
                         <span class="sidebarActions-label">Создать список</span>
                     </a>
@@ -99,11 +102,11 @@
             </div>
         </div>
         <!--Modal window-->
-        <div id="openModal" class="modalDialog">
+        <div id="createTask" class="modalDialog">
             <div>
                 <a class="close" title="Закрыть" href="#close">X</a>
-                <h2>Введите название списка</h2>
-                <input type="text" class="form-control input-email" name="todolist.name" data-ng-model="todolist.Name" /><br />
+                <h2 data-ng-model="nameOperation">{{nameOperation}}</h2>
+                <input id="listname" type="text" class="form-control input-email" name="todolist.name" placeholder="Введите название списка..." id="inputText" data-ng-model="todolist.Name" /><br />
                 <a href="#close" type="button" class="btn btn-info" data-ng-click="savedata(todolist)">Сохранить</a>
                 <a href="#close" type="button" class="btn btn-danger">Отмена</a>
             </div>
