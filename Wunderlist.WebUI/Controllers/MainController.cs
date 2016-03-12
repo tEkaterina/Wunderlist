@@ -31,7 +31,7 @@ namespace Wunderlist.WebUI.Controllers
         {
             var userEmail = HttpContext.User.Identity.Name;
             var userId = _userService.GetUserEntity(userEmail).Id;
-            List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail, userId).ToList();
+            List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesById(userId).ToList();
             return Json(toDoLists, JsonRequestBehavior.AllowGet);
         }
 
@@ -40,8 +40,8 @@ namespace Wunderlist.WebUI.Controllers
         {
             var userEmail = HttpContext.User.Identity.Name;
             var userId = _userService.GetUserEntity(userEmail).Id;
-            _toDoListService.Create(name, userEmail, userId);
-            List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail, userId).ToList();
+            _toDoListService.Create(name, userId);
+            List<ToDoListServiceEntity> toDoLists = _toDoListService.GetAllToDoListEntitiesById(userId).ToList();
             return Json(toDoLists, JsonRequestBehavior.AllowGet);
         }
 
@@ -50,7 +50,7 @@ namespace Wunderlist.WebUI.Controllers
         {
             var userEmail = HttpContext.User.Identity.Name;
             var userId = _userService.GetUserEntity(userEmail).Id;
-            var toDoList = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail, userId)
+            var toDoList = _toDoListService.GetAllToDoListEntitiesById(userId)
                     .FirstOrDefault(c => c.Name == listName);
             if (toDoList != null)
             {
@@ -65,7 +65,7 @@ namespace Wunderlist.WebUI.Controllers
         {
             var userEmail = HttpContext.User.Identity.Name;
             var userId = _userService.GetUserEntity(userEmail).Id;
-            var toDoListServiceEntity = _toDoListService.GetAllToDoListEntitiesByEmail(userEmail, userId)
+            var toDoListServiceEntity = _toDoListService.GetAllToDoListEntitiesById(userId)
                 .FirstOrDefault(c => c.Name == listname);
             if (toDoListServiceEntity == null)
                 return Json(null, JsonRequestBehavior.AllowGet);

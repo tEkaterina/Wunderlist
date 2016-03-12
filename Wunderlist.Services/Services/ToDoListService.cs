@@ -26,13 +26,13 @@ namespace Wunderlist.Services.Services
             _repository = repository;
             _uow = uow;
         }
-        public IEnumerable<ToDoListServiceEntity> GetAllToDoListEntitiesByEmail(string email, int userId)
+        public IEnumerable<ToDoListServiceEntity> GetAllToDoListEntitiesById(int userId)
         {
             return _repository.GetAll().Select(list => list.ToServiceEntity())
                 .Where(list => list.UserId == userId);
         }
 
-        public void Create(string name, string userEmail, int userId)
+        public void Create(string name, int userId)
         {
             _repository.Create(new ToDoListDalEntity
             {
