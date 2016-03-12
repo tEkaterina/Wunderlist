@@ -60,7 +60,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
         currentlistId = item.Id;
         $scope.namelist = listname;
         $scope.toDoItems = "";
-        $http.get("/Main/GetToDoItems", { listName: listname })
+        $http.post("/Main/GetToDoItems", { listName: listname })
                 .success(function (result) {
                     $scope.toDoItems = result;
                 })

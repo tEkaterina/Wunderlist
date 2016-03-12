@@ -45,7 +45,7 @@ namespace Wunderlist.WebUI.Controllers
             return Json(toDoLists, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
+        [HttpPost]
         public JsonResult GetToDoItems(string listName)
         {
             var userEmail = HttpContext.User.Identity.Name;
