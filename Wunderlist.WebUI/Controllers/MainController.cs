@@ -118,5 +118,16 @@ namespace Wunderlist.WebUI.Controllers
             _toDoTaskService.Update(taskId, currentTask.Name, (int)statusId);
             return GetToDoItems(currentToDoList.Name);
         }
+
+
+        [HttpPost]
+        public JsonResult GetCompletedToDoItems(int listId)
+        {
+            var currentToDoList = _toDoListService.GetById(listId);
+            var toDoItems = _toDoTaskService.GetAllTasksByListNameAndStatusId(currentToDoList.Id, (int) Status.Completed);
+            if (toDoItems == null)
+                return Json(null, JsonRequestBehavior.AllowGet);
+            return Json(toDoItems, JsonRequestBehavior.AllowGet);
+        }
     }
 }

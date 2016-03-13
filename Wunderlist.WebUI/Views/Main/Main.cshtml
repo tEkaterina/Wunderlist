@@ -103,7 +103,7 @@
                                             <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
                                         </button>
 
-                                        <button style="padding-right: 10px;" id="{{toDoItem.Id}}" data-ng-click="deletetoDoItem()">
+                                        <button style="padding-right: 10px;" id="{{toDoItem.Id}}" data-ng-click="deletetoDoItem(toDoItem)">
                                             <span class="glyphicon glyphicon-remove-circle"></span>
                                         </button>
                                     </div>
@@ -111,25 +111,25 @@
                             </ol>
 
                             <h2 class="heading">
-                                <a href="/#/lists/inbox" style="text-decoration: none;">Показать завершенные задачи</a>
+                                <a href="" data-ng-click="getCompletedTasks()" style="text-decoration: none;">Показать завершенные задачи</a>
                             </h2>
 
-                            @*<ol class="tasks" style="padding-left: 20px; padding-right: 20px">
-                                <li class="taskItem" data-ng-repeat="toDoItem in toDoItems">
+                            <ol id="completedList" class="tasks hidden" style="padding-left: 20px; padding-right: 20px;" title="hidden">
+                                <li class="taskItem" data-ng-repeat="toDoCompletedItem in toDoCompletedItems">
                                     <div class="taskItem-body" style="width: 100%">
-                                        <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoItem.Id, status)">
-                                        <span style="padding-left: 10px; width: 90%">{{toDoItem.Name}}</span>
+                                        <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoCompletedItem.Id, status)">
+                                        <span style="padding-left: 10px; width: 90%">{{toDoCompletedItem.Name}}</span>
 
-                                        <button data-ng-click="renametoDoItem(toDoItem)">
+                                        <button data-ng-click="renametoDoItem(toDoCompletedItem)">
                                             <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
                                         </button>
 
-                                        <button style="padding-right: 10px;" id="{{toDoItem.Name}}" data-ng-click="deletetoDoItem()">
+                                        <button style="padding-right: 10px;" id="{{toDoCompletedItem.Name}}" data-ng-click="deletetoDoItem(toDoCompletedItem)">
                                             <span class="glyphicon glyphicon-remove-circle"></span>
                                         </button>
                                     </div>
                                 </li>
-                            </ol>*@
+                            </ol>
                         </div>
 
                     </div>
