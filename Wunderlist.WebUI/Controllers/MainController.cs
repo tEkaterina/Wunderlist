@@ -60,7 +60,7 @@ namespace Wunderlist.WebUI.Controllers
                     .FirstOrDefault(c => c.Name == listName);
             if (toDoList != null)
             {
-                var tasks = _toDoTaskService.GetAllTasksByListNameAndStatusId(toDoList.Id, (int)Status.Wait).ToList();
+                var tasks = _toDoTaskService.GetAllTasksByListIdAndStatusId(toDoList.Id, (int)Status.Wait).ToList();
                 return Json(tasks, JsonRequestBehavior.AllowGet);
             }
             return Json(null, JsonRequestBehavior.AllowGet);
@@ -124,7 +124,7 @@ namespace Wunderlist.WebUI.Controllers
         public JsonResult GetCompletedToDoItems(int listId)
         {
             var currentToDoList = _toDoListService.GetById(listId);
-            var toDoItems = _toDoTaskService.GetAllTasksByListNameAndStatusId(currentToDoList.Id, (int) Status.Completed);
+            var toDoItems = _toDoTaskService.GetAllTasksByListIdAndStatusId(currentToDoList.Id, (int) Status.Completed);
             if (toDoItems == null)
                 return Json(null, JsonRequestBehavior.AllowGet);
             return Json(toDoItems, JsonRequestBehavior.AllowGet);
