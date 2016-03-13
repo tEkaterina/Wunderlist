@@ -27,7 +27,7 @@
     <div data-ng-controller="toDoListCtrl">
         <div id="wrapper">
             <div id="sidebar-wrapper">
-                <div class="sidebar-nav">
+                <div class="sidebar-nav" style="top: 0;">
                     <div id="search-toolbar" class="search-bar">
                         <a id="menu-toggle" href="#menu-toggle" style="width: 20%; float: left; color: #ffffff">
                             <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
@@ -41,13 +41,14 @@
                     <ul class="sidebar-nav">
                         <li>
                             <div class="list-item" data-ng-repeat="listItem in toDoList">
-
-                                <button style="padding-right: 5px;" data-ng-click="deleteList()">
-                                    <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
-                                </button>
-                                <button style="padding-right: 5px;" data-ng-click="renameList(listItem)">
-                                    <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
-                                </button>
+                                <div style="float: right;">
+                                    <button style="padding-right: 5px;" data-ng-click="deleteList()">
+                                        <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
+                                    </button>
+                                    <button style="padding-right: 5px;" data-ng-click="renameList(listItem)">
+                                        <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
+                                    </button>
+                                </div>
                                 <a id="{{listItem.Id}}" href="" data-ng-click="selectList(listItem)">{{listItem.Name}}</a>
                             </div>
                         </li>
