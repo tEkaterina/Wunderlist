@@ -208,6 +208,7 @@
     <Content Include="Content\icons\email.PNG" />
     <Content Include="Content\icons\password.PNG" />
     <Content Include="Content\icons\person.PNG" />
+    <Content Include="Content\icons\user-arrow.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\UserProfileStyle.css" />

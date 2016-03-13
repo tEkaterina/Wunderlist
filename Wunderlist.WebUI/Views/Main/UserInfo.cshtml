@@ -1,7 +1,6 @@
 ﻿<div data-ng-controller="userProfileController" data-ng-model="userProfile" class="user-info">
-    <div class="avatar">
-        <img src="data:image/jpeg;base64, {{userProfile.Avatar}}" />
-    </div>
-    {{userProfile.Name}}
+    <img class="avatar" src="data:image/jpeg;base64, {{userProfile.Avatar}}" />
+    <span>{{userProfile.Name}}</span>
+    <img src="~/Content/icons/user-arrow.png" height="7" />
 </div>
 
