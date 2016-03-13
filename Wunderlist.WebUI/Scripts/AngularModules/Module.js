@@ -9,12 +9,13 @@ app.controller('toDoListCtrl', function ($scope, $http) {
     $http.get("/Main/GetToDoLists")
         .success(function (result) {
             $scope.toDoList = result;
+            var element = document.getElementById("taskScroll");
+            element.setAttribute("class", "tasks-scroll hidden");
         })
         .error(function (result) {
             console.log(result);
         });
-
-
+    
     $scope.savedata = function (toDoList) {
         if ($scope.nameOperation === "Создать список") {
             $http.post("/Main/AddToDoList", { name: toDoList.Name })
@@ -56,6 +57,8 @@ app.controller('toDoListCtrl', function ($scope, $http) {
 
     $scope.namelist = "";
     $scope.selectList = function (item) {
+        var element = document.getElementById("taskScroll");
+        element.setAttribute("class", "taskScroll");
         var listname = item.Name;
         currentlistId = item.Id;
         $scope.namelist = listname;
