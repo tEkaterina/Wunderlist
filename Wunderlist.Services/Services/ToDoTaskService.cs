@@ -24,10 +24,11 @@ namespace Wunderlist.Services.Services
             _repository = repository;
             _uow = uow;
         }
-        public IEnumerable<ToDoTaskServiceEntity> GetAllTasksByListNameAndUsername(int listId)
+        public IEnumerable<ToDoTaskServiceEntity> GetAllTasksByListNameAndStatusId(int listId, int statusId)
         {
             return _repository.GetAll().Select(c => c.ToServiceEntity())
-                .Where(c => c.ToDoListId == listId);
+                .Where(c => c.ToDoListId == listId)
+                .Where(c => c.TaskStatusId == statusId);
         }
 
         public void Create(string name, int listId)
@@ -36,7 +37,8 @@ namespace Wunderlist.Services.Services
             {
                 DueDate = DateTime.Now,
                 Name = name,
-                ToDoListId = listId
+                ToDoListId = listId,
+                TaskStatusId = 1
             });
             _uow.Commit();
         }

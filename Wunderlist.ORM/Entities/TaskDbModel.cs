@@ -12,11 +12,7 @@ namespace Wunderlist.ORM.Entities
         public int ToDoListId { get; set; }
         public virtual ToDoList ToDoList { get; set; }
 
-        public virtual ICollection<TaskStatus> TaskStatuses { get; set; }
-
-        public TaskDbModel()
-        {
-            TaskStatuses = new List<TaskStatus>();
-        }
+        public int TaskStatusId { get; set; }
+        public virtual TaskStatus TaskStatus { get; set; }
     }
 }

@@ -8,6 +8,12 @@ namespace Wunderlist.WebUI.Controllers
 {
     public class MainController : Controller
     {
+        private enum Status
+        {
+            Wait = 1,
+            Completed = 2
+        };
+
         private readonly IToDoListService _toDoListService;
         private readonly IUserService _userService;
         private readonly IToDoTaskService _toDoTaskService;
@@ -54,7 +60,7 @@ namespace Wunderlist.WebUI.Controllers
                     .FirstOrDefault(c => c.Name == listName);
             if (toDoList != null)
             {
-                var tasks = _toDoTaskService.GetAllTasksByListNameAndUsername(toDoList.Id).ToList();
+                var tasks = _toDoTaskService.GetAllTasksByListNameAndStatusId(toDoList.Id, (int)Status.Wait).ToList();
                 return Json(tasks, JsonRequestBehavior.AllowGet);
             }
             return Json(null, JsonRequestBehavior.AllowGet);

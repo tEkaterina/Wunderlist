@@ -24,6 +24,7 @@ namespace Wunderlist.DataAccess.MsSql.Mappers
             entity.Id = (dalEntity.Id == 0) ? entity.Id : dalEntity.Id;
             entity.Name = dalEntity.Name ?? entity.Name;
             entity.ToDoListId = (dalEntity.ToDoListId == 0) ? entity.ToDoListId : dalEntity.ToDoListId;
+            entity.TaskStatusId = (dalEntity.TaskStatusId == 0) ? entity.TaskStatusId : dalEntity.TaskStatusId;
         }
     }
 }
