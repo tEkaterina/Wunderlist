@@ -8,6 +8,7 @@ namespace Wunderlist.Services.Interfaces.Services
         IEnumerable<ToDoTaskServiceEntity> GetAllTasksByListNameAndStatusId(int listId, int statusId);
         void Create(string name, int listId);
         void Delete(int taskId);
-        void Update(int taskId, string taskName);
+        void Update(int taskId, string taskName, int statusId);
+        ToDoTaskServiceEntity GetTaskById(int taskId);
     }
 }

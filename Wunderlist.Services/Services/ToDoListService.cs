@@ -65,5 +65,10 @@ namespace Wunderlist.Services.Services
             _repository.Update(entity);
             _uow.Commit();
         }
+
+        public ToDoListServiceEntity GetById(int listId)
+        {
+           return _repository.GetById(listId).ToServiceEntity();
+        }
     }
 }

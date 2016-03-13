@@ -131,4 +131,16 @@ app.controller('toDoListCtrl', function ($scope, $http) {
         $scope.nameOperation = "Переименовать задачу";
         rename(toDoItem);
     }
+
+    $scope.toDoTaskCompleted = function (id, status) {
+        if (status) {
+            $http.post("/Main/ChangeTaskStatus", { taskId: id, status: status, listId: currentlistId })
+            .success(function (result) {
+                $scope.toDoItems = result;
+            })
+            .error(function (result) {
+                console.log(result);
+            });
+        }
+    };
 });

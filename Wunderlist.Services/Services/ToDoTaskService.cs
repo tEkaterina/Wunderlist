@@ -51,12 +51,18 @@ namespace Wunderlist.Services.Services
             _uow.Commit();
         }
 
-        public void Update(int taskId, string taskName)
+        public void Update(int taskId, string taskName, int statusId)
         {
             var entity = _repository.GetById(taskId);
             entity.Name = taskName;
+            entity.TaskStatusId = statusId;
             _repository.Update(entity);
             _uow.Commit();
+        }
+
+        public ToDoTaskServiceEntity GetTaskById(int taskId)
+        {
+            return _repository.GetById(taskId).ToServiceEntity();
         }
     }
 }

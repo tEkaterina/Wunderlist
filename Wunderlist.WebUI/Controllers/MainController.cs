@@ -104,8 +104,19 @@ namespace Wunderlist.WebUI.Controllers
         [HttpPost]
         public JsonResult RenameToDoItem(int taskItemId, string taskname, string listname)
         {
-            _toDoTaskService.Update(taskItemId, taskname);
+            var currentTask = _toDoTaskService.GetTaskById(taskItemId);
+            _toDoTaskService.Update(taskItemId, taskname, currentTask.TaskStatusId);
             return GetToDoItems(listname);
+        }
+
+        [HttpPost]
+        public JsonResult ChangeTaskStatus(int taskId, bool status, int listId)
+        {
+            var currentToDoList = _toDoListService.GetById(listId);
+            var currentTask = _toDoTaskService.GetTaskById(taskId);
+            var statusId = (status) ? Status.Completed : Status.Wait;
+            _toDoTaskService.Update(taskId, currentTask.Name, (int)statusId);
+            return GetToDoItems(currentToDoList.Name);
         }
     }
 }
