@@ -3,17 +3,19 @@
 app.controller('toDoListCtrl', function ($scope, $http) {
 
     $scope.toDoList = "";
+    $scope.toDoCompletedItems = "";
     $scope.nameOperation = "Создать список";
     var currentlistId = undefined;
 
     $http.get("/Main/GetToDoLists")
         .success(function (result) {
             $scope.toDoList = result;
+            var element = document.getElementById("taskScroll");
+            element.setAttribute("class", "tasks-scroll hidden");
         })
         .error(function (result) {
             console.log(result);
         });
-
 
     $scope.savedata = function (toDoList) {
         if ($scope.nameOperation === "Создать список") {
@@ -46,6 +48,10 @@ app.controller('toDoListCtrl', function ($scope, $http) {
             $http.post("/Main/RenameToDoItem", { taskItemId: taskItemId, taskname: taskname, listname: listItem })
                     .success(function (result) {
                         $scope.toDoItems = result;
+                        $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                        .success(function (resultJson) {
+                            $scope.toDoCompletedItems = resultJson;
+                        });
                     })
                     .error(function (result) {
                         console.log(result);
@@ -56,6 +62,8 @@ app.controller('toDoListCtrl', function ($scope, $http) {
 
     $scope.namelist = "";
     $scope.selectList = function (item) {
+        var element = document.getElementById("taskScroll");
+        element.setAttribute("class", "taskScroll");
         var listname = item.Name;
         currentlistId = item.Id;
         $scope.namelist = listname;
@@ -63,6 +71,10 @@ app.controller('toDoListCtrl', function ($scope, $http) {
         $http.post("/Main/GetToDoItems", { listName: listname })
                 .success(function (result) {
                     $scope.toDoItems = result;
+                    $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                        .success(function (resultJson) {
+                            $scope.toDoCompletedItems = resultJson;
+                        });
                 })
                 .error(function (result) {
                     console.log(result);
@@ -81,12 +93,16 @@ app.controller('toDoListCtrl', function ($scope, $http) {
             });
     };
 
-    $scope.deletetoDoItem = function () {
+    $scope.deletetoDoItem = function (item) {
         var listname = $scope.namelist;
-        var toDoItemId = this.toDoItem.Id;
+        var toDoItemId = item.Id;
         $http.put("/Main/DeleteToDoItem", { taskId: toDoItemId, listname: listname })
                 .success(function (result) {
                     $scope.toDoItems = result;
+                    $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                        .success(function (resultJson) {
+                            $scope.toDoCompletedItems = resultJson;
+                        });
                 })
                 .error(function (result) {
                     console.log(result);
@@ -100,6 +116,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
                 .success(function (result) {
                     $scope.toDoList = result;
                     $scope.toDoItems = "";
+                    $scope.toDoCompletedItems = "";
                     $scope.namelist = "";
                 })
                 .error(function (result) {
@@ -131,4 +148,41 @@ app.controller('toDoListCtrl', function ($scope, $http) {
         $scope.nameOperation = "Переименовать задачу";
         rename(toDoItem);
     }
+
+    $scope.toDoTaskCompleted = function (id, status) {
+        if (status) {
+            $http.post("/Main/ChangeTaskStatus", { taskId: id, status: status, listId: currentlistId })
+            .success(function (result) {
+                $scope.toDoItems = result;
+                $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                        .success(function (resultJson) {
+                            $scope.toDoCompletedItems = resultJson;
+                        });
+            })
+            .error(function (result) {
+                console.log(result);
+            });
+        }
+    };
+
+
+    $scope.getCompletedTasks = function () {
+        var element = document.getElementById("completedList");
+        var title = element.getAttribute("title");
+        if (title === "hidden") {
+            element.setAttribute("title", "active");
+            element.setAttribute("class", "tasks");
+            $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                .success(function (result) {
+                    $scope.toDoCompletedItems = result;
+                })
+                .error(function (result) {
+                    console.log(result);
+                });
+        } else if (title === "active") {
+            element.setAttribute("title", "hidden");
+            element.setAttribute("class", "tasks hidden");
+        }
+
+    };
 });

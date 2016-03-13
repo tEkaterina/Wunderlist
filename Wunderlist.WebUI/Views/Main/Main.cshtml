@@ -14,6 +14,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Wunderlist.css" rel="stylesheet">
     <link href="~/Content/Styles.css" rel="stylesheet">
+    <link href="~/Content/TaskStyle.css" rel="stylesheet" />
 
     <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
@@ -67,7 +68,7 @@
                     </ul>
                 </div>
                 <div class="sidebarActions">
-                    <a class="sidebarActions-addList" href="#createTask" >
+                    <a class="sidebarActions-addList" href="#createTask">
                         <span class="sidebarActions-icon glyphicon glyphicon-plus"></span>
                         <span class="sidebarActions-label">Создать список</span>
                     </a>
@@ -81,26 +82,58 @@
                             <h1 data-ng-model="namelist">{{namelist}}</h1>
                         </div>
                     </div>
-                    <div class="tasks-scroll">
+
+                    <div id="taskScroll" class="tasks-scroll  hidden">
+                        
                         <div class="add-task">
                             <button style="padding-right: 5px; padding-top: 10px" data-ng-click="addtodoitem(todoitem)">
                                 <span class="glyphicon glyphicon-plus" style="padding-right: 5px"></span>
                             </button>
-                            <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" name="todoitem.name" data-ng-model="todoitem.Name" />
+                            <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" name="todoitem.name" data-ng-model="todoitem.Name"/>
                         </div>
-                        <div>
-                            <div class="task" data-ng-repeat="toDoItem in toDoItems" style="padding-right: 10px; padding-top: 10px">
-                                <input type="checkbox" />
-                                <span>{{toDoItem.Name}}</span>
-                                <button style="float: right;" data-ng-click="renametoDoItem(toDoItem)">
-                                    <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
-                                </button>
-                                <button id="{{toDoItem.Id}}" style="float: right;" data-ng-click="deletetoDoItem()">
-                                    <span class="glyphicon glyphicon-remove-circle" style="float: right;"></span>
-                                </button>
-                            </div>
+
+                        <div class="task-list">
+                            <ol class="tasks" style="padding-left: 20px; padding-right: 20px">
+                                <li class="taskItem" data-ng-repeat="toDoItem in toDoItems">
+                                    <div class="taskItem-body" style="width: 100%">
+                                        <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoItem.Id, status)">
+                                        <span style="padding-left: 10px; width: 90%">{{toDoItem.Name}}</span>
+
+                                        <button data-ng-click="renametoDoItem(toDoItem)">
+                                            <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
+                                        </button>
+
+                                        <button style="padding-right: 10px;" id="{{toDoItem.Id}}" data-ng-click="deletetoDoItem(toDoItem)">
+                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ol>
+
+                            <h2 class="heading">
+                                <a href="" data-ng-click="getCompletedTasks()" style="text-decoration: none;">Показать завершенные задачи</a>
+                            </h2>
+
+                            <ol id="completedList" class="tasks hidden" style="padding-left: 20px; padding-right: 20px;" title="hidden">
+                                <li class="taskItem" data-ng-repeat="toDoCompletedItem in toDoCompletedItems">
+                                    <div class="taskItem-body" style="width: 100%">
+                                        <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoCompletedItem.Id, status)">
+                                        <span style="padding-left: 10px; width: 90%">{{toDoCompletedItem.Name}}</span>
+
+                                        <button data-ng-click="renametoDoItem(toDoCompletedItem)">
+                                            <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
+                                        </button>
+
+                                        <button style="padding-right: 10px;" id="{{toDoCompletedItem.Name}}" data-ng-click="deletetoDoItem(toDoCompletedItem)">
+                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ol>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div>

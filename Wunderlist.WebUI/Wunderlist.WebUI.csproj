@@ -208,6 +208,7 @@
     <Content Include="Content\icons\person.PNG" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\Styles.css" />
+    <Content Include="Content\TaskStyle.css" />
     <Content Include="Content\Wunderlist.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

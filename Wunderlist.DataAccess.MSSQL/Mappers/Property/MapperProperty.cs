@@ -38,7 +38,8 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
                 Id = item.Id,
                 Name = item.Name,
                 ToDoListId = item.ToDoListId,
-                DueDate = item.DueDate
+                DueDate = item.DueDate,
+                TaskStatusId = item.TaskStatusId
             };
             return toDoTaskEntity;
         }
@@ -85,7 +86,8 @@ namespace Wunderlist.DataAccess.MsSql.Mappers.Property
             {
                 Name = item.Name,
                 ToDoListId = item.ToDoListId,
-                DueDate = item.DueDate
+                DueDate = item.DueDate,
+                TaskStatusId = item.TaskStatusId
             };
             return toDoTaskEntity;
         }

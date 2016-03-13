@@ -9,5 +9,6 @@ namespace Wunderlist.Services.Interfaces.Services
         void Create(string name, int userId);
         void Delete(int listId);
         void Update(int listId, string listName);
+        ToDoListServiceEntity GetById(int listId);
     }
 }
