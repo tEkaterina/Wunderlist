@@ -19,6 +19,7 @@ namespace Wunderlist.ORM
         public virtual DbSet<ToDoList> ToDoLists { get; set; }
         public virtual DbSet<TaskDbModel> Tasks { get; set; }
         public virtual DbSet<TaskStatus> TaskStatuses { get; set; }
+        public virtual DbSet<Avatar> Avatars { get; set; }
         
     }
 }

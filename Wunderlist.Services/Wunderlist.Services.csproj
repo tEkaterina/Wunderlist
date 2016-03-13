@@ -43,6 +43,7 @@
     <Compile Include="Mapper\BllServiceMapper.cs" />
     <Compile Include="Mapper\BllDalMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AvatarService.cs" />
     <Compile Include="Services\ToDoListService.cs" />
     <Compile Include="Services\ToDoTaskService.cs" />
     <Compile Include="Services\UserService.cs" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using Wunderlist.Services.Interfaces.Services;
 
 namespace Wunderlist.Services.Interfaces.Entities
 {

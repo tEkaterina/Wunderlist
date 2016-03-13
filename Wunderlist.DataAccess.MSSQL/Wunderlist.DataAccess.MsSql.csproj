@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Concrete\UnitOfWork.cs" />
     <Compile Include="Expressions\ExpressionMapper.cs" />
+    <Compile Include="Mappers\AvatarMapper.cs" />
     <Compile Include="Mappers\Property\MapperProperty.cs" />
     <Compile Include="Mappers\ToDoListMapper.cs" />
     <Compile Include="Mappers\ToDoTaskMapper.cs" />
@@ -66,6 +67,10 @@
     <ProjectReference Include="..\Wunderlist.DataAccess.Interfaces\Wunderlist.DataAccess.Interfaces.csproj">
       <Project>{acd605b0-1766-4d17-ab39-dbaa038071fa}</Project>
       <Name>Wunderlist.DataAccess.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.Mapper\Wunderlist.Mapper.csproj">
+      <Project>{766de6c8-f61d-4a9c-a10e-5d42e5d0e915}</Project>
+      <Name>Wunderlist.Mapper</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wunderlist.ORM\Wunderlist.ORM.csproj">
       <Project>{44ef1c3b-3396-4694-9cc8-1e8624018afb}</Project>

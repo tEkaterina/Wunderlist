@@ -24,6 +24,7 @@ namespace Wunderlist.DependencyResolver
             kernel.Bind<IRepository<TaskDalEntity>>().To<Repository<TaskDbModel, TaskDalEntity>>();
             kernel.Bind<IRepository<TaskStatusDalEntity>>().To<Repository<TaskStatus, TaskStatusDalEntity>>();
             kernel.Bind<IRepository<ToDoListDalEntity>>().To<Repository<ToDoList, ToDoListDalEntity>>();
+            kernel.Bind<IRepository<AvatarDalEntity>>().To<Repository<Avatar, AvatarDalEntity>>();
 
             kernel.Bind<IMapper<User, UserDalEntity>>().To<UserMapper>().InSingletonScope();
             kernel.Bind<IMapper<ToDoList, ToDoListDalEntity>>().To<ToDoListMapper>().InSingletonScope();

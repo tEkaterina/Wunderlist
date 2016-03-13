@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\AvatarDalEntity.cs" />
     <Compile Include="Entities\TaskDalEntity.cs" />
     <Compile Include="Entities\TaskStatusDalEntity.cs" />
     <Compile Include="Entities\ToDoListDalEntity.cs" />
