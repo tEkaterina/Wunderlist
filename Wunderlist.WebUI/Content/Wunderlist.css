@@ -147,7 +147,6 @@ button {
     border: 0;
 }
 
-
 .search-bar {
     text-indent: 10px;
     color: #ffffff;
@@ -159,6 +158,11 @@ button {
 .list-item {
     background-color: #f7f7f7;
     height: 40px;
+}
+
+.list-item li {
+    list-style-type: none;
+    margin-left: 0;
 }
 
 .sidebarActions {

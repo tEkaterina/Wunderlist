@@ -14,53 +14,40 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Wunderlist.css" rel="stylesheet">
     <link href="~/Content/Styles.css" rel="stylesheet">
+    <link href="~/Content/UserProfileStyle.css" rel="stylesheet"/>
 
     <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/AngularModules/Module.js"></script>
+    <script src="~/Scripts/AngularModules/UserModule.js"></script>
     <script src="~/Scripts/ViewJs/addTaskInputText.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
 </head>
 <body id="wunderlist-base" class="background-06" data-ng-app="WunderlistModule">
     <div data-ng-controller="toDoListCtrl">
         <div id="wrapper">
             <div id="sidebar-wrapper">
-                <div>
-                    <ul class="sidebar-nav">
-                        <li>
-                            <div id="search-toolbar" class="search-bar">
-                                <a id="menu-toggle" href="#menu-toggle" style="width: 20%; float: left; color: #ffffff">
-                                    <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
-                                </a>
-                                <div class="wrapper" style="float: right; width: 80%">
-                                    <input type="text" />
-                                    <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div id="user-info" class="list-item">
-                                @{
-                                    var username = HttpContext.Current.User.Identity.Name;
-                                }
-                                @username
-                            </div>
-                        </li>
+                <div class="sidebar-nav">
+                    <div id="search-toolbar" class="search-bar">
+                        <a id="menu-toggle" href="#menu-toggle" style="width: 20%; float: left; color: #ffffff">
+                            <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
+                        </a>
+                        <div class="wrapper" style="float: right; width: 80%">
+                            <input type="text" />
+                            <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
+                        </div>
+                    </div>
+                    @Html.Partial("UserInfo")
+                    <ul>
                         <li>
                             <div class="list-item" data-ng-repeat="listItem in toDoList">
-                                <div style="float: right;">
-                                    <button style="padding-right: 5px;" data-ng-click="deleteList()">
-                                        <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
-                                    </button>
-                                    <button style="padding-right: 5px;" data-ng-click="renameList(listItem)">
-                                        <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
-                                    </button>
-                                </div>
+
+                                <button style="padding-right: 5px;" data-ng-click="deleteList()">
+                                    <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
+                                </button>
+                                <button style="padding-right: 5px;" data-ng-click="renameList(listItem)">
+                                    <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
+                                </button>
                                 <a id="{{listItem.Id}}" href="" data-ng-click="selectList(listItem)">{{listItem.Name}}</a>
                             </div>
                         </li>

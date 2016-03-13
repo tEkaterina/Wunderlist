@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Security;
+using Wunderlist.Services.Interfaces.Entities;
 using Wunderlist.Services.Interfaces.Services;
 using Wunderlist.WebUI.Infrastructure;
 using Wunderlist.WebUI.Models;
@@ -13,10 +14,12 @@ namespace Wunderlist.WebUI.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IAvatarService _avatarService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IAvatarService avatarService)
         {
             _userService = userService;
+            _avatarService = avatarService;
         }
 
         // GET: User
@@ -34,14 +37,8 @@ namespace Wunderlist.WebUI.Controllers
                 var existedUser = _userService.GetUserEntity(user.Email);
                 if (existedUser == null)
                 {
-                    user.Avatar = AvatarCreator.Get(user.Name);
-                    var newServiceUser = user.ToServiceEntity();
-                    string salt = GetSalt();
-
-                    newServiceUser.Salt = salt;
-                    newServiceUser.Password = GetPasswordHash(user.Password, salt);
-
-                    _userService.CreateUser(newServiceUser);
+                    CreateUser(user);
+                    CreateUserAvatar(user.Name);
                 }
             }
             FormsAuthentication.SetAuthCookie(user.Email, true);
@@ -92,6 +89,28 @@ namespace Wunderlist.WebUI.Controllers
             var hash = sha1.ComputeHash(Encoding.Unicode.GetBytes(password));
 
             return Encoding.Unicode.GetString(hash);
+        }
+
+        private void CreateUser(RegistrationUserModel user)
+        {
+            var newServiceUser = user.ToServiceEntity();
+            string salt = GetSalt();
+
+            newServiceUser.Salt = salt;
+            newServiceUser.Password = GetPasswordHash(user.Password, salt);
+
+            _userService.CreateUser(newServiceUser);
+        }
+
+        private void CreateUserAvatar(string userEmail)
+        {
+            var user = _userService.GetUserEntity(userEmail);
+            var avatar = new AvatarServiceEntity(user.Id)
+            {
+                Image = AvatarCreator.Get(user.Name),
+                IsCustom = false
+            };
+            _avatarService.Create(avatar);
         }
     }
 }
