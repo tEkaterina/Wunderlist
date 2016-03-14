@@ -183,6 +183,10 @@ app.controller('toDoListCtrl', function ($scope, $http) {
             element.setAttribute("title", "hidden");
             element.setAttribute("class", "tasks hidden");
         }
-
     };
+
+    $scope.doubleClick = function (e) {
+        e.preventDefault();
+        $("#wrapper-right").toggleClass("toggled");
+    }
 });

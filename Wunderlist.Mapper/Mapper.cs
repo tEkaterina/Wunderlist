@@ -51,7 +51,8 @@ namespace Wunderlist.Mapper
         public static void Map<TSource, TTarget>(TSource source, TTarget target)
             where TTarget : class
         {
-            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (source == null) /*throw new ArgumentNullException(nameof(source));*/
+                return;
 
             var rule = FindRule<TSource, TTarget>();
             if (rule != null)
