@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Text;
 using System.Web.Mvc;
-using System.Web.Security;
 using Wunderlist.Services.Interfaces.Entities;
 using Wunderlist.Services.Interfaces.Services;
 using Wunderlist.WebUI.Infrastructure;

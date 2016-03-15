@@ -24,7 +24,7 @@ namespace Wunderlist.Services.Services
             _repository = repository;
             _uow = uow;
         }
-        public IEnumerable<ToDoTaskServiceEntity> GetAllTasksByListNameAndStatusId(int listId, int statusId)
+        public IEnumerable<ToDoTaskServiceEntity> GetAllTasksByListIdAndStatusId(int listId, int statusId)
         {
             return _repository.GetAll().Select(c => c.ToServiceEntity())
                 .Where(c => c.ToDoListId == listId)

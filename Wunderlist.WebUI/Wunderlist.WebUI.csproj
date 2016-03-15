@@ -187,7 +187,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListTasksController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\ToDoItemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,6 +215,7 @@
     <Content Include="Content\Styles.css" />
     <Content Include="Content\UserProfileStyle.css" />
     <Content Include="Content\TaskStyle.css" />
+    <Content Include="Content\Wrapper.css" />
     <Content Include="Content\Wunderlist.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -224,6 +227,8 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AngularModules\Module.js" />
+    <Content Include="Scripts\AngularModules\TaskToDoItemController.js" />
+    <Content Include="Scripts\AngularModules\ToDoListsController.js" />
     <Content Include="Scripts\AngularModules\UserProfileController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
