@@ -39,7 +39,9 @@ namespace Wunderlist.WebUI.Controllers
                 if (existedUser == null)
                 {
                     CreateUser(user);
-                    CreateUserAvatar(user.Name);
+
+                    var createdUser = _userService.GetUserEntity(user.Email);
+                    CreateUserAvatar(createdUser);
                 }
             }
             FormsAuthentication.SetAuthCookie(user.Email, true);
@@ -110,9 +112,8 @@ namespace Wunderlist.WebUI.Controllers
             _userService.CreateUser(newServiceUser);
         }
 
-        private void CreateUserAvatar(string userEmail)
+        private void CreateUserAvatar(UserServiceEntity user)
         {
-            var user = _userService.GetUserEntity(userEmail);
             var avatar = new AvatarServiceEntity(user.Id)
             {
                 Image = AvatarCreator.Get(user.Name),
