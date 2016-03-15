@@ -6,7 +6,7 @@ namespace Wunderlist.Services.Interfaces.Services
     {
         AvatarServiceEntity GetByUserId(int id);
         void Create(AvatarServiceEntity avatar);
-        void Delete(int id);
+        void Update(AvatarServiceEntity avatar);
     }
 
 }

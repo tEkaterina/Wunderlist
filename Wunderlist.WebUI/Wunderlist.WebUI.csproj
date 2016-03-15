@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +199,7 @@
     <Compile Include="Infrastructure\ServiceEntitiesMapper.cs" />
     <Compile Include="Models\RegistrationUserModel.cs" />
     <Compile Include="Models\SinginUserModel.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,21 +208,24 @@
     <Content Include="Content\icons\email.PNG" />
     <Content Include="Content\icons\password.PNG" />
     <Content Include="Content\icons\person.PNG" />
+    <Content Include="Content\icons\user-arrow.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\Styles.css" />
+    <Content Include="Content\UserProfileStyle.css" />
     <Content Include="Content\TaskStyle.css" />
     <Content Include="Content\Wrapper.css" />
     <Content Include="Content\Wunderlist.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\SinginSingupStyle.css" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AngularModules\Module.js" />
+    <Content Include="Scripts\AngularModules\UserProfileController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -262,6 +267,8 @@
     <Content Include="Views\Main\Main.cshtml" />
     <Content Include="Views\User\Singin.cshtml" />
     <Content Include="Views\User\Singup.cshtml" />
+    <Content Include="Views\Main\UserInfo.cshtml" />
+    <Content Include="Views\Main\UserProfileModalWindow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

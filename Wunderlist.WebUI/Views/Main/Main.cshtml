@@ -14,46 +14,34 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Wunderlist.css" rel="stylesheet">
     <link href="~/Content/Styles.css" rel="stylesheet">
+    <link href="~/Content/UserProfileStyle.css" rel="stylesheet"/>
     <link href="~/Content/TaskStyle.css" rel="stylesheet" />
     <link href="~/Content/Wrapper.css" rel="stylesheet" />
 
     <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/AngularModules/Module.js"></script>
+    <script src="~/Scripts/AngularModules/UserProfileController.js"></script>
     <script src="~/Scripts/ViewJs/addTaskInputText.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="~/Scripts/ng-file-upload-shim.min.js"></script>
+    <script src="~/Scripts/ng-file-upload.min.js"></script>
 </head>
 <body id="wunderlist-base" class="background-06" data-ng-app="WunderlistModule">
     <div data-ng-controller="toDoListCtrl">
         <div id="wrapper">
-
             <div id="sidebar-wrapper">
-                <div>
-                    <ul class="sidebar-nav">
-                        <li>
+                <div class="sidebar-nav" style="top: 0;">
                             <div id="search-toolbar" class="search-bar">
                                 <a id="menu-toggle" href="#menu-toggle" style="width: 20%; float: left; color: #ffffff">
                                     <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
                                 </a>
                                 <div class="wrapper" style="float: right; width: 80%">
-                                    <input type="text"/>
+                                    <input type="text" />
                                     <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
                                 </div>
                             </div>
-                        </li>
-                        <li>
-                            <div id="user-info" class="list-item">
-                                @{
-                                    var username = HttpContext.Current.User.Identity.Name;
-                                }
-                                @username
-                            </div>
-                        </li>
+                    @Html.Partial("UserInfo")
+                    <ul class="sidebar-nav">
                         <li>
                             <div class="list-item" data-ng-repeat="listItem in toDoList">
                                 <div style="float: right;">
@@ -68,80 +56,79 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="sidebarActions">
-                        <a class="sidebarActions-addList" href="#createTask">
-                            <span class="sidebarActions-icon glyphicon glyphicon-plus"></span>
-                            <span class="sidebarActions-label">Создать список</span>
-                        </a>
-                    </div>
+                </div>
+                <div class="sidebarActions">
+                    <a class="sidebarActions-addList" href="#createTask">
+                        <span class="sidebarActions-icon glyphicon glyphicon-plus"></span>
+                        <span class="sidebarActions-label">Создать список</span>
+                    </a>
                 </div>
             </div>
-
             <!-- Page Content -->
             <div id="wrapper-right" class="toggled">
-                <div id="page-content-wrapper">
+            <div id="page-content-wrapper">
 
-                    <div class="container-fluid">
+                <div class="container-fluid">
 
-                        <div id="tasks" role="main">
-                            <div id="list-toolbar">
-                                <h1 data-ng-model="namelist">{{namelist}}</h1>
-                            </div>
+                    <div id="tasks" role="main">
+                        <div id="list-toolbar">
+                            <h1 data-ng-model="namelist">{{namelist}}</h1>
                         </div>
+                    </div>
 
                         <!--Right wrapper-->
                         <div id="sidebar-wrapper-right">
                             <!--Some code-->
                         </div>
 
-                        <div id="taskScroll" class="tasks-scroll  hidden">
+                    <div id="taskScroll" class="tasks-scroll  hidden">
+                        
+                        <div class="add-task">
+                            <button style="padding-right: 5px; padding-top: 10px" data-ng-click="addtodoitem(todoitem)">
+                                <span class="glyphicon glyphicon-plus" style="padding-right: 5px"></span>
+                            </button>
+                            <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" name="todoitem.name" data-ng-model="todoitem.Name"/>
+                        </div>
 
-                            <div class="add-task">
-                                <button style="padding-right: 5px; padding-top: 10px" data-ng-click="addtodoitem(todoitem)">
-                                    <span class="glyphicon glyphicon-plus" style="padding-right: 5px"></span>
-                                </button>
-                                <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" name="todoitem.name" data-ng-model="todoitem.Name"/>
-                            </div>
-
-                            <div class="task-list">
-                                <ol class="tasks" style="padding-left: 20px; padding-right: 20px">
-                                    <li class="taskItem" data-ng-repeat="toDoItem in toDoItems">
+                        <div class="task-list">
+                            <ol class="tasks" style="padding-left: 20px; padding-right: 20px">
+                                <li class="taskItem" data-ng-repeat="toDoItem in toDoItems">
                                         <div class="taskItem-body" ng-dblClick="doubleClick($event)" style="width: 100%">
-                                            <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoItem.Id, status)">
-                                            <span style="padding-left: 10px; width: 90%">{{toDoItem.Name}}</span>
+                                        <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoItem.Id, status)">
+                                        <span style="padding-left: 10px; width: 90%">{{toDoItem.Name}}</span>
 
-                                            <button data-ng-click="renametoDoItem(toDoItem)">
-                                                <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
-                                            </button>
+                                        <button data-ng-click="renametoDoItem(toDoItem)">
+                                            <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
+                                        </button>
 
-                                            <button style="padding-right: 10px;" id="{{toDoItem.Id}}" data-ng-click="deletetoDoItem(toDoItem)">
-                                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                            </button>
-                                        </div>
-                                    </li>
-                                </ol>
+                                        <button style="padding-right: 10px;" id="{{toDoItem.Id}}" data-ng-click="deletetoDoItem(toDoItem)">
+                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ol>
 
-                                <h2 class="heading">
-                                    <a href="" data-ng-click="getCompletedTasks()" style="text-decoration: none;">Показать завершенные задачи</a>
-                                </h2>
+                            <h2 class="heading">
+                                <a href="" data-ng-click="getCompletedTasks()" style="text-decoration: none;">Показать завершенные задачи</a>
+                            </h2>
 
-                                <ol id="completedList" class="tasks hidden" style="padding-left: 20px; padding-right: 20px;" title="hidden">
-                                    <li class="taskItem" data-ng-repeat="toDoCompletedItem in toDoCompletedItems">
-                                        <div class="taskItem-body" style="width: 100%">
-                                            <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoCompletedItem.Id, status)">
-                                            <span style="padding-left: 10px; width: 90%">{{toDoCompletedItem.Name}}</span>
+                            <ol id="completedList" class="tasks hidden" style="padding-left: 20px; padding-right: 20px;" title="hidden">
+                                <li class="taskItem" data-ng-repeat="toDoCompletedItem in toDoCompletedItems">
+                                    <div class="taskItem-body" style="width: 100%">
+                                        <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoCompletedItem.Id, status)">
+                                        <span style="padding-left: 10px; width: 90%">{{toDoCompletedItem.Name}}</span>
 
-                                            <button data-ng-click="renametoDoItem(toDoCompletedItem)">
-                                                <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
-                                            </button>
+                                        <button data-ng-click="renametoDoItem(toDoCompletedItem)">
+                                            <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
+                                        </button>
 
-                                            <button style="padding-right: 10px;" id="{{toDoCompletedItem.Name}}" data-ng-click="deletetoDoItem(toDoCompletedItem)">
-                                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                            </button>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </div>
+                                        <button style="padding-right: 10px;" id="{{toDoCompletedItem.Name}}" data-ng-click="deletetoDoItem(toDoCompletedItem)">
+                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -157,6 +144,7 @@
                 <a href="#close" type="button" class="btn btn-danger">Отмена</a>
             </div>
         </div>
+        @Html.Partial("UserProfileModalWindow")
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
