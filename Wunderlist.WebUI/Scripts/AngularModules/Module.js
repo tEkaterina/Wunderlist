@@ -1,4 +1,5 @@
-﻿var app = angular.module("WunderlistModule", []);
+﻿/// <reference path="UserProfileController.js" />
+var app = angular.module("WunderlistModule", []);
 
 app.controller('toDoListCtrl', function ($scope, $http) {
 

@@ -14,26 +14,22 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Wunderlist.css" rel="stylesheet">
     <link href="~/Content/Styles.css" rel="stylesheet">
+    <link href="~/Content/UserProfileStyle.css" rel="stylesheet"/>
     <link href="~/Content/TaskStyle.css" rel="stylesheet" />
 
     <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/AngularModules/Module.js"></script>
+    <script src="~/Scripts/AngularModules/UserProfileController.js"></script>
     <script src="~/Scripts/ViewJs/addTaskInputText.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="~/Scripts/ng-file-upload-shim.min.js"></script>
+    <script src="~/Scripts/ng-file-upload.min.js"></script>
 </head>
 <body id="wunderlist-base" class="background-06" data-ng-app="WunderlistModule">
     <div data-ng-controller="toDoListCtrl">
         <div id="wrapper">
             <div id="sidebar-wrapper">
-                <div>
-                    <ul class="sidebar-nav">
-                        <li>
+                <div class="sidebar-nav" style="top: 0;">
                             <div id="search-toolbar" class="search-bar">
                                 <a id="menu-toggle" href="#menu-toggle" style="width: 20%; float: left; color: #ffffff">
                                     <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
@@ -43,15 +39,8 @@
                                     <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
                                 </div>
                             </div>
-                        </li>
-                        <li>
-                            <div id="user-info" class="list-item">
-                                @{
-                                    var username = HttpContext.Current.User.Identity.Name;
-                                }
-                                @username
-                            </div>
-                        </li>
+                    @Html.Partial("UserInfo")
+                    <ul class="sidebar-nav">
                         <li>
                             <div class="list-item" data-ng-repeat="listItem in toDoList">
                                 <div style="float: right;">
@@ -122,12 +111,12 @@
 
                                         <button data-ng-click="renametoDoItem(toDoCompletedItem)">
                                             <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
-                                        </button>
+                                </button>
 
                                         <button style="padding-right: 10px;" id="{{toDoCompletedItem.Name}}" data-ng-click="deletetoDoItem(toDoCompletedItem)">
                                             <span class="glyphicon glyphicon-remove-circle"></span>
-                                        </button>
-                                    </div>
+                                </button>
+                            </div>
                                 </li>
                             </ol>
                         </div>
@@ -137,16 +126,16 @@
                 </div>
             </div>
         </div>
-        <!--Modal window-->
         <div id="createTask" class="modalDialog">
             <div>
                 <a class="close" title="Закрыть" href="#close">X</a>
                 <h2 data-ng-model="nameOperation">{{nameOperation}}</h2>
-                <input id="listname" type="text" class="form-control input-email" name="todolist.name" placeholder="Введите название списка..." id="inputText" data-ng-model="todolist.Name" /><br />
+                <input id="listname" type="text" class="form-control input-email" name="todolist.name" placeholder="Введите название списка..." id="inputText" data-ng-model="todolist.Name"/><br/>
                 <a href="#close" type="button" class="btn btn-info" data-ng-click="savedata(todolist)">Сохранить</a>
                 <a href="#close" type="button" class="btn btn-danger">Отмена</a>
             </div>
         </div>
+        @Html.Partial("UserProfileModalWindow")
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
