@@ -8,6 +8,12 @@ namespace Wunderlist.WebUI.Controllers
 {
     public class MainController : Controller
     {
+        private enum Status
+        {
+            Wait = 1,
+            Completed = 2
+        };
+
         private readonly IToDoListService _toDoListService;
         private readonly IUserService _userService;
         private readonly IToDoTaskService _toDoTaskService;
@@ -62,7 +68,7 @@ namespace Wunderlist.WebUI.Controllers
 
             if (toDoList != null)
             {
-                var tasks = _toDoTaskService.GetAllTasksByListNameAndUsername(toDoList.Id).ToList();
+                var tasks = _toDoTaskService.GetAllTasksByListNameAndStatusId(toDoList.Id, (int)Status.Wait).ToList();
                 return Json(tasks, JsonRequestBehavior.AllowGet);
             }
             return Json(null, JsonRequestBehavior.AllowGet);
@@ -112,8 +118,30 @@ namespace Wunderlist.WebUI.Controllers
         [HttpPost]
         public JsonResult RenameToDoItem(int taskItemId, string taskname, string listname)
         {
-            _toDoTaskService.Update(taskItemId, taskname);
+            var currentTask = _toDoTaskService.GetTaskById(taskItemId);
+            _toDoTaskService.Update(taskItemId, taskname, currentTask.TaskStatusId);
             return GetToDoItems(listname);
+        }
+
+        [HttpPost]
+        public JsonResult ChangeTaskStatus(int taskId, bool status, int listId)
+        {
+            var currentToDoList = _toDoListService.GetById(listId);
+            var currentTask = _toDoTaskService.GetTaskById(taskId);
+            var statusId = (status) ? Status.Completed : Status.Wait;
+            _toDoTaskService.Update(taskId, currentTask.Name, (int)statusId);
+            return GetToDoItems(currentToDoList.Name);
+        }
+
+
+        [HttpPost]
+        public JsonResult GetCompletedToDoItems(int listId)
+        {
+            var currentToDoList = _toDoListService.GetById(listId);
+            var toDoItems = _toDoTaskService.GetAllTasksByListNameAndStatusId(currentToDoList.Id, (int) Status.Completed);
+            if (toDoItems == null)
+                return Json(null, JsonRequestBehavior.AllowGet);
+            return Json(toDoItems, JsonRequestBehavior.AllowGet);
         }
     }
 }
