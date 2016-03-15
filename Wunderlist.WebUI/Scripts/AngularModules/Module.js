@@ -183,3 +183,66 @@ var app = angular.module("WunderlistModule", []);
 //        $("#wrapper-right").toggleClass("toggled");
 //    }
 //});
+
+app.controller('UpdateNamesCtrl', function($scope, $http) {
+
+    var currentElementId = undefined;
+
+    $scope.$on("editNameEvent", function (event, args) {
+        $scope.nameOperation = args.operation;
+        $scope.todolist.Name = args.item.Name;
+        currentElementId = args.item.Id;
+        window.location.href = '#createTask';
+        var elem = document.getElementById('listname');
+        elem.value = args.item.Name;
+    });
+
+    function renameToDoList(listItemId, listname) {
+        $http.post("/ListTasks/RenameToDoList", { listItemId: listItemId, listname: listname })
+                    .success(function (result) {
+                        $scope.$root.$broadcast("createListEvent", {
+                            toDoLists : result
+                        });
+                    })
+                    .error(function (result) {
+                        console.log(result);
+                    });
+    }
+
+    $scope.savedata = function (toDoList) {
+        if ($scope.nameOperation === undefined) {
+            $http.post("/ListTasks/AddToDoList", { name: toDoList.Name })
+                .success(function (result) {
+                    $scope.$root.$broadcast("createListEvent", {
+                        toDoLists: result
+                    });
+                })
+                .error(function (result) {
+                    console.log(result);
+                });
+        }
+        if ($scope.nameOperation === "Переименовать список") {
+            var listItemId = currentElementId;
+            var listname = toDoList.Name;
+            renameToDoList(listItemId, listname);
+            $scope.nameOperation = "Создать список";
+        }
+        //if ($scope.nameOperation === "Переименовать задачу") {
+        //    var taskItemId = currentElementId;
+        //    var taskname = toDoList.Name;
+        //    var listItem = $scope.namelist;
+        //    $http.post("/ToDoItem/RenameToDoItem", { taskItemId: taskItemId, taskname: taskname, listname: listItem })
+        //            .success(function (result) {
+        //                $scope.toDoItems = result;
+        //                $http.post("/ToDoItem/GetCompletedToDoItems", { listId: currentElementId })
+        //                .success(function (resultJson) {
+        //                    $scope.toDoCompletedItems = resultJson;
+        //                });
+        //            })
+        //            .error(function (result) {
+        //                console.log(result);
+        //            });
+        //    $scope.nameOperation = "Создать список";
+        //}
+    }
+});

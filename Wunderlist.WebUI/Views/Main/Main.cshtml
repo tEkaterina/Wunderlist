@@ -14,7 +14,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Wunderlist.css" rel="stylesheet">
     <link href="~/Content/Styles.css" rel="stylesheet">
-    <link href="~/Content/UserProfileStyle.css" rel="stylesheet"/>
+    <link href="~/Content/UserProfileStyle.css" rel="stylesheet" />
     <link href="~/Content/TaskStyle.css" rel="stylesheet" />
     <link href="~/Content/Wrapper.css" rel="stylesheet" />
 
@@ -23,23 +23,20 @@
     <script src="~/Scripts/AngularModules/Module.js"></script>
     <script src="~/Scripts/AngularModules/ToDoListsController.js"></script>
     <script src="~/Scripts/AngularModules/TaskToDoItemController.js"></script>
-    @*<script src="~/Scripts/AngularModules/UserProfileController.js"></script>*@
+    <script src="~/Scripts/AngularModules/UserProfileController.js"></script>
     <script src="~/Scripts/ViewJs/addTaskInputText.js"></script>
-    @*<script src="~/Scripts/ng-file-upload-shim.min.js"></script>
-    <script src="~/Scripts/ng-file-upload.min.js"></script>*@
 </head>
 <body id="wunderlist-base" class="background-06" data-ng-app="WunderlistModule">
     <div>
-        <div id="wrapper" data-ng-controller="ToDoListsController">
-            
-            <div id="sidebar-wrapper">
+        <div id="wrapper">
+            <div id="sidebar-wrapper" data-ng-controller="ToDoListsController">
                 <div class="sidebar-nav" style="top: 0;">
                     <div id="search-toolbar" class="search-bar">
                         <a id="menu-toggle" href="#menu-toggle" style="width: 20%; float: left; color: #ffffff">
                             <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
                         </a>
                         <div class="wrapper" style="float: right; width: 80%">
-                            <input type="text"/>
+                            <input type="text" />
                             <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
                         </div>
                     </div>
@@ -66,23 +63,13 @@
                         <span class="sidebarActions-label">Создать список</span>
                     </a>
                 </div>
-                <!--Modal window-->
-                <div id="createTask" class="modalDialog">
-                    <div>
-                        <a class="close" title="Закрыть" href="#close">X</a>
-                        <h2 data-ng-model="nameOperation">{{nameOperation}}</h2>
-                        <input id="listname" type="text" class="form-control input-email" name="todolist.name" placeholder="Введите название списка..." id="inputText" data-ng-model="todolist.Name"/><br/>
-                        <a href="#close" type="button" class="btn btn-info" data-ng-click="savedata(todolist)">Сохранить</a>
-                        <a href="#close" type="button" class="btn btn-danger">Отмена</a>
-                    </div>
-                </div>
             </div>
 
             <!-- Page Content -->
             <div id="wrapper-right" class="toggled">
                 <div id="page-content-wrapper">
 
-                    <div class="container-fluid">
+                    <div class="container-fluid" data-ng-controller="TaskToDoItemController">
 
                         <div id="tasks" role="main">
 
@@ -92,18 +79,18 @@
 
                             <!--Right wrapper-->
                             <div id="sidebar-wrapper-right">
-                                <input type="date"/>
+                                <input type="date" />
                             </div>
 
                         </div>
 
-                        <div id="taskScroll"  class="tasks-scroll  hidden" data-ng-controller="TaskToDoItemController">
+                        <div id="taskScroll" class="tasks-scroll  hidden">
 
                             <div class="add-task">
-                                <button style="padding-right: 5px; padding-top: 10px" data-ng-click="addtodoitem(todoitem)">
+                                <button style="padding-right: 5px; padding-top: 10px" data-ng-click="addToDoItem(todoitem)">
                                     <span class="glyphicon glyphicon-plus" style="padding-right: 5px"></span>
                                 </button>
-                                <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" name="todoitem.name" data-ng-model="todoitem.Name"/>
+                                <input type="text" style="width: 90%" placeholder="Добавить задачу..." id="inputTask" name="todoitem.name" data-ng-model="todoitem.Name" />
                             </div>
 
                             <div class="task-list">
@@ -152,6 +139,16 @@
             </div>
         </div>
         @Html.Partial("UserProfileModalWindow")
+    </div>
+    <!--Modal window-->
+    <div id="createTask" class="modalDialog">
+        <div data-ng-controller="UpdateNamesCtrl">
+            <a class="close" title="Закрыть" href="#close">X</a>
+            <h2 data-ng-model="nameOperation">{{nameOperation}}</h2>
+            <input id="listname" type="text" class="form-control input-email" name="todolist.name" placeholder="Введите название списка..." id="inputText" data-ng-model="todolist.Name" /><br />
+            <a href="#close" type="button" class="btn btn-info" data-ng-click="savedata(todolist)">Сохранить</a>
+            <a href="#close" type="button" class="btn btn-danger">Отмена</a>
+        </div>
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
