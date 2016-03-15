@@ -81,7 +81,7 @@
     }
 
         #wrapper-right.toggled {
-            padding-right: 50px;
+            padding-right: 0px;
         }
 
     #sidebar-wrapper-right {
@@ -89,7 +89,7 @@
     }
 
     #wrapper-right.toggled #sidebar-wrapper-right {
-        width: 50px;
+        width: 0px;
     }
 
     #page-content-wrapper {
