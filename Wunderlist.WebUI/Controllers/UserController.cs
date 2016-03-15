@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using Wunderlist.Services.Interfaces.Entities;
@@ -70,6 +71,13 @@ namespace Wunderlist.WebUI.Controllers
                 return RedirectToAction("Singup");
             }
             return View(user);
+        }
+
+        [HttpPut]
+        public JsonResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return Json("/Home/Index");
         }
 
         private string GetSalt()

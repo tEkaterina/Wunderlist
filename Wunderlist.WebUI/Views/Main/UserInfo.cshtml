@@ -1,6 +1,12 @@
 ﻿<div data-ng-controller="userProfileController" data-ng-model="userProfile" class="user-info">
-    <img class="avatar" src="data:image/jpeg;base64, {{userProfile.Avatar}}" />
+    <img class="avatar-sm" src="data:image/jpeg;base64, {{userProfile.Avatar}}"/>
     <span>{{userProfile.Name}}</span>
-    <img src="~/Content/icons/user-arrow.png" height="7" />
+    <div class="dropdown" style="display: inline-block;">
+        <a class="btn dropdown-toggle" data-toggle="dropdown"><img src="~/Content/icons/user-arrow.png" height="7"/></a>
+        <ul class="dropdown-menu user-menu">
+            <li><a href="#" data-toggle="modal" data-target="#userProfileModal" data-ng-click="loadUserProfile()">Параметры учетной записи</a></li>
+            <li><a href="#" data-ng-click="logout()">Выход</a></li>
+        </ul>
+    </div>
 </div>
 

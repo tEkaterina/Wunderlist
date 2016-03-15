@@ -27,17 +27,13 @@ namespace Wunderlist.Services.Services
             _uow.Commit();
         }
 
-        public void Delete(int id)
+        public void Update(AvatarServiceEntity avatar)
         {
-            if (id <= 0)
-                throw new ArgumentException("The avatar id must be greater than zero.", nameof(id));
+            if (avatar == null)
+                throw new ArgumentNullException(nameof(avatar));
 
-            var avatar = _avatarRepository.GetById(id);
-            if (avatar != null)
-            {
-                _avatarRepository.Delete(avatar);
-                _uow.Commit();
-            }
+            _avatarRepository.Update(avatar.ToDalEntity());
+            _uow.Commit();
         }
 
         public AvatarServiceEntity GetByUserId(int id)

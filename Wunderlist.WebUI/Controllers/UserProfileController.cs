@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text;
 using System.Web.Mvc;
+using System.Web.Security;
 using Wunderlist.Services.Interfaces.Entities;
 using Wunderlist.Services.Interfaces.Services;
 using Wunderlist.WebUI.Infrastructure;
@@ -39,6 +41,56 @@ namespace Wunderlist.WebUI.Controllers
             };
 
             return Json(userProfile, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPut]
+        public ActionResult ChangeAvatar(string image)
+        {
+            var avatarImg = Convert.FromBase64String(image);
+            var email = HttpContext.User.Identity.Name;
+            var user = _userService.GetUserEntity(email);
+
+            var avatarEntity = _avatarService.GetByUserId(user.Id);
+            if (avatarEntity == null)
+            {
+                CreateNewAvatar(user.Id, avatarImg);
+            }
+            else
+            {
+                UpdateAvatar(avatarEntity, avatarImg);
+            }
+            return Json(true);
+        }
+
+        [HttpPut]
+        public ActionResult ChangeUsername(string newUsername)
+        {
+            var email = HttpContext.User.Identity.Name;
+            var user = _userService.GetUserEntity(email);
+            if (user.Name != newUsername)
+            {
+                user.Name = newUsername;
+                _userService.UpdateUser(user);
+            }
+            return Json(true);
+        }
+
+        private void CreateNewAvatar(int userId, byte[] img)
+        {
+            var avatarEntity = new AvatarServiceEntity(userId)
+            {
+                Image = img,
+                IsCustom = true
+            };
+            _avatarService.Create(avatarEntity);
+        }
+
+        private void UpdateAvatar(AvatarServiceEntity avatarEntity, byte[] img)
+        {
+            avatarEntity.Image = img;
+            avatarEntity.IsCustom = true;
+
+            _avatarService.Update(avatarEntity);
         }
     }
 }
