@@ -8,7 +8,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
     $scope.nameOperation = "Создать список";
     var currentlistId = undefined;
 
-    $http.get("/Main/GetToDoLists")
+    $http.get("/ListTasks/GetToDoLists")
         .success(function (result) {
             $scope.toDoList = result;
             var element = document.getElementById("taskScroll");
@@ -20,7 +20,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
 
     $scope.savedata = function (toDoList) {
         if ($scope.nameOperation === "Создать список") {
-            $http.post("/Main/AddToDoList", { name: toDoList.Name })
+            $http.post("/ListTasks/AddToDoList", { name: toDoList.Name })
                 .success(function (result) {
                     $scope.toDoList = result;
                 })
@@ -31,7 +31,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
         if ($scope.nameOperation === "Переименовать список") {
             var listItemId = currentlistId;
             var listname = toDoList.Name;
-            $http.post("/Main/RenameToDoList", { listItemId: listItemId, listname: listname })
+            $http.post("/ListTasks/RenameToDoList", { listItemId: listItemId, listname: listname })
                     .success(function (result) {
                         $scope.toDoList = result;
                         $scope.toDoItems = "";
@@ -46,10 +46,10 @@ app.controller('toDoListCtrl', function ($scope, $http) {
             var taskItemId = currentlistId;
             var taskname = toDoList.Name;
             var listItem = $scope.namelist;
-            $http.post("/Main/RenameToDoItem", { taskItemId: taskItemId, taskname: taskname, listname: listItem })
+            $http.post("/ToDoItem/RenameToDoItem", { taskItemId: taskItemId, taskname: taskname, listname: listItem })
                     .success(function (result) {
                         $scope.toDoItems = result;
-                        $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                        $http.post("/ToDoItem/GetCompletedToDoItems", { listId: currentlistId })
                         .success(function (resultJson) {
                             $scope.toDoCompletedItems = resultJson;
                         });
@@ -69,10 +69,10 @@ app.controller('toDoListCtrl', function ($scope, $http) {
         currentlistId = item.Id;
         $scope.namelist = listname;
         $scope.toDoItems = "";
-        $http.post("/Main/GetToDoItems", { listName: listname })
+        $http.post("/ToDoItem/GetToDoItems", { listName: listname })
                 .success(function (result) {
                     $scope.toDoItems = result;
-                    $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                    $http.post("/ToDoItem/GetCompletedToDoItems", { listId: currentlistId })
                         .success(function (resultJson) {
                             $scope.toDoCompletedItems = resultJson;
                         });
@@ -84,7 +84,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
 
     $scope.addtodoitem = function (todoitem) {
         var listname = $scope.namelist;
-        $http.post("/Main/AddToDoItem", { name: todoitem.Name, listname: listname })
+        $http.post("/ToDoItem/AddToDoItem", { name: todoitem.Name, listname: listname })
             .success(function (result) {
                 $scope.toDoItems = result;
                 todoitem.Name = "";
@@ -97,10 +97,10 @@ app.controller('toDoListCtrl', function ($scope, $http) {
     $scope.deletetoDoItem = function (item) {
         var listname = $scope.namelist;
         var toDoItemId = item.Id;
-        $http.put("/Main/DeleteToDoItem", { taskId: toDoItemId, listname: listname })
+        $http.put("/ToDoItem/DeleteToDoItem", { taskId: toDoItemId, listname: listname })
                 .success(function (result) {
                     $scope.toDoItems = result;
-                    $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                    $http.post("/ToDoItem/GetCompletedToDoItems", { listId: currentlistId })
                         .success(function (resultJson) {
                             $scope.toDoCompletedItems = resultJson;
                         });
@@ -113,7 +113,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
     $scope.deleteList = function () {
         var listname = $scope.namelist;
         var listItemId = this.listItem.Id;
-        $http.put("/Main/DeleteToDoList", { listItemId: listItemId, listname: listname })
+        $http.put("/ListTasks/DeleteToDoList", { listItemId: listItemId, listname: listname })
                 .success(function (result) {
                     $scope.toDoList = result;
                     $scope.toDoItems = "";
@@ -152,10 +152,10 @@ app.controller('toDoListCtrl', function ($scope, $http) {
 
     $scope.toDoTaskCompleted = function (id, status) {
         if (status) {
-            $http.post("/Main/ChangeTaskStatus", { taskId: id, status: status, listId: currentlistId })
+            $http.post("/ToDoItem/ChangeTaskStatus", { taskId: id, status: status, listId: currentlistId })
             .success(function (result) {
                 $scope.toDoItems = result;
-                $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+                $http.post("/ToDoItem/GetCompletedToDoItems", { listId: currentlistId })
                         .success(function (resultJson) {
                             $scope.toDoCompletedItems = resultJson;
                         });
@@ -173,7 +173,7 @@ app.controller('toDoListCtrl', function ($scope, $http) {
         if (title === "hidden") {
             element.setAttribute("title", "active");
             element.setAttribute("class", "tasks");
-            $http.post("/Main/GetCompletedToDoItems", { listId: currentlistId })
+            $http.post("/ToDoItem/GetCompletedToDoItems", { listId: currentlistId })
                 .success(function (result) {
                     $scope.toDoCompletedItems = result;
                 })
