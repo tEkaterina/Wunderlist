@@ -227,6 +227,8 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AngularModules\Module.js" />
+    <Content Include="Scripts\AngularModules\TaskToDoItemController.js" />
+    <Content Include="Scripts\AngularModules\ToDoListsController.js" />
     <Content Include="Scripts\AngularModules\UserProfileController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -274,8 +276,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ListTasks\" />
-    <Folder Include="Views\ToDoItem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
