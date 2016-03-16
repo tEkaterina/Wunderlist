@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Wunderlist.ORM.Entities
 {
@@ -8,6 +7,7 @@ namespace Wunderlist.ORM.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime? DueDate { get; set; }
+        public string Note { get; set; }
 
         public int ToDoListId { get; set; }
         public virtual ToDoList ToDoList { get; set; }

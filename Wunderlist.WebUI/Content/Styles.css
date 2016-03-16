@@ -128,6 +128,21 @@
     background: #668964 none repeat scroll 0 0;
 }
 
+#wunderlist-base .add-note {
+    border-radius: 3px;
+    margin: 14px 0;
+    overflow: hidden;
+    padding: 0 12px;
+    position: relative;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#wunderlist-base .add-note {
+    background: #ffffff none repeat scroll 0 0;
+}
+
 #wunderlist-base .task {
     border-radius: 3px;
     margin: 14px 0;

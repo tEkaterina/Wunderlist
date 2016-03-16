@@ -60,6 +60,24 @@ namespace Wunderlist.Services.Services
             _uow.Commit();
         }
 
+        public void SaveDueDate(int taskId, string date)
+        {
+            var entity = _repository.GetById(taskId);
+            DateTime time;
+            DateTime.TryParse(date, out time);
+            entity.DueDate = time;
+            _repository.Update(entity);
+            _uow.Commit();
+        }
+
+        public void SaveNote(int taskId, string note)
+        {
+            var entity = _repository.GetById(taskId);
+            entity.Note = note;
+            _repository.Update(entity);
+            _uow.Commit();
+        }
+
         public ToDoTaskServiceEntity GetTaskById(int taskId)
         {
             return _repository.GetById(taskId).ToServiceEntity();
