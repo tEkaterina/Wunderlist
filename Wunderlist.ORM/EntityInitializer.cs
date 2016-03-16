@@ -7,12 +7,9 @@ namespace Wunderlist.ORM
     {
         protected override void Seed(EntityContext context)
         {
-            context.Set<User>().Add(new User()
-            {
-                Email = "admin@mail.com",
-                Password = "sdgsd",
-                Salt = "12345"
-            });
+            context.Set<TaskStatus>().Add(new TaskStatus() { Name = "Wait" });
+            context.Set<TaskStatus>().Add(new TaskStatus() { Name = "Completed" });
+
             base.Seed(context);
         }
     }
