@@ -43,9 +43,10 @@
         $http.put("/ListTasks/DeleteToDoList", { listItemId: listItemId, listname: listname })
                 .success(function (result) {
                     $scope.toDoList = result;
-                    $scope.toDoItems = "";
-                    $scope.toDoCompletedItems = "";
-                    $scope.namelist = "";
+                    $scope.$root.$broadcast("renameToDoItemEvent", {
+                        toDoItems: "",
+                        toDoCompletedItems: ""
+                    });
                 })
                 .error(function (result) {
                     console.log(result);

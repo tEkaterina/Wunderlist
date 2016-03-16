@@ -34,8 +34,6 @@
     });
 
     $scope.$on("renameToDoItemEvent", function (event, args) {
-        //$scope.namelist = "";
-        //currentlistId = undefined;
         $scope.toDoItems = args.toDoItems;
         $scope.toDoCompletedItems = args.toDoCompletedItems;
     });
