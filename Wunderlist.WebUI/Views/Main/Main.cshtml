@@ -76,23 +76,11 @@
                     <div class="container-fluid" data-ng-controller="TaskToDoItemController">
 
                         <div id="tasks" role="main">
-
                             <div id="list-toolbar">
                                 <h1 data-ng-model="namelist">{{namelist}}</h1>
                             </div>
-
                             <!--Right wrapper-->
-                            <div id="sidebar-wrapper-right">
-                                <h5 data-ng-model="nameTask" style="margin-left: 20px">{{nameTask}}</h5>
-                                <div class="add-note">
-                                    <input type="text" style="width: 80%; height: 100%" placeholder="Добавить заметку..." id="inputNote" name="taskItem.Note" data-ng-model="taskItem.Note" value="" />
-                                </div>
-                                <div class="container" style="width: 95%">
-                                    <input type="text" id="date" data-format="DD-MM-YYYY HH:mm" data-template="D / MMM / YYYY H : mm" name="date" value="09-01-2016 8:30">
-                                </div>
-                                <br/>
-                                <a href="" style="margin-left: 20px" type="button" class="btn btn-info" data-ng-click="saveNoteDateToDoItem(taskItem)">Сохранить</a>
-                            </div>
+                            @Html.Partial("WrapperDateNote")
                         </div>
 
                         <div id="taskScroll" class="tasks-scroll  hidden">

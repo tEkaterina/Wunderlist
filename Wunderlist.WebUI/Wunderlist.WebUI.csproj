@@ -280,6 +280,7 @@
     <Content Include="Views\User\Singup.cshtml" />
     <Content Include="Views\Main\UserInfo.cshtml" />
     <Content Include="Views\Main\UserProfileModalWindow.cshtml" />
+    <Content Include="Views\Main\WrapperDateNote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

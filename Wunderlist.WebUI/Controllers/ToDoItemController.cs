@@ -111,7 +111,7 @@ namespace Wunderlist.WebUI.Controllers
         public JsonResult GetToDoItemNote(int toDoItemId)
         {
             var task = _toDoTaskService.GetTaskById(toDoItemId);
-            return Json(task.Note, JsonRequestBehavior.AllowGet);
+            return Json(task, JsonRequestBehavior.AllowGet);
         }
     }
 }
