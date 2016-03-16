@@ -10,7 +10,7 @@ namespace Wunderlist.ORM.Entities
         public int Id { get; set; }
         public virtual User User { get; set; }
 
-        public bool IsCustom { get; set; }
+        public bool IsCustom { get; set; } = false;
         public byte[] Image { get; set; }
 
     }
