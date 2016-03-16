@@ -25,15 +25,6 @@ namespace Wunderlist.Services.Services
             _uow = uow;
         }
 
-        public UserServiceEntity GetUserEntity(int id)
-        {
-            if (id <= 0)
-                throw new ArgumentException("User id must be greater than 0.", nameof(id));
-
-            var userDalEntity = GetUserById(id);
-            return userDalEntity?.ToServiceEntity();
-        }
-
         public UserServiceEntity GetUserEntity(string email)
         {
             if (string.IsNullOrEmpty(email))
@@ -41,11 +32,6 @@ namespace Wunderlist.Services.Services
 
             var userDalEntity = GetUserByEmail(email);
             return userDalEntity?.ToServiceEntity();
-        }
-
-        public IEnumerable<UserServiceEntity> GetAllUserEntities()
-        {
-            return _repository.GetAll().Select(user => user.ToServiceEntity());
         }
 
         public void CreateUser(UserServiceEntity user)
@@ -56,14 +42,6 @@ namespace Wunderlist.Services.Services
             var userDalEntity = user.ToDalEntity();
             _repository.Create(userDalEntity);
             _uow.Commit();
-        }
-
-        public void DeleteUser(int id)
-        {
-            if (id <= 0)
-                throw new ArgumentException("User id must be greater than 0.", nameof(id));
-
-            DeleteUser(GetUserById(id));
         }
         
         public void UpdateUser(UserServiceEntity user)
@@ -80,16 +58,7 @@ namespace Wunderlist.Services.Services
             _uow.Commit();
             
         }
-
-        private void DeleteUser(UserDalEntity user)
-        {
-            if (user == null)
-                throw new ArgumentNullException(nameof(user));
-
-            _repository.Delete(user);
-            _uow.Commit();
-        }
-
+        
         private UserDalEntity GetUserById(int id)
         {
             if (id <= 0)
