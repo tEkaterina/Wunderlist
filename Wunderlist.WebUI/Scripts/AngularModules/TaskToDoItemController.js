@@ -33,16 +33,25 @@
         $scope.toDoCompletedItems = getCompletedToDoitemsByListId();
     });
 
+    $scope.$on("renameToDoItemEvent", function (event, args) {
+        //$scope.namelist = "";
+        //currentlistId = undefined;
+        $scope.toDoItems = args.toDoItems;
+        $scope.toDoCompletedItems = args.toDoCompletedItems;
+    });
+    
     $scope.addToDoItem = function (todoitem) {
         var listname = $scope.namelist;
-        $http.post("/ToDoItem/AddToDoItem", { name: todoitem.Name, listname: listname })
-            .success(function(result) {
+        if (todoitem.Name !== "") {
+            $http.post("/ToDoItem/AddToDoItem", { name: todoitem.Name, listname: listname })
+            .success(function (result) {
                 $scope.toDoItems = result;
                 todoitem.Name = "";
             })
-            .error(function(result) {
+            .error(function (result) {
                 console.log(result);
             });
+        }
     };
 
     $scope.deletetoDoItem = function(item) {
@@ -92,5 +101,4 @@
         e.preventDefault();
         $("#wrapper-right").toggleClass("toggled");
     }
-
 });

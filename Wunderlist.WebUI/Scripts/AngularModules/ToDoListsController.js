@@ -31,6 +31,10 @@
             listname: listname,
             currentlistId: currentlistId
         });
+        $scope.$root.$broadcast("getListNameEvent", {
+            listname: listname,
+            listId: currentlistId
+        });
     };
 
     $scope.deleteList = function () {
