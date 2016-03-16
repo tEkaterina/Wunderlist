@@ -187,11 +187,18 @@ var app = angular.module("WunderlistModule", []);
 app.controller('UpdateNamesCtrl', function ($scope, $http) {
 
     var currentElementId = undefined;
+    var listName = undefined;
+    var listId = undefined;
 
     function setValueFieldListname(name) {
         var elem = document.getElementById('listname');
         elem.value = name;
     }
+
+    $scope.$on("getListNameEvent", function (event, args) {
+        listName = args.listname;
+        listId = args.listId;
+    });
 
     $scope.$on("editNameEvent", function (event, args) {
         $scope.nameOperation = args.operation;
@@ -233,12 +240,6 @@ app.controller('UpdateNamesCtrl', function ($scope, $http) {
         if ($scope.nameOperation === "Переименовать задачу") {
             var taskItemId = currentElementId;
             var taskName = toDoList.Name;
-            var listName = undefined;
-            var listId = undefined;
-            $scope.$on("getListNameEvent", function (event, args) {
-                listName = args.listname;
-                listId = args.listId;
-            });
             $http.post("/ToDoItem/RenameToDoItem", { taskItemId: taskItemId, taskname: taskName, listname: listName })
                     .success(function (result) {
                         $http.post("/ToDoItem/GetCompletedToDoItems", { listId: listId })
