@@ -1,15 +1,9 @@
-﻿using System.Data.Entity;
-using Wunderlist.Services.Interfaces.Services;
-using Wunderlist.Services.Services;
-using Wunderlist.DataAccess.MsSql.Concrete;
-using Wunderlist.DataAccess.Interfaces;
-using Wunderlist.DataAccess.Interfaces.Entities;
-using Wunderlist.DataAccess.MsSql.Mappers;
-using Wunderlist.DataAccess.MsSql.Repository;
+﻿using System;
+using System.Configuration;
 using Ninject;
+using Ninject.Syntax;
 using Ninject.Web.Common;
-using Wunderlist.ORM;
-using Wunderlist.ORM.Entities;
+using Wunderlist.DependencyResolver.Configuration;
 
 namespace Wunderlist.DependencyResolver
 {
@@ -17,26 +11,52 @@ namespace Wunderlist.DependencyResolver
     {
         public static void Configure(this IKernel kernel)
         {
-            kernel.Bind<DbContext>().To<EntityContext>().InRequestScope();
-            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+            ResolveByConfigFile(kernel);
+        }
 
-            kernel.Bind<IRepository<UserDalEntity>>().To<Repository<User, UserDalEntity>>();
-            kernel.Bind<IRepository<TaskDalEntity>>().To<Repository<TaskDbModel, TaskDalEntity>>();
-            kernel.Bind<IRepository<TaskStatusDalEntity>>().To<Repository<TaskStatus, TaskStatusDalEntity>>();
-            kernel.Bind<IRepository<ToDoListDalEntity>>().To<Repository<ToDoList, ToDoListDalEntity>>();
-            kernel.Bind<IRepository<AvatarDalEntity>>().To<Repository<Avatar, AvatarDalEntity>>();
+        private static void ResolveByConfigFile(IKernel kernel)
+        {
+            var section = (DependencyResolverConfigSection)ConfigurationManager.GetSection("dependencyResolver");
+            if (section != null)
+            {
+                foreach (DependencyConfigElement dependency in section.DependencyItems)
+                {
+                    var sourceType = Type.GetType(dependency.SourceType);
+                    var targetType = Type.GetType(dependency.TargetType);
 
-            kernel.Bind<IMapper<User, UserDalEntity>>().To<UserMapper>().InSingletonScope();
-            kernel.Bind<IMapper<ToDoList, ToDoListDalEntity>>().To<ToDoListMapper>().InSingletonScope();
-            kernel.Bind<IMapper<TaskDbModel, TaskDalEntity>>().To<ToDoTaskMapper>().InSingletonScope();
-            kernel.Bind<IMapper<Avatar, AvatarDalEntity>>().To<AvatarMapper>().InSingletonScope();
-            //TODO: mappers for other
+                    if (sourceType == null)
+                        throw new ConfigurationErrorsException("Convertion error for source type = " +
+                                                               dependency.SourceType);
+                    if (targetType == null)
+                        throw new ConfigurationErrorsException("Convertion error for target type = " +
+                                                               dependency.TargetType);
 
-            kernel.Bind<IUserService>().To<UserService>();
-            kernel.Bind<IToDoListService>().To<ToDoListService>();
-            kernel.Bind<IToDoTaskService>().To<ToDoTaskService>();
-            kernel.Bind<IAvatarService>().To<AvatarService>();
-            //TODO: bind other services
+                    var binding = kernel.Bind(sourceType).To(targetType);
+                    BindToScope(binding, dependency.InScope);
+                }
+            }
+        }
+
+        private static void BindToScope<T>(IBindingWhenInNamedWithOrOnSyntax<T> binding, DependencyConfigElement.Scope scope)
+        {
+            switch (scope)
+            {
+                case DependencyConfigElement.Scope.Request:
+                    {
+                        binding.InRequestScope();
+                        break;
+                    }
+                case DependencyConfigElement.Scope.Singleton:
+                    {
+                        binding.InSingletonScope();
+                        break;
+                    }
+                default:
+                    {
+                        binding.InTransientScope();
+                        break;
+                    }
+            }
         }
     }
 }

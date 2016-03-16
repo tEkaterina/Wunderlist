@@ -1,4 +1,6 @@
-﻿app.controller('ToDoListsController', function($scope, $http) {
+﻿var app = angular.module('WunderlistModule');
+
+app.controller('ToDoListsController', function ($scope, $http) {
 
     $scope.toDoList = "";
     $scope.toDoCompletedItems = "";

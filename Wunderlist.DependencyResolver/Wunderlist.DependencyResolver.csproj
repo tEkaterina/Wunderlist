@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\DependencyElementCollection.cs" />
+    <Compile Include="Configuration\DependencyConfigElement.cs" />
+    <Compile Include="Configuration\DependencyResolverConfigSection.cs" />
     <Compile Include="Resolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
