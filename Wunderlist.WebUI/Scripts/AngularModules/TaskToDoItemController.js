@@ -4,6 +4,7 @@
     $scope.toDoCompletedItems = "";
     $scope.nameOperation = "Создать список";
     var currentlistId = undefined;
+    var currentTaskId = undefined;
 
     function getToDoItemsByListName(listname) {
         $scope.toDoItems = "";
@@ -24,6 +25,20 @@
             .error(function (result) {
                 console.log(result);
             });
+    }
+
+    function getToDoItemNote(toDoItem) {
+        var toDoItemId = toDoItem.Id;
+        var res = undefined;
+        $http.post("/ToDoItem/GetToDoItemNote", { toDoItemId: toDoItemId })
+            .success(function(result) {
+                res = result;
+            });
+        return res;
+    }
+
+    function hiddenRightMenu() {
+        $("#wrapper-right").toggleClass("toggled");
     }
 
     $scope.$on("changeSelectListEvent", function (event, args) {
@@ -95,8 +110,32 @@
         }
     };
 
-    $scope.doubleClick = function(e) {
+    $scope.doubleClick = function(e, toDoItem) {
         e.preventDefault();
-        $("#wrapper-right").toggleClass("toggled");
+        hiddenRightMenu();
+        currentTaskId = toDoItem.Id;
+        $scope.nameTask = toDoItem.Name;
+        var res = undefined;
+        $http.post("/ToDoItem/GetToDoItemNote", { toDoItemId: toDoItemId })
+            .success(function (result) {
+                res = result;
+            });
+        var element = document.getElementById("inputNote");
+        element.setAttribute("value", res.Note);
+    }
+
+    $scope.saveNoteDateToDoItem = function (taskItem) {
+        if (taskItem.Note !== "" && currentTaskId !== undefined) {
+            var element = document.getElementById("date");
+            var date = element.getAttribute("value");
+            $http.post("/ToDoItem/AddDueDateAndNote", { taskId: currentTaskId, note: taskItem.Note, dueDate: date, listId: currentlistId })
+            .success(function (result) {
+                $scope.toDoItems = result;
+                hiddenRightMenu();
+            })
+            .error(function (result) {
+                console.log(result);
+            });
+        }        
     }
 });

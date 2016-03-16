@@ -97,5 +97,21 @@ namespace Wunderlist.WebUI.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             return Json(toDoItems, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult AddDueDateAndNote(int taskId, string note, string dueDate, int listId)
+        {
+            _toDoTaskService.SaveDueDate(taskId, dueDate);
+            _toDoTaskService.SaveNote(taskId, note);
+            var currentToDoList = _toDoListService.GetById(listId);
+            return GetToDoItems(currentToDoList.Name);
+        }
+        
+        [HttpPost]
+        public JsonResult GetToDoItemNote(int toDoItemId)
+        {
+            var task = _toDoTaskService.GetTaskById(toDoItemId);
+            return Json(task.Note, JsonRequestBehavior.AllowGet);
+        }
     }
 }

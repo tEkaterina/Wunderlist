@@ -14,6 +14,7 @@ namespace Wunderlist.DataAccess.Interfaces.Entities
         public int Id { get; private set; }
         public string Name { get; set; }
         public DateTime? DueDate { get; set; }
+        public string Note { get; set; }
         public int ToDoListId { get; set; }
         public int TaskStatusId { get; set; }
     }
