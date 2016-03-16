@@ -1,4 +1,5 @@
-﻿using Wunderlist.DataAccess.Interfaces;
+﻿using System;
+using Wunderlist.DataAccess.Interfaces;
 using Wunderlist.DataAccess.Interfaces.Entities;
 using Wunderlist.DataAccess.MsSql.Mappers.Property;
 using Wunderlist.ORM.Entities;
@@ -25,6 +26,8 @@ namespace Wunderlist.DataAccess.MsSql.Mappers
             entity.Name = dalEntity.Name ?? entity.Name;
             entity.ToDoListId = (dalEntity.ToDoListId == 0) ? entity.ToDoListId : dalEntity.ToDoListId;
             entity.TaskStatusId = (dalEntity.TaskStatusId == 0) ? entity.TaskStatusId : dalEntity.TaskStatusId;
+            entity.Note = dalEntity.Note ?? entity.Note ?? string.Empty;
+            entity.DueDate = dalEntity.DueDate ?? entity.DueDate;
         }
     }
 }
