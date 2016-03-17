@@ -2,18 +2,13 @@
     <h5 data-ng-model="nameTask" style="margin-left: 20px">{{nameTask}}</h5>
     <div class="add-note">
         <input type="text" style="width: 80%; height: 100%"
-               placeholder="Добавить заметку..." id="inputNote" name="taskitem.Note"
+               placeholder="Добавить заметку..." id="inputNote" name="taskitem.Note" 
                data-ng-model="taskitem.Note" value="{{taskitem.Note}}"/>
     </div>
     <div class="container" style="width: 95%">
-        <span>Установить дату выполнения: </span>
-        <input type="date" name="bday">
-        <br/>
-        <span>Текущая дата выполнения: </span>
-        <br/>
-        <input type="text" value="{{taskitem.DueDate}}">
+        <input type="text" id="date" data-format="DD-MM-YYYY HH:mm" data-template="D / MMM / YYYY H : mm" 
+               name="date" value="09-01-2016 8:30">
     </div>
-    <br/>
+    <br />
     <a href="" style="margin-left: 20px" type="button" class="btn btn-info" data-ng-click="saveNoteDateToDoItem(taskitem)">Сохранить</a>
-    <a href="" style="margin-left: 20px" type="button" class="btn btn-danger" data-ng-click="closeWrapper($event)">Отмена</a>
 </div>
