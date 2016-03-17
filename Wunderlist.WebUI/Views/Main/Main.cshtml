@@ -47,7 +47,6 @@
                         </a>
                         <div class="wrapper" style="float: right; width: 80%">
                             <input type="text" />
-                            <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
                         </div>
                     </div>
                     @Html.Partial("UserInfo")
@@ -55,11 +54,11 @@
                         <li>
                             <div class="list-item" data-ng-repeat="listItem in toDoList">
                                 <div style="float: right;">
-                                    <button style="padding-right: 5px;" data-ng-click="deleteList()">
-                                        <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
-                                    </button>
                                     <button style="padding-right: 5px;" data-ng-click="renameList(listItem)">
                                         <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
+                                    </button>
+                                    <button style="padding-right: 5px;" data-ng-click="deleteList()">
+                                        <span class="glyphicon glyphicon-trash" style="padding-right: 5px"></span>
                                     </button>
                                 </div>
                                 <a id="{{listItem.Id}}" href="" data-ng-click="selectList(listItem)">{{listItem.Name}}</a>
@@ -111,7 +110,7 @@
                                             </button>
 
                                             <button style="padding-right: 10px;" id="{{toDoItem.Id}}" data-ng-click="deletetoDoItem(toDoItem)">
-                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                <span class="glyphicon glyphicon-trash"></span>
                                             </button>
                                         </div>
                                     </li>
@@ -132,7 +131,7 @@
                                             </button>
 
                                             <button style="padding-right: 10px;" id="{{toDoCompletedItem.Name}}" data-ng-click="deletetoDoItem(toDoCompletedItem)">
-                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                <span class="glyphicon glyphicon-trash"></span>
                                             </button>
                                         </div>
                                     </li>

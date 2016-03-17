@@ -99,9 +99,9 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddDueDateAndNote(int taskId, string note, string dueDate, int listId)
+        public JsonResult AddDueDateAndNote(int taskId, string note, int listId)
         {
-            _toDoTaskService.SaveDueDate(taskId, dueDate);
+            _toDoTaskService.SaveDueDate(taskId);
             _toDoTaskService.SaveNote(taskId, note);
             var currentToDoList = _toDoListService.GetById(listId);
             return GetToDoItems(currentToDoList.Name);
