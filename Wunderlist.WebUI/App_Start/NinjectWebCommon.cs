@@ -1,5 +1,7 @@
 using System;
+using System.Configuration;
 using System.Web;
+using System.Web.Mvc;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
@@ -60,6 +62,7 @@ namespace Wunderlist.WebUI
         /// Load your modules or register your services here!
         /// </summary>
         /// <param name="kernel">The kernel.</param>
+        [HandleError(ExceptionType = typeof(ConfigurationErrorsException), View = "~/Error/ConfigError")]
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Configure();

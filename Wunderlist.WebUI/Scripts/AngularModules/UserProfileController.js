@@ -1,10 +1,15 @@
 ﻿var app = angular.module('WunderlistModule');
 
 app.controller('userProfileController', function($scope, $http) {
-    $scope.loadUserProfile = function() {
+
+    $scope.userProfile = {};
+    $scope.changedUserProfile = {};
+
+    $scope.loadUserProfile = function () {
         $http.get("/UserProfile/GetUserInfo")
             .success(function(userProfile) {
                 $scope.userProfile = userProfile;
+                $scope.changedUserProfile = userProfile;
             })
             .error(function(result) {
                 console.log(result);
@@ -44,12 +49,12 @@ app.controller('userProfileController', function($scope, $http) {
     $scope.saveUserProfileChanges = function() {
         var newUsername = document.getElementById('username').value;
         $http.put("/UserProfile/ChangeUsername", { newUsername:  newUsername})
-            .success(function(result) {
+            .success(function (result) {
+                $scope.loadUserProfile();
+                location.reload(false);
             })
             .error(function(result) {
                 console.log(result);
             });
-        $scope.loadUserProfile();
-        window.reload();
     }
 });
