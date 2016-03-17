@@ -18,7 +18,6 @@
     <link href="~/Content/TaskStyle.css" rel="stylesheet" />
     <link href="~/Content/Wrapper.css" rel="stylesheet" />
 
-
     <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/moment.js"></script>
     <script src="~/Scripts/angular.js"></script>
@@ -27,7 +26,6 @@
     <script src="~/Scripts/AngularModules/TaskToDoItemController.js"></script>
     <script src="~/Scripts/AngularModules/UserProfileController.js"></script>
     <script src="~/Scripts/ViewJs/addTaskInputText.js"></script>
-    
 
 </head>
 <body id="wunderlist-base" class="background-06" data-ng-app="WunderlistModule">
@@ -40,8 +38,8 @@
                             <span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
                         </a>
                         <div class="wrapper" style="float: right; width: 80%">
-                            <input type="text" />
-                            <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>
+                            @*<input type="text" />
+                                <button style="padding-right: 5px"><span class="glyphicon glyphicon-search" style="padding-right: 5px"></span></button>*@
                         </div>
                     </div>
                     @Html.Partial("UserInfo")
@@ -49,11 +47,11 @@
                         <li>
                             <div class="list-item" data-ng-repeat="listItem in toDoList">
                                 <div style="float: right;">
-                                    <button style="padding-right: 5px;" data-ng-click="deleteList()">
-                                        <span class="glyphicon glyphicon-remove-circle" style="padding-right: 5px"></span>
-                                    </button>
                                     <button style="padding-right: 5px;" data-ng-click="renameList(listItem)">
                                         <span class="glyphicon glyphicon-pencil" style="padding-right: 10px"></span>
+                                    </button>
+                                    <button style="padding-right: 5px;" data-ng-click="deleteList()">
+                                        <span class="glyphicon glyphicon-trash" style="padding-right: 5px"></span>
                                     </button>
                                 </div>
                                 <a id="{{listItem.Id}}" href="" data-ng-click="selectList(listItem)">{{listItem.Name}}</a>
@@ -94,22 +92,7 @@
 
                             <div class="task-list">
 
-                                <ol class="tasks" style="padding-left: 20px; padding-right: 20px">
-                                    <li class="taskItem" data-ng-repeat="toDoItem in toDoItems">
-                                        <div class="taskItem-body" ng-dblClick="doubleClick($event, toDoItem)" style="width: 100%">
-                                            <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoItem.Id, status)">
-                                            <span style="padding-left: 10px; width: 90%">{{toDoItem.Name}}</span>
-
-                                            <button data-ng-click="renametoDoItem(toDoItem)">
-                                                <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
-                                            </button>
-
-                                            <button style="padding-right: 10px;" id="{{toDoItem.Id}}" data-ng-click="deletetoDoItem(toDoItem)">
-                                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                            </button>
-                                        </div>
-                                    </li>
-                                </ol>
+                                @Html.Partial("ToDoItemTasks")
 
                                 <h2 class="heading">
                                     <a href="" data-ng-click="getCompletedTasks()" style="text-decoration: none;">Показать завершенные задачи</a>
@@ -126,7 +109,7 @@
                                             </button>
 
                                             <button style="padding-right: 10px;" id="{{toDoCompletedItem.Name}}" data-ng-click="deletetoDoItem(toDoCompletedItem)">
-                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                <span class="glyphicon glyphicon-trash"></span>
                                             </button>
                                         </div>
                                     </li>
@@ -159,13 +142,5 @@
     <!-- Menu Toggle Script -->
     <script src="~/Scripts/ViewJs/togglemenu.js"></script>
     <script src="~/Scripts/ViewJs/dateTime.js"></script>
-    <script>
-        $(function () {
-            $('#date').combodate({
-                minYear: 2016,
-                maxYear: 2024
-            });
-        });
-    </script>
 </body>
 </html>

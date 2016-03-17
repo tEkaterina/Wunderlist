@@ -1,0 +1,16 @@
+﻿<ol class="tasks" style="padding-left: 20px; padding-right: 20px">
+    <li class="taskItem" data-ng-repeat="toDoItem in toDoItems">
+        <div class="taskItem-body" ng-dblClick="doubleClick($event, toDoItem)" style="width: 100%">
+            <input type="checkbox" ng-model="status" ng-checked="toDoTaskCompleted(toDoItem.Id, status)">
+            <span style="padding-left: 10px; width: 90%">{{toDoItem.Name}}</span>
+
+            <button data-ng-click="renametoDoItem(toDoItem)">
+                <span style="padding-right: 10px;" class="glyphicon glyphicon-pencil"></span>
+            </button>
+
+            <button style="padding-right: 10px;" id="{{toDoItem.Id}}" data-ng-click="deletetoDoItem(toDoItem)">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </div>
+    </li>
+</ol>

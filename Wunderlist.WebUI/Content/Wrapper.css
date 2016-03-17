@@ -86,6 +86,7 @@
 
     #sidebar-wrapper-right {
         width: 250px;
+        margin-top: -40px;
     }
 
     #wrapper-right.toggled #sidebar-wrapper-right {

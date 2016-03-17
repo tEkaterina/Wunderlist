@@ -1,5 +1,4 @@
 ﻿app.controller('TaskToDoItemController', function ($scope, $http) {
-
     $scope.toDoList = "";
     $scope.toDoCompletedItems = "";
     $scope.nameOperation = "Создать список";
@@ -27,10 +26,28 @@
             });
     }
 
-    function getToDoItemNote(toDoItem) {
+    function formatDate(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        var strTime = hours + ':' + minutes;
+        return date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() + " " + strTime;
+    }
+
+    function getToDoItemNoteDate(toDoItem) {
         var toDoItemId = toDoItem.Id;
-        $http.post("/ToDoItem/GetToDoItemNote", { toDoItemId: toDoItemId })
-            .success(function(result) {
+        $http.post("/ToDoItem/GetToDoItemNoteDate", { toDoItemId: toDoItemId })
+            .success(function (result) {
+                if (result.DueDate === null) {
+                    var dateNow = new Date();
+                    var dateNowString = formatDate(dateNow);
+                    result.DueDate = dateNowString;
+                } else {
+                    var date = new Date(parseInt(result.DueDate.substr(6)));
+                    result.DueDate = date;
+                }
                 $scope.taskitem = result;
             });
     }
@@ -50,7 +67,7 @@
         $scope.toDoItems = args.toDoItems;
         $scope.toDoCompletedItems = args.toDoCompletedItems;
     });
-    
+
     $scope.addToDoItem = function (todoitem) {
         var listname = $scope.namelist;
         if (todoitem.Name !== "") {
@@ -65,23 +82,23 @@
         }
     };
 
-    $scope.deletetoDoItem = function(item) {
+    $scope.deletetoDoItem = function (item) {
         var listname = $scope.namelist;
         var toDoItemId = item.Id;
         $http.put("/ToDoItem/DeleteToDoItem", { taskId: toDoItemId, listname: listname })
-            .success(function(result) {
+            .success(function (result) {
                 $scope.toDoItems = result;
                 getCompletedToDoitemsByListId();
             })
-            .error(function(result) {
+            .error(function (result) {
                 console.log(result);
             });
     }
 
-    $scope.toDoTaskCompleted = function(id, status) {
+    $scope.toDoTaskCompleted = function (id, status) {
         if (status) {
             $http.post("/ToDoItem/ChangeTaskStatus", { taskId: id, status: status, listId: currentlistId })
-                .success(function(result) {
+                .success(function (result) {
                     $scope.toDoItems = result;
                     $scope.toDoCompletedItems = getCompletedToDoitemsByListId();
                 });
@@ -95,7 +112,7 @@
         });
     }
 
-    $scope.getCompletedTasks = function() {
+    $scope.getCompletedTasks = function () {
         var element = document.getElementById("completedList");
         var title = element.getAttribute("title");
         if (title === "hidden") {
@@ -108,19 +125,22 @@
         }
     };
 
-    $scope.doubleClick = function(e, toDoItem) {
+    $scope.doubleClick = function (e, toDoItem) {
         e.preventDefault();
         hiddenRightMenu();
         currentTaskId = toDoItem.Id;
         $scope.nameTask = toDoItem.Name;
-        getToDoItemNote(toDoItem);
+        getToDoItemNoteDate(toDoItem);
     }
 
     $scope.saveNoteDateToDoItem = function (taskitem) {
-        if (taskitem.Note !== "" && currentTaskId !== undefined) {
-            var element = document.getElementById("date");
-            var date = element.getAttribute("value");
-            $http.post("/ToDoItem/AddDueDateAndNote", { taskId: currentTaskId, note: taskitem.Note, dueDate: date, listId: currentlistId })
+        if (currentTaskId !== undefined) {
+            //var element = document.getElementById("datetime24");
+            //var dateUser = element.getAttribute("value");
+            var formDate = new Date();
+            //var formDate = formatDate(date);
+            //var date = taskitem.DueDate;
+            $http.post("/ToDoItem/AddDueDateAndNote", { taskId: currentTaskId, note: taskitem.Note, dueDate: formDate, listId: currentlistId })
             .success(function (result) {
                 $scope.toDoItems = result;
                 hiddenRightMenu();
@@ -128,6 +148,11 @@
             .error(function (result) {
                 console.log(result);
             });
-        }        
+        }
+    }
+
+    $scope.closeWrapper = function (e) {
+        e.preventDefault();
+        hiddenRightMenu();
     }
 });

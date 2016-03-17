@@ -108,7 +108,7 @@ namespace Wunderlist.WebUI.Controllers
         }
         
         [HttpPost]
-        public JsonResult GetToDoItemNote(int toDoItemId)
+        public JsonResult GetToDoItemNoteDate(int toDoItemId)
         {
             var task = _toDoTaskService.GetTaskById(toDoItemId);
             return Json(task, JsonRequestBehavior.AllowGet);
