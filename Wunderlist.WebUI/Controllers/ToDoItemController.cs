@@ -97,10 +97,10 @@ namespace Wunderlist.WebUI.Controllers
             return Json(toDoItems, JsonRequestBehavior.AllowGet);
         }
 
-        [System.Web.Mvc.HttpPost]
-        public JsonResult AddDueDateAndNote(int taskId, string note, string dueDate, int listId)
+        [HttpPost]
+        public JsonResult AddDueDateAndNote(int taskId, string note, int listId)
         {
-            _toDoTaskService.SaveDueDate(taskId, dueDate);
+            _toDoTaskService.SaveDueDate(taskId);
             _toDoTaskService.SaveNote(taskId, note);
             var currentToDoList = _toDoListService.GetById(listId);
             return GetToDoItems(currentToDoList.Name);
@@ -110,7 +110,7 @@ namespace Wunderlist.WebUI.Controllers
         public JsonResult GetToDoItemNote(int toDoItemId)
         {
             var task = _toDoTaskService.GetTaskById(toDoItemId);
-            return Json(task.Note, JsonRequestBehavior.AllowGet);
+            return Json(task, JsonRequestBehavior.AllowGet);
         }
     }
 }

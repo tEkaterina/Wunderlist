@@ -29,12 +29,10 @@
 
     function getToDoItemNote(toDoItem) {
         var toDoItemId = toDoItem.Id;
-        var res = undefined;
         $http.post("/ToDoItem/GetToDoItemNote", { toDoItemId: toDoItemId })
-            .success(function(result) {
-                res = result;
+            .success(function (result) {
+                $scope.taskitem = result;
             });
-        return res;
     }
 
     function hiddenRightMenu() {
@@ -115,27 +113,25 @@
         hiddenRightMenu();
         currentTaskId = toDoItem.Id;
         $scope.nameTask = toDoItem.Name;
-        var res = undefined;
-        $http.post("/ToDoItem/GetToDoItemNote", { toDoItemId: toDoItemId })
-            .success(function (result) {
-                res = result;
-            });
-        var element = document.getElementById("inputNote");
-        element.setAttribute("value", res.Note);
+        getToDoItemNote(toDoItem);
     }
 
-    $scope.saveNoteDateToDoItem = function (taskItem) {
-        if (taskItem.Note !== "" && currentTaskId !== undefined) {
-            var element = document.getElementById("date");
-            var date = element.getAttribute("value");
-            $http.post("/ToDoItem/AddDueDateAndNote", { taskId: currentTaskId, note: taskItem.Note, dueDate: date, listId: currentlistId })
+    $scope.saveNoteDateToDoItem = function (taskitem) {
+        if (currentTaskId !== undefined) {
+            var textNote = taskitem.Note;
+            $http.post("/ToDoItem/AddDueDateAndNote", { taskId: currentTaskId, note: textNote, listId: currentlistId })
             .success(function (result) {
-                $scope.toDoItems = result;
-                hiddenRightMenu();
+                $scope.taskitem = result;
+                
             })
             .error(function (result) {
                 console.log(result);
             });
-        }        
+        }
+        hiddenRightMenu();
+    }
+
+    $scope.cancelSaveNoteDate = function() {
+        hiddenRightMenu();
     }
 });

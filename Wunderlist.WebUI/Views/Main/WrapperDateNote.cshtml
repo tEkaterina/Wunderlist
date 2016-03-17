@@ -1,0 +1,13 @@
+﻿<div id="sidebar-wrapper-right">
+    <h5 data-ng-model="nameTask" style="margin-left: 20px">{{nameTask}}</h5>
+    <div class="add-note">
+        <input type="text" style="width: 80%; height: 100%"
+               placeholder="Добавить заметку..." id="inputNote" name="taskitem.Note" 
+               data-ng-model="taskitem.Note" value="{{taskitem.Note}}"/>
+    </div>
+    <div class="container" style="width: 95%">
+    </div>
+    <br />
+    <a href="" style="margin-left: 20px" type="button" class="btn btn-info" data-ng-click="saveNoteDateToDoItem(taskitem)">Сохранить</a>
+    <a href="" style="margin-left: 20px" type="button" class="btn btn-danger" data-ng-click="cancelSaveNoteDate()">Отмена</a>
+</div>
