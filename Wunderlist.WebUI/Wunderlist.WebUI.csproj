@@ -214,6 +214,7 @@
     <Content Include="Content\icons\password.PNG" />
     <Content Include="Content\icons\person.PNG" />
     <Content Include="Content\icons\user-arrow.png" />
+    <Content Include="Content\images\berlin-skyline.jpg" />
     <Content Include="Content\images\error.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\pictos.svg" />
