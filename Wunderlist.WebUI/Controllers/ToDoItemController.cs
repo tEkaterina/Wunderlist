@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Wunderlist.Services.Interfaces.Services;
 
@@ -25,7 +24,7 @@ namespace Wunderlist.WebUI.Controllers
             _toDoTaskService = toDoTaskService;
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public JsonResult GetToDoItems(string listName)
         {
             var userEmail = HttpContext.User.Identity.Name;
@@ -42,7 +41,7 @@ namespace Wunderlist.WebUI.Controllers
             return Json(null, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public JsonResult AddToDoItem(string name, string listname)
         {
             var userEmail = HttpContext.User.Identity.Name;
@@ -62,14 +61,14 @@ namespace Wunderlist.WebUI.Controllers
             return GetToDoItems(listname);
         }
 
-        [HttpPut]
+        [System.Web.Mvc.HttpPut]
         public JsonResult DeleteToDoItem(int taskId, string listname)
         {
             _toDoTaskService.Delete(taskId);
             return GetToDoItems(listname);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public JsonResult RenameToDoItem(int taskItemId, string taskname, string listname)
         {
             var currentTask = _toDoTaskService.GetTaskById(taskItemId);
@@ -77,7 +76,7 @@ namespace Wunderlist.WebUI.Controllers
             return GetToDoItems(listname);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public JsonResult ChangeTaskStatus(int taskId, bool status, int listId)
         {
             var currentToDoList = _toDoListService.GetById(listId);
@@ -88,7 +87,7 @@ namespace Wunderlist.WebUI.Controllers
         }
 
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public JsonResult GetCompletedToDoItems(int listId)
         {
             var currentToDoList = _toDoListService.GetById(listId);
@@ -107,7 +106,7 @@ namespace Wunderlist.WebUI.Controllers
             return GetToDoItems(currentToDoList.Name);
         }
         
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public JsonResult GetToDoItemNote(int toDoItemId)
         {
             var task = _toDoTaskService.GetTaskById(toDoItemId);

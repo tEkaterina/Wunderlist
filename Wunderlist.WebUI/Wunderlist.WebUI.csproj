@@ -97,6 +97,10 @@
       <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -186,6 +190,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListTasksController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -212,6 +217,7 @@
     <Content Include="Content\icons\password.PNG" />
     <Content Include="Content\icons\person.PNG" />
     <Content Include="Content\icons\user-arrow.png" />
+    <Content Include="Content\images\error.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\pictos.svg" />
     <Content Include="Content\images\twodevices.png" />
@@ -247,6 +253,12 @@
     <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-wrapper.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
@@ -276,7 +288,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Main\Main.cshtml" />
@@ -285,6 +296,7 @@
     <Content Include="Views\Main\UserInfo.cshtml" />
     <Content Include="Views\Main\UserProfileModalWindow.cshtml" />
     <Content Include="Views\Main\WrapperDateNote.cshtml" />
+    <Content Include="Views\Error\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
