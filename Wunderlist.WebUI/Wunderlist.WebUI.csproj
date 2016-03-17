@@ -213,6 +213,9 @@
     <Content Include="Content\icons\person.PNG" />
     <Content Include="Content\icons\user-arrow.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\pictos.svg" />
+    <Content Include="Content\images\twodevices.png" />
+    <Content Include="Content\IndexPageStyle.css" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\UserProfileStyle.css" />

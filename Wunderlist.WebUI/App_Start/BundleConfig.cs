@@ -24,7 +24,8 @@ namespace Wunderlist.WebUI
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/SinginSingupStyle.css"));
+                      "~/Content/SinginSingupStyle.css", 
+                      "~/Content/IndexPageStyle.css"));
         }
     }
 }
