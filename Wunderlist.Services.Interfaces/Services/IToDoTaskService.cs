@@ -9,7 +9,7 @@ namespace Wunderlist.Services.Interfaces.Services
         void Create(string name, int listId);
         void Delete(int taskId);
         void Update(int taskId, string taskName, int statusId);
-        void SaveDueDate(int taskId, string date);
+        void SaveDueDate(int taskId);
         void SaveNote(int taskId, string note);
         ToDoTaskServiceEntity GetTaskById(int taskId);
     }
