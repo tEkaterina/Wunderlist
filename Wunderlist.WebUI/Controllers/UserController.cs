@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using Wunderlist.Services.Interfaces.Entities;
@@ -24,13 +23,13 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         // GET: User
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public ActionResult Singup()
         {
             return View();
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Singup(RegistrationUserModel user)
         {
             if (ModelState.IsValid)
@@ -48,13 +47,13 @@ namespace Wunderlist.WebUI.Controllers
             return RedirectToAction("Main", "Main");
         }
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public ActionResult Singin()
         {
             return View();
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Singin(SinginUserModel user)
         {
             if (ModelState.IsValid)
@@ -75,7 +74,7 @@ namespace Wunderlist.WebUI.Controllers
             return View(user);
         }
 
-        [HttpPut]
+        [System.Web.Mvc.HttpPut]
         public JsonResult Logout()
         {
             FormsAuthentication.SignOut();

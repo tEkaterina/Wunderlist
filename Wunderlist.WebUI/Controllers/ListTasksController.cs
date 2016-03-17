@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 using System.Web.Mvc;
 using Wunderlist.Services.Interfaces.Entities;
 using Wunderlist.Services.Interfaces.Services;
 
 namespace Wunderlist.WebUI.Controllers
 {
-    [Authorize]
+    [System.Web.Mvc.Authorize]
     public class ListTasksController : Controller
     {
         private readonly IToDoListService _toDoListService;
@@ -18,7 +19,7 @@ namespace Wunderlist.WebUI.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public JsonResult GetToDoLists()
         {
             var userEmail = HttpContext.User.Identity.Name;
@@ -27,7 +28,7 @@ namespace Wunderlist.WebUI.Controllers
             return Json(toDoLists, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public JsonResult AddToDoList(string name)
         {
             var userEmail = HttpContext.User.Identity.Name;
@@ -40,14 +41,14 @@ namespace Wunderlist.WebUI.Controllers
             return Json(toDoLists, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPut]
+        [System.Web.Mvc.HttpPut]
         public JsonResult DeleteToDoList(int listItemId, string listname)
         {
             _toDoListService.Delete(listItemId);
             return GetToDoLists();
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public JsonResult RenameToDoList(int listItemId, string listname)
         {
             _toDoListService.Update(listItemId, listname);

@@ -7,6 +7,7 @@ using Wunderlist.WebUI.Models;
 
 namespace Wunderlist.WebUI.Controllers
 {
+    [Authorize]
     public class UserProfileController : Controller
     {
         private readonly IUserService _userService;
@@ -41,7 +42,7 @@ namespace Wunderlist.WebUI.Controllers
             return Json(userProfile, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPut]
+        [System.Web.Mvc.HttpPut]
         public ActionResult ChangeAvatar(string image)
         {
             var avatarImg = Convert.FromBase64String(image);
@@ -60,7 +61,7 @@ namespace Wunderlist.WebUI.Controllers
             return Json(true);
         }
 
-        [HttpPut]
+        [System.Web.Mvc.HttpPut]
         public ActionResult ChangeUsername(string newUsername)
         {
             var email = HttpContext.User.Identity.Name;
