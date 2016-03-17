@@ -204,8 +204,6 @@
     <Compile Include="Infrastructure\ImageExtension.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\ServiceEntitiesMapper.cs" />
-    <Compile Include="Models\RegistrationUserModel.cs" />
-    <Compile Include="Models\SinginUserModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -217,6 +215,7 @@
     <Content Include="Content\icons\password.PNG" />
     <Content Include="Content\icons\person.PNG" />
     <Content Include="Content\icons\user-arrow.png" />
+    <Content Include="Content\images\berlin-skyline.jpg" />
     <Content Include="Content\images\error.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\pictos.svg" />

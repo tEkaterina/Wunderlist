@@ -30,7 +30,7 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public ActionResult Singup(RegistrationUserModel user)
+        public ActionResult Singup(UserProfileModel user)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +54,7 @@ namespace Wunderlist.WebUI.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public ActionResult Singin(SinginUserModel user)
+        public ActionResult Singin(UserProfileModel user)
         {
             if (ModelState.IsValid)
             {
@@ -100,7 +100,7 @@ namespace Wunderlist.WebUI.Controllers
             return Encoding.Unicode.GetString(hash);
         }
 
-        private void CreateUser(RegistrationUserModel user)
+        private void CreateUser(UserProfileModel user)
         {
             var newServiceUser = user.ToServiceEntity();
             string salt = GetSalt();
